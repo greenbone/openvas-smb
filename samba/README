@@ -1,0 +1,8 @@
+samba
+=====
+
+This directory contains a stripped down and modified version
+of the Samba 4 library from 2006, licensed under the GPLv2.
+
+It was modified to use the CMake build system and stripped down
+the the relevant parts for openvas-smb.

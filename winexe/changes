@@ -1,0 +1,46 @@
+0.80 - 26/10/07 Added --interactive option.
+    winexesvc is replaced only if version differs on more than last digit.
+0.77 - 11/10/07 Fixed bug causing winexe crash during service uninstallation.
+0.76 - 10/10/07 Service status is checked during service (un)installation.
+    Corrected service installation code(case of deleted winexesvc.exe file).
+0.75 - 09/07/07 Added workaround for delayed pipe handle destruction(error 0x000000E7).
+    Removed token handle leaks in case of error condition.
+0.74 - 04/07/07 Added version checking and automatic service reinstallation
+    Pipe names now depends on ProcessID(should solve issue with unterminated winexe processes)
+0.73 - 29/06/07 Corrected bug in signal handling
+0.72 - 26/06/07 Added winexe INT/TERM signal handling
+0.71 - 22/05/07 Workarounds for win2003sp2 service (re)installation issues
+    Removed token handle leaks in winexesvc 
+0.7 - 25/07/06 Making code more pretty.
+    By default commands run on user's account.
+    Added --system - commands run on system account.
+    Added --runas - any user can be impersonated(BEWARE: passwords are sent in clear text).
+    Many changes in winexesvc.
+0.61 - 07/07/06 Fixed bug in svcctl.idl
+    Changed types of 'dependencies' and 'password' params in CreateServiceW.
+0.6 - 07/07/06 svcctl.idl cosmetics
+    Linux code style applied, semi automatic.
+    Removed // style comments.
+    Changed includes <xx.h> to <sys/xx.h>
+0.5 - 06/07/06 Cleaned up winexe/service code.
+    Changed deps in winexe/config.mk.
+    Renamed directory service to winexesvc.
+    STDIN read corrected.
+    async_write serialized - now server should receive input in correct order.
+0.4 - 02/07/06 Added dependencies in winexe/config.mk to auto rebuild service.
+    Turned off timeouts - proces do not disconnect after 60sec.
+    Added some debug messages.
+    Removed small leaks in winexesvc.
+0.3 - 02/07/06 winexe is fully integrated with smb_build system. Now there is
+    no need to separately compile winexe/service. I have also removed symlink
+    to winexesvc_exe.c, should be cleaner.
+0.2 - 02/07/06 Now it works with NT - all pipes are created with security 
+    descriptor allowing admins to open it.
+    Added options --reinstall/--uninstall.
+    Added error messages, cleaned debug messages(-d 1).
+    Some code cleaning.
+    Added 'precompiled' winexe/service/winexesvc_exe.c, for users without 
+    crosscompiler or windows compile enironment.
+0.1 - 01/07/06 In winexe dir added link to winexe/service/winexesvc_exe.c, 
+    I am not sure if patch utility supports it.
+0.0 - 30/06/06 Initial release

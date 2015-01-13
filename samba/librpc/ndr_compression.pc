@@ -1,0 +1,12 @@
+prefix=/home/aheinecke/arbeit/greenbone
+exec_prefix=/home/aheinecke/arbeit/greenbone
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: ndr_compression
+Description: NDR support for compressed subcontexts
+Requires: ndr 
+Version: 0.0.1
+Libs: -L${libdir} -lndr_compression
+Libs.private: -lcompression -lsamba-errors -lreplace 
+Cflags: -I${includedir}  -DHAVE_IMMEDIATE_STRUCTURES=1

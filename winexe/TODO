@@ -1,0 +1,5 @@
+- add service config options, esp. "interactive",
+- encryption of pipes (I hope it can be done using smb proto),
+- other psexec/beyondexec options
+- turn off line buffering of stdin on windows side (how???)
+- review/fix code :)

@@ -1,0 +1,23 @@
+- EJS output backend shouldn't use the NDR levels stuff but instead 
+  as the "C levels" and NDR levels don't necessarily match.
+
+- warn about [out] attributes on pointers (midl/samba3 compatibility)
+
+- true multiple dimension array / strings in arrays support
+
+- compatibility mode for generating MIDL-readable data:
+ - strip out pidl-specific properties
+
+- support nested elements
+ - generate names for anonymous tagged types
+ - support typedefs properly
+
+- improve represent_as(): allow it to be used for arrays and other complex types
+
+- --explain-ndr option that dumps out parse tree ?
+
+- seperate tables for NDR and DCE/RPC
+
+- allow data structures outside of interfaces
+
+- mem_ctx in the interface rather than as struct ndr member.

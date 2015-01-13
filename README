@@ -2,7 +2,7 @@ openvas-smb
 ===========
 
 This is the smb module for the Open Vulnerability Assessment System
-(OpenVAS). It includes libraries (openvas-wmiclient / openvas-winextra) to
+(OpenVAS). It includes libraries (openvas-wmiclient / openvas-wincmd) to
 interface with Microsoft Windows Systems through the Windows Management
 Instrumentation API and a winexe binary to exectute processes remotely
 on that system.

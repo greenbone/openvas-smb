@@ -1,0 +1,14 @@
+prefix=/home/aheinecke/arbeit/greenbone
+exec_prefix=/home/aheinecke/arbeit/greenbone
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+modulesdir=${prefix}/modules/ldb
+
+Name: ldb
+Description: LDAP-like embedded database library
+Requires: talloc 
+Requires.private: socket_wrapper talloc talloc talloc talloc talloc talloc ndr talloc talloc talloc talloc talloc talloc talloc talloc talloc tdb talloc talloc talloc talloc talloc talloc talloc 
+Version: 0.0.1
+Libs: -L${libdir} -lldb
+Libs.private: -lreplace -ldynconfig -lreplace -lreplace -lreplace -lreplace -lreplace -lreplace -lndr_misc -lreplace -lnetif -lreplace -lheimdal_krb5 -lreplace -lheimdal_hdb_keys -lreplace -lreplace -lreplace -lreplace -lsecurity -lreplace -lreplace -lreplace -lreplace -lcli_ldap -lreplace -lreplace -lreplace -lreplace -lreplace -lreplace 
+Cflags: -I${includedir}  -DHAVE_IMMEDIATE_STRUCTURES=1
