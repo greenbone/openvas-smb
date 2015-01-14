@@ -52,7 +52,7 @@ include_directories(${SMB_INCLUDES})
 find_program(MINGW_GCC i586-mingw32msvc-gcc)
 
 if (NOT MINGW_GCC)
-   message(FATAL_ERROR "i586-mingw32msvc-gcc not found in PATH.\nIt is needed to build the Windows Service for winexe.")
+  message(SEND_ERROR "i586-mingw32msvc-gcc not found in PATH.\nIt is needed to build the Windows Service for winexe.")
 endif(NOT MINGW_GCC)
 
 set (WINEXESVC_SOURCES

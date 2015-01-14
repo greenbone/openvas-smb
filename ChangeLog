@@ -1,5 +1,9 @@
 2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
 
+	* README: Fix typo.
+
+2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
+
 	Initial commit of openvas-smb module code, prepared by Andre Heinecke
 	and Jan-Oliver Wagner. Starting ChangeLog.
 
