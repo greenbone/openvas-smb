@@ -1,5 +1,10 @@
 2015-01-14 Andre Heinecke <aheinecke@greenbone.net>
 
+	* wmi/winsmb.c: Remove uneccessary include to readline.h.
+	* samba/lib/replace/system/readline.h: Remove unused wrapper.
+
+2015-01-14 Andre Heinecke <aheinecke@greenbone.net>
+
 	* winexe/CMakeLists.txt, wmi/CMakeLists.txt:
 	Include internal popt directory.
 
