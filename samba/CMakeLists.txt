@@ -315,7 +315,6 @@ set (SAMBA_SRC
    lib/events/events.c
    lib/events/events_standard.c
    lib/gendb.c
-   lib/json/configure
    lib/ldb/common/ldb_attributes.c
    lib/ldb/common/ldb.c
    lib/ldb/common/ldb_debug.c
@@ -500,7 +499,6 @@ set (SAMBA_SRC
    heimdal/lib/roken/strsep_copy.c
    lib/crypto/arcfour.c
    lib/crypto/crc32.c
-   lib/json/configure
    lib/ldb/common/attrib_handlers.c
    lib/ldb/ldb_ildap/ldb_ildap.c
    lib/ldb/ldb_tdb/ldb_tdb.c
