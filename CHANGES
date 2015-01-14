@@ -1,0 +1,11 @@
+openvas-smb 1.0+beta1 (2015-01-14)
+
+This is the first release of the openvas-smb module for the Open Vulnerability
+Assessment Systems (OpenVAS).
+
+This module includes libraries to interface with Microsoft Windows Systems
+through the Windows Management Instrumentation API and a winexe binary to
+execute processes remotely on that system.
+
+Many thanks to everyone who has contributed to this release:
+Andre Heinecke, Jan-Oliver Wagner and Michael Wiegand.

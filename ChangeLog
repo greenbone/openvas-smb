@@ -1,7 +1,15 @@
+2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	Preparing the openvas-smb 1.0+beta1 release.
+
+	* CHANGES: New.
+
+	* CMakeLists.txt: Set version to 1.0+beta1.
+
 2015-01-14 Andre Heinecke <aheinecke@greenbone.net>
 
-    * samba/CMakeLists.txt: Remove accidental dependency
-	to configure file.
+	* samba/CMakeLists.txt: Remove accidental dependency to configure
+	file.
 
 	* samba/heimdal/cf/check-var.m4,
 	 samba/heimdal/cf/find-func-no-libs.m4,
