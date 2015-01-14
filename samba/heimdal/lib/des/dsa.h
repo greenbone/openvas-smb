@@ -38,7 +38,7 @@
 #ifndef _HEIM_DSA_H
 #define _HEIM_DSA_H 1
 
-#include <hcrypto/bn.h>
+#include "bn.h"
 
 /* symbol renaming */
 #define DSA_null_method hc_DSA_null_method

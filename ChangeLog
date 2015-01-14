@@ -1,3 +1,16 @@
+2015-01-14 Andre Heinecke <aheinecke@intevation.de>
+
+	* samba/heimdal/lib/des/hcrypto: Remove symlink
+	* samba/heimdal/lib/des/dh.h,
+	samba/heimdal/lib/des/dsa.h,
+	samba/heimdal/lib/des/engine.h,
+	samba/heimdal/lib/des/evp.h,
+	samba/heimdal/lib/des/hcrypto,
+	samba/heimdal/lib/des/hmac.h,
+	samba/heimdal/lib/des/pkcs12.h,
+	samba/heimdal/lib/des/rand.h,
+	samba/heimdal/lib/des/rsa.h: Fix includes not to need hcyrpto dir.
+
 2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	* winexe/CMakeLists.txt: Use SEND_ERROR instead of FATAL_ERROR for

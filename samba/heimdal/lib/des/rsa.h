@@ -69,8 +69,8 @@
 typedef struct RSA RSA;
 typedef struct RSA_METHOD RSA_METHOD;
 
-#include <hcrypto/bn.h>
-#include <hcrypto/engine.h>
+#include "bn.h"
+#include "engine.h"
 
 struct RSA_METHOD {
     const char *name;

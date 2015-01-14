@@ -66,10 +66,10 @@
 
 typedef struct hc_engine ENGINE;
 
-#include <hcrypto/rsa.h>
-#include <hcrypto/dsa.h>
-#include <hcrypto/dh.h>
-#include <hcrypto/rand.h>
+#include "rsa.h"
+#include "dsa.h"
+#include "dh.h"
+#include "rand.h"
 
 #define OPENSSL_DYNAMIC_VERSION		(unsigned long)0x00020000
 

@@ -64,8 +64,8 @@
 typedef struct DH DH;
 typedef struct DH_METHOD DH_METHOD;
 
-#include <hcrypto/bn.h>
-#include <hcrypto/engine.h>
+#include "bn.h"
+#include "engine.h"
 
 struct DH_METHOD {
     const char *name;

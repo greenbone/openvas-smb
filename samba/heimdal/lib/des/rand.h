@@ -41,8 +41,8 @@
 
 typedef struct RAND_METHOD RAND_METHOD;
 
-#include <hcrypto/bn.h>
-#include <hcrypto/engine.h>
+#include "bn.h"
+#include "engine.h"
 
 /* symbol renaming */
 #define RAND_bytes hc_RAND_bytes
