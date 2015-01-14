@@ -1,4 +1,9 @@
-2015-01-14 Andre Heinecke <aheinecke@intevation.de>
+2015-01-14 Andre Heinecke <aheinecke@greenbone.net>
+
+	* winexe/CMakeLists.txt, wmi/CMakeLists.txt:
+	Include internal popt directory.
+
+2015-01-14 Andre Heinecke <aheinecke@greenbone.net>
 
 	* samba/heimdal/lib/des/hcrypto: Remove symlink
 	* samba/heimdal/lib/des/dh.h,

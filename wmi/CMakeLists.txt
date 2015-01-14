@@ -26,6 +26,7 @@ set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba
    ${CMAKE_SOURCE_DIR}/samba/include
    ${CMAKE_SOURCE_DIR}/samba/lib
+   ${CMAKE_SOURCE_DIR}/samba/lib/popt
    ${CMAKE_SOURCE_DIR}/samba/lib/replace
    ${CMAKE_SOURCE_DIR}/samba/ntvfs
    ${CMAKE_SOURCE_DIR}/samba/param
