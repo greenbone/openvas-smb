@@ -1,5 +1,10 @@
 2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
 
+	* winexe/CMakeLists.txt: Use SEND_ERROR instead of FATAL_ERROR for
+	consistency.
+
+2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
+
 	* README: Fix typo.
 
 2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
