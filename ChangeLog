@@ -1,3 +1,7 @@
+2015-01-15  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	* CMakeLists.txt: Remove meaningless REQUIRED from include.
+
 2015-01-14  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	Post release version bump.

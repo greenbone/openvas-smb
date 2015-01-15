@@ -29,7 +29,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Perl REQUIRED)
 
-include (FindPkgConfig REQUIRED)
+include (FindPkgConfig)
 
 ## Retrieve svn revision (at configure time)
 #  Not using Subversion_WC_INFO, as it would have to connect to the repo
