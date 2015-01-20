@@ -80,9 +80,9 @@ add_executable(bin2c ${BINTOC_SOURCES})
 add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
-target_link_libraries(openvas_wincmd samba-static)
+target_link_libraries(openvas_wincmd samba-static ${GSSAPI_LIBRARIES})
 
-target_link_libraries(winexe samba-static dl gnutls resolv)
+target_link_libraries(winexe samba-static dl gnutls resolv ${GSSAPI_LIBRARIES})
 
 install (TARGETS winexe RUNTIME DESTINATION ${BINDIR})
 

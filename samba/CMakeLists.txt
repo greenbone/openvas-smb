@@ -34,18 +34,10 @@ set(CMAKE_START_TEMP_FILE "@")
 set(CMAKE_C_RESPONSE_FILE_LINK_FLAG "@")
 set(CMAKE_C_CREATE_STATIC_LIBRARY "<CMAKE_AR> rc <TARGET> <LINK_FLAGS> <OBJECTS>")
 
+include_directories(${GSSAPI_INCLUDE_DIR})
+
 set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba
-   ${CMAKE_SOURCE_DIR}/samba/heimdal_build
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/asn1
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/com_err
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/des
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/gssapi
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/gssapi/mech
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/gssapi/spnego
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/krb5
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/roken
-   ${CMAKE_SOURCE_DIR}/samba/heimdal/lib/hdb
    ${CMAKE_SOURCE_DIR}/samba/include
    ${CMAKE_SOURCE_DIR}/samba/lib
    ${CMAKE_SOURCE_DIR}/samba/lib/appweb/ejs
@@ -235,32 +227,6 @@ set (SAMBA_SRC
    auth/ntlmssp/ntlmssp_sign.c
    auth/sam.c
    dsdb/samdb/samdb.c
-   heimdal/lib/gssapi/krb5/external.c
-   heimdal/lib/gssapi/mech/gss_accept_sec_context.c
-   heimdal/lib/gssapi/mech/gss_delete_sec_context.c
-   heimdal/lib/gssapi/mech/gss_display_name.c
-   heimdal/lib/gssapi/mech/gss_display_status.c
-   heimdal/lib/gssapi/mech/gss_import_name.c
-   heimdal/lib/gssapi/mech/gss_init_sec_context.c
-   heimdal/lib/gssapi/mech/gss_krb5.c
-   heimdal/lib/gssapi/mech/gss_oid_equal.c
-   heimdal/lib/gssapi/mech/gss_release_buffer.c
-   heimdal/lib/gssapi/mech/gss_release_cred.c
-   heimdal/lib/gssapi/mech/gss_release_name.c
-   heimdal/lib/gssapi/mech/gss_unwrap.c
-   heimdal/lib/gssapi/mech/gss_wrap.c
-   heimdal/lib/gssapi/mech/gss_wrap_size_limit.c
-   heimdal/lib/krb5/addr_families.c
-   heimdal/lib/krb5/auth_context.c
-   heimdal/lib/krb5/cache.c
-   heimdal/lib/krb5/data.c
-   heimdal/lib/krb5/keyblock.c
-   heimdal/lib/krb5/mk_priv.c
-   heimdal/lib/krb5/mk_req.c
-   heimdal/lib/krb5/principal.c
-   heimdal/lib/krb5/rd_priv.c
-   heimdal/lib/krb5/rd_rep.c
-   heimdal/lib/krb5/ticket.c
    lib/charset/charcnv.c
    lib/charset/iconv.c
    lib/charset/util_unistr.c
@@ -393,110 +359,6 @@ set (SAMBA_SRC
    dsdb/samdb/ldb_modules/samldb.c
    dsdb/samdb/ldb_modules/schema.c
    dsdb/samdb/samdb_privilege.c
-   heimdal/lib/des/md5.c
-   heimdal/lib/des/md4.c
-   heimdal/lib/des/des.c
-   heimdal/lib/des/rc4.c
-   heimdal/lib/des/sha.c
-   heimdal/lib/des/aes.c
-   heimdal/lib/des/pkcs5.c
-   heimdal/lib/des/ui.c
-   heimdal/lib/des/rnd_keys.c
-   heimdal/lib/des/rijndael-alg-fst.c
-   heimdal/lib/des/evp.c
-   heimdal/lib/des/hmac.c
-   heimdal/lib/des/md2.c
-   heimdal/lib/des/sha256.c
-   heimdal/lib/des/rc2.c
-   heimdal/lib/roken/resolve.c
-   heimdal/lib/roken/hex.c
-   heimdal/lib/asn1/asn1_AP_REP.c
-   heimdal/lib/asn1/asn1_Authenticator.c
-   heimdal/lib/asn1/asn1_AuthorizationData.c
-   heimdal/lib/asn1/asn1_Checksum.c
-   heimdal/lib/asn1/asn1_EncAPRepPart.c
-   heimdal/lib/asn1/asn1_EncKrbPrivPart.c
-   heimdal/lib/asn1/asn1_EncTicketPart.c
-   heimdal/lib/asn1/asn1_EncryptionKey.c
-   heimdal/lib/asn1/asn1_HostAddress.c
-   heimdal/lib/asn1/asn1_KRB_PRIV.c
-   heimdal/lib/asn1/asn1_Principal.c
-   heimdal/lib/asn1/der_copy.c
-   heimdal/lib/asn1/der_free.c
-   heimdal/lib/asn1/der_get.c
-   heimdal/lib/asn1/der_length.c
-   heimdal/lib/asn1/der_put.c
-   heimdal/lib/gssapi/krb5/accept_sec_context.c
-   heimdal/lib/gssapi/krb5/acquire_cred.c
-   heimdal/lib/gssapi/krb5/add_cred.c
-   heimdal/lib/gssapi/krb5/canonicalize_name.c
-   heimdal/lib/gssapi/krb5/compare_name.c
-   heimdal/lib/gssapi/krb5/context_time.c
-   heimdal/lib/gssapi/krb5/delete_sec_context.c
-   heimdal/lib/gssapi/krb5/display_name.c
-   heimdal/lib/gssapi/krb5/display_status.c
-   heimdal/lib/gssapi/krb5/duplicate_name.c
-   heimdal/lib/gssapi/krb5/export_name.c
-   heimdal/lib/gssapi/krb5/export_sec_context.c
-   heimdal/lib/gssapi/krb5/get_mic.c
-   heimdal/lib/gssapi/krb5/import_name.c
-   heimdal/lib/gssapi/krb5/import_sec_context.c
-   heimdal/lib/gssapi/krb5/indicate_mechs.c
-   heimdal/lib/gssapi/krb5/init_sec_context.c
-   heimdal/lib/gssapi/krb5/inquire_context.c
-   heimdal/lib/gssapi/krb5/inquire_cred.c
-   heimdal/lib/gssapi/krb5/inquire_cred_by_mech.c
-   heimdal/lib/gssapi/krb5/inquire_cred_by_oid.c
-   heimdal/lib/gssapi/krb5/inquire_mechs_for_name.c
-   heimdal/lib/gssapi/krb5/inquire_names_for_mech.c
-   heimdal/lib/gssapi/krb5/inquire_sec_context_by_oid.c
-   heimdal/lib/gssapi/krb5/process_context_token.c
-   heimdal/lib/gssapi/krb5/release_cred.c
-   heimdal/lib/gssapi/krb5/release_name.c
-   heimdal/lib/gssapi/krb5/set_cred_option.c
-   heimdal/lib/gssapi/krb5/set_sec_context_option.c
-   heimdal/lib/gssapi/krb5/unwrap.c
-   heimdal/lib/gssapi/krb5/verify_mic.c
-   heimdal/lib/gssapi/krb5/wrap.c
-   heimdal/lib/gssapi/mech/gss_buffer_set.c
-   heimdal/lib/gssapi/mech/gss_inquire_cred_by_oid.c
-   heimdal/lib/gssapi/mech/gss_inquire_sec_context_by_oid.c
-   heimdal/lib/gssapi/mech/gss_mech_switch.c
-   heimdal/lib/gssapi/mech/gss_names.c
-   heimdal/lib/gssapi/mech/gss_set_cred_option.c
-   heimdal/lib/gssapi/mech/gss_utils.c
-   heimdal/lib/krb5/codec.c
-   heimdal/lib/krb5/config_file.c
-   heimdal/lib/krb5/context.c
-   heimdal/lib/krb5/creds.c
-   heimdal/lib/krb5/crypto.c
-   heimdal/lib/krb5/eai_to_heim_errno.c
-   heimdal/lib/krb5/error_string.c
-   heimdal/lib/krb5/expand_hostname.c
-   heimdal/lib/krb5/fcache.c
-   heimdal/lib/krb5/free_host_realm.c
-   heimdal/lib/krb5/generate_subkey.c
-   heimdal/lib/krb5/get_cred.c
-   heimdal/lib/krb5/get_default_realm.c
-   heimdal/lib/krb5/get_host_realm.c
-   heimdal/lib/krb5/keytab.c
-   heimdal/lib/krb5/krb5_err.c
-   heimdal/lib/krb5/krbhst.c
-   heimdal/lib/krb5/log.c
-   heimdal/lib/krb5/mit_glue.c
-   heimdal/lib/krb5/mk_rep.c
-   heimdal/lib/krb5/mk_req_ext.c
-   heimdal/lib/krb5/rd_req.c
-   heimdal/lib/krb5/send_to_kdc.c
-   heimdal/lib/krb5/set_default_realm.c
-   heimdal/lib/krb5/store.c
-   heimdal/lib/krb5/store_emem.c
-   heimdal/lib/krb5/store_mem.c
-   heimdal/lib/krb5/time.c
-   heimdal/lib/krb5/warn.c
-   heimdal/lib/roken/issuid.c
-   heimdal/lib/roken/strlwr.c
-   heimdal/lib/roken/strsep_copy.c
    lib/crypto/arcfour.c
    lib/crypto/crc32.c
    lib/ldb/common/attrib_handlers.c
@@ -537,101 +399,6 @@ set (SAMBA_SRC
    auth/ntlm_check.c
    auth/pam_errors.c
    dsdb/samdb/ldb_modules/schema_syntax.c
-   heimdal/lib/asn1/asn1_AD_IF_RELEVANT.c
-   heimdal/lib/asn1/asn1_AP_REQ.c
-   heimdal/lib/asn1/asn1_AuthorizationDataElement.c
-   heimdal/lib/asn1/asn1_CKSUMTYPE.c
-   heimdal/lib/asn1/asn1_ETYPE_INFO.c
-   heimdal/lib/asn1/asn1_ETYPE_INFO2.c
-   heimdal/lib/asn1/asn1_EncASRepPart.c
-   heimdal/lib/asn1/asn1_EncKrbCredPart.c
-   heimdal/lib/asn1/asn1_EncTGSRepPart.c
-   heimdal/lib/asn1/asn1_EncryptedData.c
-   heimdal/lib/asn1/asn1_EtypeList.c
-   heimdal/lib/asn1/asn1_HostAddresses.c
-   heimdal/lib/asn1/asn1_KDCOptions.c
-   heimdal/lib/asn1/asn1_KDC_REQ_BODY.c
-   heimdal/lib/asn1/asn1_KerberosTime.c
-   heimdal/lib/asn1/asn1_MESSAGE_TYPE.c
-   heimdal/lib/asn1/asn1_METHOD_DATA.c
-   heimdal/lib/asn1/asn1_PA_DATA.c
-   heimdal/lib/asn1/asn1_PA_S4U2Self.c
-   heimdal/lib/asn1/asn1_PrincipalName.c
-   heimdal/lib/asn1/asn1_Realm.c
-   heimdal/lib/asn1/asn1_TGS_REP.c
-   heimdal/lib/asn1/asn1_TGS_REQ.c
-   heimdal/lib/asn1/asn1_Ticket.c
-   heimdal/lib/asn1/asn1_TicketFlags.c
-   heimdal/lib/asn1/asn1_TransitedEncoding.c
-   heimdal/lib/asn1/asn1_err.c
-   heimdal/lib/asn1/asn1_krb5int32.c
-   heimdal/lib/asn1/asn1_krb5uint32.c
-   heimdal/lib/asn1/der_cmp.c
-   heimdal/lib/asn1/timegm.c
-   heimdal/lib/com_err/com_err.c
-   heimdal/lib/com_err/error.c
-   heimdal/lib/gssapi/krb5/8003.c
-   heimdal/lib/gssapi/krb5/add_oid_set_member.c
-   heimdal/lib/gssapi/krb5/address_to_krb5addr.c
-   heimdal/lib/gssapi/krb5/arcfour.c
-   heimdal/lib/gssapi/krb5/cfx.c
-   heimdal/lib/gssapi/krb5/compat.c
-   heimdal/lib/gssapi/krb5/copy_ccache.c
-   heimdal/lib/gssapi/krb5/create_emtpy_oid_set.c
-   heimdal/lib/gssapi/krb5/decapsulate.c
-   heimdal/lib/gssapi/krb5/encapsulate.c
-   heimdal/lib/gssapi/krb5/init.c
-   heimdal/lib/gssapi/krb5/release_buffer.c
-   heimdal/lib/gssapi/krb5/release_oid_set.c
-   heimdal/lib/gssapi/krb5/sequence.c
-   heimdal/lib/gssapi/krb5/test_oid_set_member.c
-   heimdal/lib/gssapi/mech/gss_add_oid_set_member.c
-   heimdal/lib/gssapi/mech/gss_create_empty_oid_set.c
-   heimdal/lib/gssapi/spnego/external.c
-   heimdal/lib/hdb/asn1_Key.c
-   heimdal/lib/hdb/keys.c
-   heimdal/lib/krb5/acache.c
-   heimdal/lib/krb5/add_et_list.c
-   heimdal/lib/krb5/appdefault.c
-   heimdal/lib/krb5/asn1_glue.c
-   heimdal/lib/krb5/build_ap_req.c
-   heimdal/lib/krb5/build_auth.c
-   heimdal/lib/krb5/constants.c
-   heimdal/lib/krb5/copy_host_realm.c
-   heimdal/lib/krb5/crc.c
-   heimdal/lib/krb5/free.c
-   heimdal/lib/krb5/generate_seq_number.c
-   heimdal/lib/krb5/get_default_principal.c
-   heimdal/lib/krb5/get_for_creds.c
-   heimdal/lib/krb5/get_in_tkt.c
-   heimdal/lib/krb5/get_port.c
-   heimdal/lib/krb5/heim_err.c
-   heimdal/lib/krb5/init_creds.c
-   heimdal/lib/krb5/init_creds_pw.c
-   heimdal/lib/krb5/k524_err.c
-   heimdal/lib/krb5/keytab_any.c
-   heimdal/lib/krb5/keytab_file.c
-   heimdal/lib/krb5/keytab_keyfile.c
-   heimdal/lib/krb5/keytab_krb4.c
-   heimdal/lib/krb5/keytab_memory.c
-   heimdal/lib/krb5/mcache.c
-   heimdal/lib/krb5/misc.c
-   heimdal/lib/krb5/n-fold.c
-   heimdal/lib/krb5/padata.c
-   heimdal/lib/krb5/plugin.c
-   heimdal/lib/krb5/rd_cred.c
-   heimdal/lib/krb5/rd_error.c
-   heimdal/lib/krb5/store_fd.c
-   heimdal/lib/krb5/transited.c
-   heimdal/lib/roken/base64.c
-   heimdal/lib/roken/bswap.c
-   heimdal/lib/roken/estrdup.c
-   heimdal/lib/roken/net_write.c
-   heimdal/lib/roken/parse_time.c
-   heimdal/lib/roken/roken_gethostby.c
-   heimdal/lib/roken/socket.c
-   heimdal/lib/roken/strupr.c
-   heimdal_build/glue.c
    lib/ldb/common/ldb_controls.c
    lib/ldb/common/qsort.c
    lib/ldb/ldb_tdb/ldb_cache.c
@@ -656,35 +423,6 @@ set (SAMBA_SRC
    libcli/smb2/cancel.c
    librpc/ndr/ndr_krb5pac.c
    nsswitch/wb_common.c
-   heimdal/lib/asn1/asn1_APOptions.c
-   heimdal/lib/asn1/asn1_AS_REP.c
-   heimdal/lib/asn1/asn1_AS_REQ.c
-   heimdal/lib/asn1/asn1_ENCTYPE.c
-   heimdal/lib/asn1/asn1_ETYPE_INFO2_ENTRY.c
-   heimdal/lib/asn1/asn1_ETYPE_INFO_ENTRY.c
-   heimdal/lib/asn1/asn1_EncKDCRepPart.c
-   heimdal/lib/asn1/asn1_KDC_REP.c
-   heimdal/lib/asn1/asn1_KDC_REQ.c
-   heimdal/lib/asn1/asn1_KRB_CRED.c
-   heimdal/lib/asn1/asn1_KRB_ERROR.c
-   heimdal/lib/asn1/asn1_KrbCredInfo.c
-   heimdal/lib/asn1/asn1_NAME_TYPE.c
-   heimdal/lib/asn1/asn1_PADATA_TYPE.c
-   heimdal/lib/asn1/asn1_PA_ENC_TS_ENC.c
-   heimdal/lib/asn1/asn1_PA_PAC_REQUEST.c
-   heimdal/lib/gssapi/mech/gss_test_oid_set_member.c
-   heimdal/lib/gssapi/spnego/accept_sec_context.c
-   heimdal/lib/gssapi/spnego/compat.c
-   heimdal/lib/gssapi/spnego/context_stubs.c
-   heimdal/lib/gssapi/spnego/cred_stubs.c
-   heimdal/lib/gssapi/spnego/init_sec_context.c
-   heimdal/lib/hdb/asn1_Salt.c
-   heimdal/lib/krb5/changepw.c
-   heimdal/lib/krb5/get_in_tkt_with_keytab.c
-   heimdal/lib/krb5/pkinit.c
-   heimdal/lib/roken/getprogname.c
-   heimdal/lib/roken/net_read.c
-   heimdal/lib/roken/parse_units.c
    lib/ldb/common/ldb_match.c
    lib/ldb/modules/ldb_map_inbound.c
    lib/ldb/modules/ldb_map_outbound.c
@@ -695,49 +433,8 @@ set (SAMBA_SRC
    libcli/ldap/ldap.c
    libcli/ldap/ldap_ildap.c
    dynconfig.c
-   heimdal/lib/asn1/asn1_ChangePasswdDataMS.c
-   heimdal/lib/asn1/asn1_KerberosString.c
-   heimdal/lib/asn1/asn1_LastReq.c
-   heimdal/lib/asn1/der_format.c
-   heimdal/lib/gssapi/mech/gss_acquire_cred.c
-   heimdal/lib/gssapi/mech/gss_add_cred.c
-   heimdal/lib/gssapi/mech/gss_canonicalize_name.c
-   heimdal/lib/gssapi/mech/gss_compare_name.c
-   heimdal/lib/gssapi/mech/gss_context_time.c
-   heimdal/lib/gssapi/mech/gss_decapsulate_token.c
-   heimdal/lib/gssapi/mech/gss_duplicate_name.c
-   heimdal/lib/gssapi/mech/gss_duplicate_oid.c
-   heimdal/lib/gssapi/mech/gss_encapsulate_token.c
-   heimdal/lib/gssapi/mech/gss_export_name.c
-   heimdal/lib/gssapi/mech/gss_export_sec_context.c
-   heimdal/lib/gssapi/mech/gss_get_mic.c
-   heimdal/lib/gssapi/mech/gss_import_sec_context.c
-   heimdal/lib/gssapi/mech/gss_indicate_mechs.c
-   heimdal/lib/gssapi/mech/gss_inquire_context.c
-   heimdal/lib/gssapi/mech/gss_inquire_cred.c
-   heimdal/lib/gssapi/mech/gss_inquire_cred_by_mech.c
-   heimdal/lib/gssapi/mech/gss_inquire_names_for_mech.c
-   heimdal/lib/gssapi/mech/gss_process_context_token.c
-   heimdal/lib/gssapi/mech/gss_release_oid.c
-   heimdal/lib/gssapi/mech/gss_release_oid_set.c
-   heimdal/lib/gssapi/mech/gss_seal.c
-   heimdal/lib/gssapi/mech/gss_set_sec_context_option.c
-   heimdal/lib/gssapi/mech/gss_sign.c
-   heimdal/lib/gssapi/mech/gss_unseal.c
-   heimdal/lib/gssapi/mech/gss_verify.c
-   heimdal/lib/gssapi/mech/gss_verify_mic.c
-   heimdal/lib/gssapi/spnego/asn1_MechTypeList.c
-   heimdal/lib/gssapi/spnego/asn1_NegTokenInit.c
-   heimdal/lib/gssapi/spnego/asn1_NegTokenResp.c
    lib/tls/tlscert.c
    libcli/ldap/ldap_controls.c
-   heimdal/lib/asn1/asn1_LR_TYPE.c
-   heimdal/lib/gssapi/mech/asn1_GSSAPIContextToken.c
-   heimdal/lib/gssapi/spnego/asn1_ContextFlags.c
-   heimdal/lib/gssapi/spnego/asn1_MechType.c
-   heimdal/lib/gssapi/spnego/asn1_NegHints.c
-   heimdal/lib/roken/strpool.c
-   heimdal/lib/asn1/extra.c
 )
 
 add_definitions(-D_SAMBA_BUILD_=4 -DHAVE_CONFIG_H)

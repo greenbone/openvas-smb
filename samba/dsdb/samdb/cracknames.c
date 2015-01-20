@@ -237,7 +237,7 @@ static WERROR DsCrackNameUPN(struct ldb_context *sam_ctx, TALLOC_CTX *mem_ctx,
 	}
 
 	ret = krb5_parse_name_flags(smb_krb5_context->krb5_context, name, 
-				    KRB5_PRINCIPAL_PARSE_MUST_REALM, &principal);
+				    KRB5_PRINCIPAL_PARSE_REQUIRE_REALM, &principal);
 	if (ret) {
 		info1->status = DRSUAPI_DS_NAME_STATUS_NOT_FOUND;
 		return WERR_OK;
@@ -458,7 +458,7 @@ WERROR DsCrackNameOneName(struct ldb_context *sam_ctx, TALLOC_CTX *mem_ctx,
 			/* perhaps it's a principal with a realm, so return the right 'domain only' response */
 			char **realm;
 			ret = krb5_parse_name_flags(smb_krb5_context->krb5_context, name, 
-						    KRB5_PRINCIPAL_PARSE_MUST_REALM, &principal);
+						    KRB5_PRINCIPAL_PARSE_REQUIRE_REALM, &principal);
 			if (ret) {
 				info1->status = DRSUAPI_DS_NAME_STATUS_NOT_FOUND;
 				return WERR_OK;

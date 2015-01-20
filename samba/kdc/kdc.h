@@ -24,7 +24,7 @@
 #include "system/kerberos.h"
 #include "auth/kerberos/kerberos.h"
 #include "heimdal/kdc/kdc.h"
-#include "heimdal/lib/hdb/hdb.h"
+#include <hdb/hdb.h>
 #include "kdc/pac-glue.h"
 
 struct kdc_server;

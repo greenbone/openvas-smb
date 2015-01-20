@@ -137,9 +137,12 @@ _PUBLIC_ void _Samba_MD5Final(uint8_t digest[16], struct MD5Context *ctx)
     }
     byteReverse(ctx->in, 14);
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
     /* Append length in bits and transform */
     ((uint32_t *) ctx->in)[14] = ctx->bits[0];
     ((uint32_t *) ctx->in)[15] = ctx->bits[1];
+#pragma GCC diagnostic pop
 
     MD5Transform(ctx->buf, (uint32_t *) ctx->in);
     byteReverse((uint8_t *) ctx->buf, 4);

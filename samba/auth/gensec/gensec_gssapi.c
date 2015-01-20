@@ -1271,7 +1271,7 @@ static NTSTATUS gensec_gssapi_session_info(struct gensec_security *gensec_securi
 
 		ret = krb5_parse_name_flags(gensec_gssapi_state->smb_krb5_context->krb5_context,
 					    principal_string, 
-					    KRB5_PRINCIPAL_PARSE_MUST_REALM,
+					    KRB5_PRINCIPAL_PARSE_REQUIRE_REALM,
 					    &principal);
 		if (ret) {
 			krb5_free_keyblock(gensec_gssapi_state->smb_krb5_context->krb5_context,

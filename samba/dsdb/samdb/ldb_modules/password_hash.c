@@ -210,7 +210,7 @@ static int add_krb5_keys_from_password(struct ldb_module *module, struct ldb_mes
 
 	/* TODO: We may wish to control the encryption types chosen in future */
 	krb5_ret = hdb_generate_key_set_password(smb_krb5_context->krb5_context,
-						 salt_principal, sambaPassword, &keys, &num_keys);
+						 salt_principal, sambaPassword, NULL, 0, &keys, &num_keys);
 	krb5_free_principal(smb_krb5_context->krb5_context, salt_principal);
 
 	if (krb5_ret) {

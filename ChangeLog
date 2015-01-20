@@ -1,3 +1,30 @@
+2015-01-20 Andre Heinecke <aheinecke@intevation.de>
+
+	Removal of included heimdal code. Using system heimdal libraries now.
+
+	* CMakeLists.txt: Add lookup for GSSAPI. For now force heimdal.
+	* CMakeLists.txt (CMAKE_C_FLAGS): Use strict-aliasing rules.
+	Ignore unused return values.
+	* cmake/FindGSSAPI.cmake: New.
+	* samba/auth/kerberos/krb5_init_context.c (smb_krb5_init_context): Fix
+	use of internal API. Forced timeout to 3s set krb5_context differently.
+	* dsdb/samdb/ldb_modules/password_hash.c (setup_kerberos_keys): Fix
+	call signature of hdb_generate_key_set_password.
+	* samba/CMakeLists.txt: Remove heimdal code.
+	* winexe/CMakeLists.txt: Link gssapi libraries.
+	* INSTALL: Note heimdal-dev dependency.
+	* samba/auth/credentials/credentials_krb5.h,
+	samba/auth/kerberos/clikrb5.c,
+	samba/auth/kerberos/krb5_init_context.c,
+	samba/kdc/kdc.h,
+	samba/lib/replace/system/kerberos.h: 
+	* samba/lib/crypto/md5.c (_Samba_MD5Final): Disable
+	strict-aliasing for a segment.
+	* samba/dsdb/samdb/cracknames.c (DsCrackNameSPNAlias),
+	samba/auth/gensec/gensec_gssapi.c (gensec_gssapi_session_info): Fix
+	usage of old macro name.
+	* samba/heimdal, samba/heimdal_build: Removed recursively.
+
 2015-01-15  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	* CMakeLists.txt: Remove meaningless REQUIRED from include.

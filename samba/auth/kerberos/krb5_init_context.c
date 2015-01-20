@@ -23,12 +23,13 @@
 
 #include "includes.h"
 #include "system/kerberos.h"
-#include <krb5_locl.h>
 #include "auth/kerberos/kerberos.h"
 #include "lib/socket/socket.h"
 #include "system/network.h"
 #include "lib/events/events.h"
 #include "roken.h"
+
+#include <heimdal/krb5.h>
 
 /*
   context structure for operations on cldap packets
@@ -308,8 +309,9 @@ krb5_error_code smb_krb5_send_and_recv_func(krb5_context context,
 					     socket_get_fd(smb_krb5->sock), 0,
 					     smb_krb5_socket_handler, smb_krb5);
 
+                /* Use 3 seconds for timeout */
 		event_add_timed(ev, smb_krb5, 
-				timeval_current_ofs(context->kdc_timeout, 0),
+				timeval_current_ofs(3, 0),
 				smb_krb5_request_timeout, smb_krb5);
 
 		EVENT_FD_WRITEABLE(smb_krb5->fde);
@@ -441,7 +443,11 @@ krb5_error_code smb_krb5_init_context(void *parent_ctx,
 		return ret;
 	}
 
+        /* XXX modified by Andre Heinecke <aheinecke@greenbone.net> on 2015-01-21 to fix usage
+           of internal fields of krb5_context. Unsure if this is correct. But it should
+           not be necessary.
 	(*smb_krb5_context)->krb5_context->mem_ctx = *smb_krb5_context;
+        */
 
 	talloc_steal(parent_ctx, *smb_krb5_context);
 	talloc_free(tmp_ctx);
