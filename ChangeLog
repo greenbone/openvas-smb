@@ -1,5 +1,11 @@
 2015-01-20 Andre Heinecke <aheinecke@intevation.de>
 
+	* winexe/CMakeLists.txt, samba/CMakeLists.txt: Remove
+	unused include dir.
+	* samba/torture: Remove recursively.
+
+2015-01-20 Andre Heinecke <aheinecke@intevation.de>
+
 	Remove included popt code and use system libray
 
 	* INSTALL: Note down depedency.
