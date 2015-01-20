@@ -30,6 +30,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Perl REQUIRED)
+find_package(Popt REQUIRED)
 
 find_package(GSSAPI)
 

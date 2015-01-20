@@ -35,6 +35,7 @@ set(CMAKE_C_RESPONSE_FILE_LINK_FLAG "@")
 set(CMAKE_C_CREATE_STATIC_LIBRARY "<CMAKE_AR> rc <TARGET> <LINK_FLAGS> <OBJECTS>")
 
 include_directories(${GSSAPI_INCLUDE_DIR})
+include_directories(${POPT_INCLUDE_DIRS})
 
 set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba
@@ -44,7 +45,6 @@ set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba/lib/crypto
    ${CMAKE_SOURCE_DIR}/samba/lib/ldb/include
    ${CMAKE_SOURCE_DIR}/samba/lib/tdb/include
-   ${CMAKE_SOURCE_DIR}/samba/lib/popt
    ${CMAKE_SOURCE_DIR}/samba/lib/replace
    ${CMAKE_SOURCE_DIR}/samba/ntvfs
    ${CMAKE_SOURCE_DIR}/samba/param
@@ -290,10 +290,6 @@ set (SAMBA_SRC
    lib/ldb/common/ldb_msg.c
    lib/ldb/common/ldb_parse.c
    lib/ldb/common/ldb_utf8.c
-   lib/popt/findme.c
-   lib/popt/popt.c
-   lib/popt/popthelp.c
-   lib/popt/poptparse.c
    lib/replace/replace.h
    librpc/ndr/libndr.h
    librpc/ndr/ndr_basic.c

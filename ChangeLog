@@ -1,5 +1,20 @@
 2015-01-20 Andre Heinecke <aheinecke@intevation.de>
 
+	Remove included popt code and use system libray
+
+	* INSTALL: Note down depedency.
+	* cmake/FindPopt.cmake: New.
+	* samba/lib/popt: Removed recursively.
+	* CMakeLists.txt: Find popt.
+	* winexe/CMakeLists.txt: Link / include popt.
+	* samba/CMakeLists.txt: Include popt headers.
+
+2015-01-20 Andre Heinecke <aheinecke@intevation.de>
+
+	* samba/FindGSSAPI.cmake: Add BSD license terms.
+
+2015-01-20 Andre Heinecke <aheinecke@intevation.de>
+
 	Removal of included heimdal code. Using system heimdal libraries now.
 
 	* CMakeLists.txt: Add lookup for GSSAPI. For now force heimdal.

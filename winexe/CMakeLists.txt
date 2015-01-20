@@ -40,7 +40,6 @@ set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba
    ${CMAKE_SOURCE_DIR}/samba/include
    ${CMAKE_SOURCE_DIR}/samba/lib
-   ${CMAKE_SOURCE_DIR}/samba/lib/popt
    ${CMAKE_SOURCE_DIR}/samba/lib/replace
    ${CMAKE_SOURCE_DIR}/samba/ntvfs
    ${CMAKE_SOURCE_DIR}/samba/param
@@ -49,6 +48,7 @@ set (SMB_INCLUDES
    ${CMAKE_BINARY_DIR}/samba
 )
 include_directories(${SMB_INCLUDES})
+include_directories(${POPT_INCLUDE_DIRS})
 
 find_program(MINGW_GCC i586-mingw32msvc-gcc)
 
@@ -80,9 +80,9 @@ add_executable(bin2c ${BINTOC_SOURCES})
 add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
-target_link_libraries(openvas_wincmd samba-static ${GSSAPI_LIBRARIES})
+target_link_libraries(openvas_wincmd samba-static ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
-target_link_libraries(winexe samba-static dl gnutls resolv ${GSSAPI_LIBRARIES})
+target_link_libraries(winexe samba-static dl gnutls resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
 install (TARGETS winexe RUNTIME DESTINATION ${BINDIR})
 
