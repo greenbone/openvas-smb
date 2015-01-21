@@ -138,7 +138,6 @@ struct winexe_context {
 };
 
 void exit_program(struct winexe_context *c);
-int smb_close(struct smbcli_state *handle);
 
 void on_ctrl_pipe_error(struct winexe_context *c, int func, NTSTATUS status)
 {
@@ -319,16 +318,6 @@ void exit_program(struct winexe_context *c)
   exit_flag = 1;
 }
 
-int smb_close(struct smbcli_state *handle) {
-  if(handle){
-    talloc_free(handle);
-    return 1;
-  }
-  else
-    return 0;
-}
-
-
 /**
  * @brief Execute Windows Command.
  *
@@ -411,8 +400,7 @@ int wincmd(int argc, char *argv[], char **res)
 
  *res = result[final_result];
 
-  if (!smb_close(cli))
-    DEBUG(0, ("ERROR: Failed to deallocate struct SMB handle\n"));
+  talloc_free(cli);
 
   exit_flag = 0;
   result_inc = 0;
