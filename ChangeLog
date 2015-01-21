@@ -1,3 +1,7 @@
+2015-01-21 Andre Heinecke <aheinecke@intevation.de>
+
+	* CMakeLists.txt: Fix check for heimdal flavor.
+
 2015-01-20 Andre Heinecke <aheinecke@intevation.de>
 
 	* winexe/CMakeLists.txt, samba/CMakeLists.txt: Remove
