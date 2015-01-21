@@ -1,5 +1,10 @@
 2015-01-21 Andre Heinecke <aheinecke@intevation.de>
 
+	* winexe/wincmd.c (on_ctrl_pipe_error, on_ctrl_pipe_read)
+	(on_ctrl_pipe_close): Fix pipe name.
+
+2015-01-21 Andre Heinecke <aheinecke@intevation.de>
+
 	* samba/include/config.h: Remove unused / wrong size macros.
 
 	* samba/lib/replace/replace.c (rep_strtoll, rep_strtoull):
