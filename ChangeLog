@@ -1,5 +1,9 @@
 2015-01-21 Andre Heinecke <aheinecke@intevation.de>
 
+	* CMakeLists.txt: Disable strict-aliasing again.
+
+2015-01-21 Andre Heinecke <aheinecke@intevation.de>
+
 	* CMakeLists.txt: Fix check for heimdal flavor.
 
 2015-01-20 Andre Heinecke <aheinecke@intevation.de>
