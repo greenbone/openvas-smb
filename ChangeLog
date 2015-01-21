@@ -1,5 +1,12 @@
 2015-01-21 Andre Heinecke <aheinecke@intevation.de>
 
+	* samba/include/config.h: Remove unused / wrong size macros.
+
+	* samba/lib/replace/replace.c (rep_strtoll, rep_strtoull):
+	Remove unused portability code.
+
+2015-01-21 Andre Heinecke <aheinecke@intevation.de>
+
 	* CMakeLists.txt: Disable strict-aliasing again.
 
 2015-01-21 Andre Heinecke <aheinecke@intevation.de>

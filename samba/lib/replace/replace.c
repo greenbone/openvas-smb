@@ -527,37 +527,6 @@ char *rep_strtok_r(char *s, const char *delim, char **save_ptr)
 }
 #endif
 
-#ifndef HAVE_STRTOLL
-long long int rep_strtoll(const char *str, char **endptr, int base)
-{
-#ifdef HAVE_STRTOQ
-	return strtoq(str, endptr, base);
-#elif defined(HAVE___STRTOLL) 
-	return __strtoll(str, endptr, base);
-#elif SIZEOF_LONG == SIZEOF_LONG_LONG
-	return (long long int) strtol(str, endptr, base);
-#else
-# error "You need a strtoll function"
-#endif
-}
-#endif
-
-
-#ifndef HAVE_STRTOULL
-unsigned long long int rep_strtoull(const char *str, char **endptr, int base)
-{
-#ifdef HAVE_STRTOUQ
-	return strtouq(str, endptr, base);
-#elif defined(HAVE___STRTOULL) 
-	return __strtoull(str, endptr, base);
-#elif SIZEOF_LONG == SIZEOF_LONG_LONG
-	return (unsigned long long int) strtoul(str, endptr, base);
-#else
-# error "You need a strtoull function"
-#endif
-}
-#endif
-
 #ifndef HAVE_SETENV
 int rep_setenv(const char *name, const char *value, int overwrite) 
 {

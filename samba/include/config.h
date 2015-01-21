@@ -1059,33 +1059,6 @@
 /* Shared library extension */
 #define SHLIBEXT "so"
 
-/* The size of `char', as computed by sizeof. */
-#define SIZEOF_CHAR 1
-
-/* The size of `int', as computed by sizeof. */
-#define SIZEOF_INT 4
-
-/* The size of `long', as computed by sizeof. */
-#define SIZEOF_LONG 8
-
-/* The size of `long long', as computed by sizeof. */
-#define SIZEOF_LONG_LONG 8
-
-/* The size of `off_t', as computed by sizeof. */
-#define SIZEOF_OFF_T 8
-
-/* The size of `short', as computed by sizeof. */
-#define SIZEOF_SHORT 2
-
-/* The size of `size_t', as computed by sizeof. */
-#define SIZEOF_SIZE_T 8
-
-/* The size of `ssize_t', as computed by sizeof. */
-#define SIZEOF_SSIZE_T 8
-
-/* The size of `void *', as computed by sizeof. */
-#define SIZEOF_VOID_P 8
-
 /* Use socket wrapper library */
 /* #undef SOCKET_WRAPPER */
 
