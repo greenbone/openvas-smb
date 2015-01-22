@@ -427,10 +427,12 @@ set (SAMBA_SRC
    lib/util/unix_privs.c
    libcli/ldap/ldap.c
    libcli/ldap/ldap_ildap.c
-   dynconfig.c
    lib/tls/tlscert.c
    libcli/ldap/ldap_controls.c
+   ${CMAKE_CURRENT_BINARY_DIR}/dynconfig.c
 )
+
+configure_file(dynconfig.c.in ${CMAKE_CURRENT_BINARY_DIR}/dynconfig.c @ONLY)
 
 add_definitions(-D_SAMBA_BUILD_=4 -DHAVE_CONFIG_H)
 

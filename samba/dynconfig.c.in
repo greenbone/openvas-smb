@@ -42,52 +42,46 @@
  **/
 
 /** Directory with generic binaries */
-_PUBLIC_ const char *dyn_BINDIR = ".";
+_PUBLIC_ const char *dyn_BINDIR = "@CMAKE_INSTALL_PREFIX@/bin";
 
 /**< Location of smb.conf file. **/
-_PUBLIC_ const char *dyn_CONFIGFILE = "."; 
+_PUBLIC_ const char *dyn_CONFIGFILE = "@CMAKE_INSTALL_PREFIX@/etc/openvas/openvas-smb.conf"; 
 
 /** Log file directory. **/
-_PUBLIC_ const char *dyn_LOGFILEBASE = "."; 
+_PUBLIC_ const char *dyn_LOGFILEBASE = "@CMAKE_INSTALL_PREFIX@/var/log/openvas/"; 
 
 /** Directory for local RPC (ncalrpc: transport) */
-_PUBLIC_ const char *dyn_NCALRPCDIR = ".";
-
-/** Statically configured LanMan hosts. **/
-_PUBLIC_ const char *dyn_LMHOSTSFILE = "."; 
+_PUBLIC_ const char *dyn_NCALRPCDIR = "@CMAKE_INSTALL_PREFIX@/var/lib/openvas-smb/ncalrpc";
 
 /** Samba data directory. */
-_PUBLIC_ const char *dyn_DATADIR = ".";
+_PUBLIC_ const char *dyn_DATADIR = "@CMAKE_INSTALL_PREFIX@/var/lib/openvas-smb";
 
-_PUBLIC_ const char *dyn_MODULESDIR = ".";
+_PUBLIC_ const char *dyn_MODULESDIR = "@CMAKE_INSTALL_PREFIX@/var/lib/openvas-smb";
 
 /**
  * @brief Directory holding lock files.
  *
  * Not writable, but used to set a default in the parameter table.
  **/
-_PUBLIC_ const char *dyn_LOCKDIR = ".";
+_PUBLIC_ const char *dyn_LOCKDIR = "";
 
 /** pid file directory */
-_PUBLIC_ const char *dyn_PIDDIR  = ".";
+_PUBLIC_ const char *dyn_PIDDIR  = "@CMAKE_INSTALL_PREFIX@/var/run";
 
 /** Private data directory; holds ldb files and the like */
-_PUBLIC_ const char *dyn_PRIVATE_DIR = ".";
+_PUBLIC_ const char *dyn_PRIVATE_DIR = "@CMAKE_INSTALL_PREFIX@/var/lib/openvas-smb";
 
 /** SWAT data file (images, etc) directory */
-_PUBLIC_ const char *dyn_SWATDIR = ".";
+_PUBLIC_ const char *dyn_SWATDIR = "";
 
 /** JSON-RPC Services script directory */
-_PUBLIC_ const char *dyn_SERVICESDIR = ".";
+_PUBLIC_ const char *dyn_SERVICESDIR = "";
 
 /** SETUP files (source files used by the provision) */
-_PUBLIC_ const char *dyn_SETUPDIR = ".";
+_PUBLIC_ const char *dyn_SETUPDIR = "";
 
 /** EJS Javascript library includes */
-_PUBLIC_ const char *dyn_JSDIR = ".";
+_PUBLIC_ const char *dyn_JSDIR = "";
 
 /** Where to find the winbindd socket */
-_PUBLIC_ const char *dyn_WINBINDD_SOCKET_DIR = ".";
-
-/** Directory with subunit torture tests */
-_PUBLIC_ const char *dyn_TORTUREDIR = ".";
+_PUBLIC_ const char *dyn_WINBINDD_SOCKET_DIR = "";

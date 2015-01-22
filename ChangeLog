@@ -1,5 +1,10 @@
 2015-01-22 Andre Heinecke <aheinecke@intevation.de>
 
+	* samba/CMakeLists.txt: Configure dynconfig.c.in
+	* samba/dynconfig.c: Renable to dynconfig.c.in
+
+2015-01-22 Andre Heinecke <aheinecke@intevation.de>
+
 	* winexe/wincmd.c(on_io_pipe_read, on_err_pipe_read): Limit
 	output length to avoid overflow in result buffer.
 
