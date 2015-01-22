@@ -6,6 +6,8 @@
 #
 # Changes: - Fixed setting of roken library in heimdal path
 #          - Added lookup of libhdb
+#          - Removed lookup of MIT flavor
+#          - Added support for multidev
 #
 # - Try to find GSSAPI
 # Once done this will define
@@ -14,7 +16,6 @@
 #  GSSAPI_ROOT_DIR - Set this variable to the root installation of GSSAPI
 #
 # Read-Only variables:
-#  GSSAPI_FLAVOR_MIT - set to TURE if MIT Kerberos has been found
 #  GSSAPI_FLAVOR_HEIMDAL - set to TRUE if Heimdal Keberos has been found
 #  GSSAPI_FOUND - system has GSSAPI
 #  GSSAPI_INCLUDE_DIR - the GSSAPI include directory
@@ -50,8 +51,8 @@
 
 find_path(GSSAPI_ROOT_DIR
     NAMES
-        include/gssapi.h
-        include/gssapi/gssapi.h
+        include/roken.h
+        include/heimdal/roken.h
     HINTS
         ${_GSSAPI_ROOT_HINTS}
     PATHS
@@ -69,7 +70,6 @@ if (UNIX)
     mark_as_advanced(KRB5_CONFIG)
 
     if (KRB5_CONFIG)
-        # Check if we have MIT KRB5
         execute_process(
             COMMAND
                 ${KRB5_CONFIG} --vendor
@@ -78,9 +78,7 @@ if (UNIX)
             OUTPUT_VARIABLE
                 _GSSAPI_VENDOR_STRING)
 
-        if (_GSSAPI_VENDOR_STRING MATCHES ".*Massachusetts.*")
-            set(GSSAPI_FLAVOR_MIT TRUE)
-        else()
+        if (_GSSAPI_VENDOR_STRING MATCHES ".*Heimdal.*")
             execute_process(
                 COMMAND
                     ${KRB5_CONFIG} --libs gssapi
@@ -89,9 +87,9 @@ if (UNIX)
                 OUTPUT_VARIABLE
                     _GSSAPI_LIBS_STRING)
 
-            if (_GSSAPI_LIBS_STRING MATCHES ".*roken.*")
-                set(GSSAPI_FLAVOR_HEIMDAL TRUE)
-            endif()
+            set(GSSAPI_FLAVOR_HEIMDAL TRUE)
+        else()
+            set (FIND_LIBRARY_FLAGS NO_DEFAULT_PATH)
         endif()
 
         # Get the include dir
@@ -106,8 +104,53 @@ if (UNIX)
         string(REGEX REPLACE " *-I" "" _GSSAPI_INCLUDEDIR "${_GSSAPI_INCLUDE_STRING}")
     endif()
 
-    if (NOT GSSAPI_FLAVOR_MIT AND NOT GSSAPI_FLAVOR_HEIMDAL)
-        # Check for HEIMDAL
+    find_program(HEIMDAL_CONFIG
+        NAMES
+            krb5-config.heimdal
+        PATHS
+            ${GSSAPI_ROOT_DIR}/bin
+            /opt/local/bin)
+    mark_as_advanced(HEIMDAL_CONFIG)
+
+    if (HEIMDAL_CONFIG)
+        execute_process(
+            COMMAND
+                ${HEIMDAL_CONFIG} --vendor
+            RESULT_VARIABLE
+                _GSSAPI_VENDOR_RESULT
+            OUTPUT_VARIABLE
+                _GSSAPI_VENDOR_STRING)
+
+        if (_GSSAPI_VENDOR_STRING MATCHES ".*Heimdal.*")
+            execute_process(
+                COMMAND
+                    ${HEIMDAL_CONFIG} --libs gssapi
+                RESULT_VARIABLE
+                    _GSSAPI_LIBS_RESULT
+                OUTPUT_VARIABLE
+                    _GSSAPI_LIBS_STRING)
+
+            string(REGEX REPLACE "(\r?\n)+$" "" _GSSAPI_LIBS_STRING "${_GSSAPI_LIBS_STRING}")
+            string(REGEX REPLACE " *-L" "" _GSSAPI_LIBS_STRING "${_GSSAPI_LIBS_STRING}")
+            string(REGEX REPLACE " -l.*" "" _GSSAPI_LIBSDIR "${_GSSAPI_LIBS_STRING}")
+            set(GSSAPI_FLAVOR_HEIMDAL TRUE)
+
+        endif()
+
+        # Get the include dir
+        execute_process(
+            COMMAND
+                ${HEIMDAL_CONFIG} --cflags gssapi
+            RESULT_VARIABLE
+                _GSSAPI_INCLUDE_RESULT
+            OUTPUT_VARIABLE
+                _GSSAPI_INCLUDE_STRING)
+        string(REGEX REPLACE "(\r?\n)+$" "" _GSSAPI_INCLUDE_STRING "${_GSSAPI_INCLUDE_STRING}")
+        string(REGEX REPLACE " *-I" "" _GSSAPI_INCLUDEDIR "${_GSSAPI_INCLUDE_STRING}")
+    endif()
+
+    if (NOT GSSAPI_FLAVOR_HEIMDAL)
+        # Check for HEIMDAL with pkg config
         find_package(PkgConfig)
         if (PKG_CONFIG_FOUND)
             pkg_check_modules(_GSSAPI heimdal-gssapi)
@@ -115,122 +158,53 @@ if (UNIX)
 
         if (_GSSAPI_FOUND)
             set(GSSAPI_FLAVOR_HEIMDAL TRUE)
-        else()
-            find_path(_GSSAPI_ROKEN
-                NAMES
-                    roken.h
-                PATHS
-                    ${GSSAPI_ROOT_DIR}/include
-                    ${_GSSAPI_INCLUDEDIR})
-            if (_GSSAPI_ROKEN)
-                set(GSSAPI_FLAVOR_HEIMDAL TRUE)
-            endif()
         endif ()
     endif()
 endif (UNIX)
 
 find_path(GSSAPI_INCLUDE_DIR
     NAMES
-        gssapi.h
-        gssapi/gssapi.h
+        roken.h
     PATHS
+        ${GSSAPI_ROOT_DIR}/include/heimdal
         ${GSSAPI_ROOT_DIR}/include
         ${_GSSAPI_INCLUDEDIR}
 )
-
-if (GSSAPI_FLAVOR_MIT)
-    find_library(GSSAPI_LIBRARY
-        NAMES
-            gssapi_krb5
-        PATHS
-            ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
-    )
-
-    find_library(KRB5_LIBRARY
-        NAMES
-            krb5
-        PATHS
-            ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
-    )
-
-    find_library(K5CRYPTO_LIBRARY
-        NAMES
-            k5crypto
-        PATHS
-            ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
-    )
-
-    find_library(COM_ERR_LIBRARY
-        NAMES
-            com_err
-        PATHS
-            ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
-    )
-
-    if (GSSAPI_LIBRARY)
-        set(GSSAPI_LIBRARIES
-            ${GSSAPI_LIBRARIES}
-            ${GSSAPI_LIBRARY}
-        )
-    endif (GSSAPI_LIBRARY)
-
-    if (KRB5_LIBRARY)
-        set(GSSAPI_LIBRARIES
-            ${GSSAPI_LIBRARIES}
-            ${KRB5_LIBRARY}
-        )
-    endif (KRB5_LIBRARY)
-
-    if (K5CRYPTO_LIBRARY)
-        set(GSSAPI_LIBRARIES
-            ${GSSAPI_LIBRARIES}
-            ${K5CRYPTO_LIBRARY}
-        )
-    endif (K5CRYPTO_LIBRARY)
-
-    if (COM_ERR_LIBRARY)
-        set(GSSAPI_LIBRARIES
-            ${GSSAPI_LIBRARIES}
-            ${COM_ERR_LIBRARY}
-        )
-    endif (COM_ERR_LIBRARY)
-endif (GSSAPI_FLAVOR_MIT)
 
 if (GSSAPI_FLAVOR_HEIMDAL)
     find_library(GSSAPI_LIBRARY
         NAMES
             gssapi
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(KRB5_LIBRARY
         NAMES
             krb5
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(HCRYPTO_LIBRARY
         NAMES
             hcrypto
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(COM_ERR_LIBRARY
         NAMES
             com_err
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
     )
 
     find_library(HEIMNTLM_LIBRARY
@@ -238,47 +212,53 @@ if (GSSAPI_FLAVOR_HEIMDAL)
             heimntlm
         PATHS
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+            ${_GSSAPI_LIBSDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(HX509_LIBRARY
         NAMES
             hx509
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(ASN1_LIBRARY
         NAMES
             asn1
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(WIND_LIBRARY
         NAMES
             wind
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(ROKEN_LIBRARY
         NAMES
             roken
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     find_library(HDB_LIBRARY
         NAMES
             hdb
         PATHS
+            ${_GSSAPI_LIBSDIR}
             ${GSSAPI_ROOT_DIR}/lib
-            ${_GSSAPI_LIBDIR}
+        ${FIND_LIBRARY_FLAGS}
     )
 
     if (GSSAPI_LIBRARY)

@@ -1,3 +1,9 @@
+2015-01-22 Andre Heinecke <aheinecke@intevation.de>
+
+	* cmake/FindGSSAPI.cmake: Remove MIT detection.
+	Enable multidev detection.
+	* INSTALL: Mention the multidev alternative.
+
 2015-01-21 Andre Heinecke <aheinecke@intevation.de>
 
 	* winexe/wincmd.c (smb_close): Remove and replace
