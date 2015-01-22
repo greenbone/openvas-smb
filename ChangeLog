@@ -1,5 +1,10 @@
 2015-01-22 Andre Heinecke <aheinecke@intevation.de>
 
+	* winexe/wincmd.c(on_io_pipe_read, on_err_pipe_read): Limit
+	output length to avoid overflow in result buffer.
+
+2015-01-22 Andre Heinecke <aheinecke@intevation.de>
+
 	* cmake/FindGSSAPI.cmake: Remove MIT detection.
 	Enable multidev detection.
 	* INSTALL: Mention the multidev alternative.

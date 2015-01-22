@@ -60,7 +60,11 @@ struct program_args {
   int interactive;
 };
 
-char *result[512];
+/* We could dynamically allocate the result but to have a limit
+   prevents hangs if we are fed with too much data. */
+#define MAX_RESULTS 512
+
+char *result[MAX_RESULTS];
 int result_inc = 0;
 int result_len = 0;
 int exit_flag = 0;
@@ -287,10 +291,19 @@ void on_io_pipe_open(struct winexe_context *c)
 
 void on_io_pipe_read(struct winexe_context *c, const char *data, int len)
 {
-  result[result_inc] = (char *) g_malloc0 (len + 1);
-  strncat(result[result_inc], data, len);
-  result_len = result_len + len;
-  result_inc++;
+  if (result_inc < MAX_RESULTS - 2)
+    {
+      result[result_inc] = (char *) g_malloc0 (len + 1);
+      strncat(result[result_inc], data, len);
+      result_len = result_len + len;
+      result_inc++;
+    }
+  else
+    {
+      DEBUG(1, ("ERROR: Too much output from command."));
+      c->return_code = -1;
+      exit_program(c);
+    }
 }
 
 void on_io_pipe_error(struct winexe_context *c, int func, NTSTATUS status)
@@ -300,10 +313,19 @@ void on_io_pipe_error(struct winexe_context *c, int func, NTSTATUS status)
 
 void on_err_pipe_read(struct winexe_context *c, const char *data, int len)
 {
-  result[result_inc] = (char *) g_malloc0 (len + 1);
-  strncat(result[result_inc], data, len);
-  result_len = result_len + len;
-  result_inc++;
+  if (result_inc < MAX_RESULTS - 2)
+    {
+      result[result_inc] = (char *) g_malloc0 (len + 1);
+      strncat(result[result_inc], data, len);
+      result_len = result_len + len;
+      result_inc++;
+    }
+  else
+    {
+      DEBUG(1, ("ERROR: Too much output from command."));
+      c->return_code = -1;
+      exit_program(c);
+    }
 }
 
 void on_err_pipe_error(struct winexe_context *c, int func, NTSTATUS status)
