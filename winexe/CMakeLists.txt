@@ -51,6 +51,8 @@ include_directories(${POPT_INCLUDE_DIRS})
 
 find_program(MINGW_GCC i586-mingw32msvc-gcc)
 
+find_package(GnuTLS REQUIRED)
+
 if (NOT MINGW_GCC)
   message(SEND_ERROR "i586-mingw32msvc-gcc not found in PATH.\nIt is needed to build the Windows Service for winexe.")
 endif(NOT MINGW_GCC)
@@ -81,7 +83,7 @@ add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
 target_link_libraries(openvas_wincmd samba-static ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
-target_link_libraries(winexe samba-static dl gnutls resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
 install (TARGETS winexe RUNTIME DESTINATION ${BINDIR})
 

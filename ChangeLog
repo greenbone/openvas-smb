@@ -1,3 +1,9 @@
+2015-01-23 Andre Heinecke <aheinecke@intevation.de>
+
+	* samba/CMakeLists.txt: Clear up comments.
+	* wmi/CMakeLists.txt: Remove obsolete include dirs.
+	* winexe/CMakeLists.txt: Find gnutls dynamically.
+
 2015-01-22 Andre Heinecke <aheinecke@intevation.de>
 
 	* samba/CMakeLists.txt: Configure dynconfig.c.in

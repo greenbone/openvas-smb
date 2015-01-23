@@ -196,6 +196,10 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.c
 )
 
+# To enable sasl auth add:
+#   auth/gensec/cyrus_sasl.c
+# and define HAVE_LIBSASL2 in config.h
+
 set (SAMBA_SRC
    auth/auth.c
    auth/auth_util.c
@@ -203,7 +207,6 @@ set (SAMBA_SRC
    auth/credentials/credentials_files.c
    auth/credentials/credentials_krb5.c
    auth/credentials/credentials_ntlm.c
-   #   auth/gensec/cyrus_sasl.c
    auth/gensec/gensec.c
    auth/gensec/gensec_gssapi.c
    auth/gensec/gensec_krb5.c
@@ -337,7 +340,6 @@ set (SAMBA_SRC
    auth/auth_developer.c
    auth/auth_sam.c
    auth/auth_sam_reply.c
-   #   auth/auth_unix.c
    auth/auth_winbind.c
    auth/kerberos/kerberos.c
    dsdb/common/flag_mapping.c
