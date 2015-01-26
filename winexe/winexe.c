@@ -31,6 +31,7 @@ struct program_args {
 	int system;
 	char *runas;
 	int interactive;
+	int ntlmv1_only;
 };
 
 int abort_requested = 0;
@@ -59,9 +60,10 @@ void parse_args(int argc, char *argv[], struct program_args *pmyargs)
 		 "Run as user (BEWARE: password is sent in cleartext over net)" , "[DOMAIN\\]USERNAME%PASSWORD"},
 		{"interactive", 0, POPT_ARG_INT, &pmyargs->interactive, 0,
 		 "Desktop interaction: 0 - disallow, 1 - allow. If you allow use also --system switch (Win requirement). Vista do not support this option.", NULL},
+		{"ntlmv1", 0, POPT_ARG_INT, &pmyargs->ntlmv1_only, 0,
+		 "Only use the NTLM v1 protocol for authentication: 0 - disabled, 1 - NTLMv2 Authentication disabled.", NULL},
 		POPT_TABLEEND
 	};
-
 	pc = poptGetContext(argv[0], argc, (const char **) argv,
 			    long_options, 0);
 
@@ -302,8 +304,19 @@ int main(int argc, char *argv[])
 	struct smbcli_state *cli;
 	struct program_args myargs = {.reinstall = 0,.uninstall = 0, .system = 0, .interactive = SVC_IGNORE_INTERACTIVE };
 
+        // setup_logging("winexe", DEBUG_STDERR);
+
 	parse_args(argc, argv, &myargs);
-	DEBUG(1, ("winexe version %d.%02d\nThis program may be freely redistributed under the terms of the GNU GPL\n", VERSION / 100, VERSION % 100));
+
+	if (myargs.ntlmv1_only)
+	  {
+	    DEBUG(1, ("Disabling ntlmv2 session authentication.\n"));
+	  }
+	else
+	  {
+	    lp_set_option("client ntlmv2 auth=yes");
+	  }
+
 	myargs.interactive &= SVC_INTERACTIVE_MASK;
 
 	dcerpc_init();

@@ -1,5 +1,13 @@
 2015-01-26 Andre Heinecke <aheinecke@intevation.de>
 
+	* winexe/winexe.c (parse_args),
+	winexe/wincmd.c (parse_args): Add ntlmv1 option.
+	* winexe/wincmd.c (wincmd),
+	winexe/winexe.c (main): Enable ntlmv2 authentication
+	by default.
+
+2015-01-26 Andre Heinecke <aheinecke@intevation.de>
+
 	* winexe/winexesvc_exe.c: Removed. This file is generated.
 
 2015-01-23 Andre Heinecke <aheinecke@intevation.de>

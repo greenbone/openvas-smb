@@ -58,6 +58,7 @@ struct program_args {
   int system;
   char *runas;
   int interactive;
+  int ntlmv1_only;
 };
 
 /* We could dynamically allocate the result but to have a limit
@@ -94,8 +95,12 @@ int parse_args(int argc, char *argv[], struct program_args *pmyargs)
      "Run as user (BEWARE: password is sent in cleartext over net)" , "[DOMAIN\\]USERNAME%PASSWORD"},
     {"interactive", 0, POPT_ARG_INT, &pmyargs->interactive, 0,
      "Desktop interaction: 0 - disallow, 1 - allow. If you allow use also --system switch (Win requirement). Vista do not support this option.", NULL},
+    {"ntlmv1", 0, POPT_ARG_INT, &pmyargs->ntlmv1_only, 0,
+     "Only use the NTLM v1 protocol for authentication: 0 - disabled, 1 - NTLMv2 Authentication disabled.", NULL},
     POPT_TABLEEND
   };
+
+  // setup_logging("wincmd", DEBUG_FILE);
 
   pc = poptGetContext(argv[0], argc, (const char **) argv,
           long_options, 0);
@@ -365,6 +370,15 @@ int wincmd(int argc, char *argv[], char **res)
     DEBUG(1, ("ERROR: %s\n", "Invalid input arguments"));
     return -1;
   }
+
+  if (myargs.ntlmv1_only)
+    {
+      DEBUG(1, ("Disabling ntlmv2 session authentication.\n"));
+    }
+  else
+    {
+      lp_set_option("client ntlmv2 auth=yes");
+    }
 
   myargs.interactive &= SVC_INTERACTIVE_MASK;
 
