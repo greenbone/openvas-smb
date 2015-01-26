@@ -1,3 +1,7 @@
+2015-01-26 Andre Heinecke <aheinecke@intevation.de>
+
+	* winexe/winexesvc_exe.c: Removed. This file is generated.
+
 2015-01-23 Andre Heinecke <aheinecke@intevation.de>
 
 	* samba/CMakeLists.txt: Clear up comments.
