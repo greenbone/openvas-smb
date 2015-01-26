@@ -1,5 +1,12 @@
 2015-01-26 Andre Heinecke <aheinecke@intevation.de>
 
+	* winexe/winexe.c (main), winexe/wincmd.c (wincmd):
+	Disable ntlmv2 if requested.
+	* samba/param/loadparm.c (init_globals): Make ntlmv2
+	client auth default.
+
+2015-01-26 Andre Heinecke <aheinecke@intevation.de>
+
 	* winexe/winexe.c (parse_args),
 	winexe/wincmd.c (parse_args): Add ntlmv1 option.
 	* winexe/wincmd.c (wincmd),

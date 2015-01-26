@@ -680,6 +680,7 @@ static void init_globals(void)
 	do_parameter("ClientLanManAuth", "True", NULL);
 	do_parameter("LanmanAuth", "True", NULL);
 	do_parameter("NTLMAuth", "True", NULL);
+	do_parameter("client NTLMv2 auth", "True", NULL);
 	do_parameter("client use spnego principal", "False", NULL);
 	
 	do_parameter("UnixExtensions", "False", NULL);

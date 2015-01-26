@@ -374,10 +374,7 @@ int wincmd(int argc, char *argv[], char **res)
   if (myargs.ntlmv1_only)
     {
       DEBUG(1, ("Disabling ntlmv2 session authentication.\n"));
-    }
-  else
-    {
-      lp_set_option("client ntlmv2 auth=yes");
+      lp_set_option("client ntlmv2 auth=no");
     }
 
   myargs.interactive &= SVC_INTERACTIVE_MASK;
