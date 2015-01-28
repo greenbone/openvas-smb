@@ -94,6 +94,7 @@ const struct dcerpc_interface_table *idl_iface_by_name(const char *name)
 			return l->table;
 		}
 	}
+        DEBUG(1, ("ERROR: Interface for name '%s' not found.\n", name));
 	return NULL;
 }
 
@@ -108,6 +109,7 @@ const struct dcerpc_interface_table *idl_iface_by_uuid(const struct GUID *uuid)
 			return l->table;
 		}
 	}
+        DEBUG(1, ("ERROR: Interface for guid not found.\n"));
 	return NULL;
 }
 

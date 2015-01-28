@@ -116,67 +116,53 @@ set (RPC_IDL_FILES
    librpc/idl/remact.idl
 )
 
-set (RPC_GEN_HEADERS
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/policyagent.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/samr.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dcom.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/nfs4acl.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/epmapper.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/irpc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/winstation.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dbgidl.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/notify.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/wzcsvc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/msgsvc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dnsserver.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/trkwks.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/lsa.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/echo.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/drsuapi.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/orpc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/frsrpc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/mgmt.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/svcctl.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/netlogon.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/krb5pac.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/winsrepl.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/eventlog.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/security.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/nbt.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/winbind.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dssetup.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/opendb.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/wkssvc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/drsblobs.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/srvsvc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/atsvc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/unixinfo.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/protected_storage.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dsbackup.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/w32time.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dcerpc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/dfs.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/keysvc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/spoolss.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/xattr.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/oxidresolver.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/frsapi.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/misc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/wins.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/schannel.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/audiosrv.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/sasl_helpers.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/initshutdown.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/browser.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/winreg.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/scerpc.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/efs.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/rot.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ntsvcs.h
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/remact.h
-)
-
 set (RPC_GEN_SRC
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_atsvc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_audiosrv.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_browser.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dbgidl.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dcom.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dfs.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dnsserver.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_drsblobs.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_drsuapi.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dsbackup.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dssetup.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_echo.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_efs.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_eventlog.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_frsapi.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_frsrpc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_initshutdown.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_irpc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_keysvc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_krb5pac.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_lsa.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_mgmt.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_msgsvc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_netlogon.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_nfs4acl.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_ntsvcs.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_oxidresolver.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_policyagent.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_protected_storage.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_remact.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_rot.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_samr.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_scerpc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_spoolss.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_srvsvc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_trkwks.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_unixinfo.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_w32time.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_winbind.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_winreg.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_wins.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_winstation.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_wkssvc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_wzcsvc.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dcerpc.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper_c.c
@@ -193,9 +179,12 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl_c.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_winbind.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.c
 )
 
+STRING(REPLACE ".c;" ".h;" RPC_GEN_HEADERS "${RPC_GEN_SRC}")
+
+set (RPC_GEN_SRC ${RPC_GEN_SRC}
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.c)
 # To enable sasl auth add:
 #   auth/gensec/cyrus_sasl.c
 # and define HAVE_LIBSASL2 in config.h
@@ -298,7 +287,10 @@ set (SAMBA_SRC
    librpc/ndr/ndr.c
    librpc/ndr/ndr_misc.c
    librpc/ndr/ndr_sec_helper.c
+   librpc/ndr/ndr_spoolss_buf.c
    librpc/ndr/ndr_string.c
+   librpc/ndr/ndr_compression.c
+   librpc/ndr/ndr_drsuapi.c
    librpc/ndr/uuid.c
    librpc/rpc/dcerpc_auth.c
    librpc/rpc/dcerpc.c
@@ -310,6 +302,7 @@ set (SAMBA_SRC
    librpc/rpc/dcerpc_smb.c
    librpc/rpc/dcerpc_sock.c
    librpc/rpc/dcerpc_util.c
+   lib/compression/mszip.c
    lib/socket/connect.c
    lib/socket/connect_multi.c
    lib/socket/socket.c

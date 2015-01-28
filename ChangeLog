@@ -1,3 +1,13 @@
+2015-01-28 Andre Heinecke <aheinecke@intevation.de>
+
+	Add support for additional rpc interfaces.
+
+	* samba/lib/compression/mszip.c: New. From wmi-1.3.14.
+	* samba/CMakeLists.txt: Extend generated idl
+	tables. Add additional files.
+	* samba/librpc/rpc/table.c (idl_iface_by_name),
+	(idl_iface_by_uuid): Add warning if lookup fails.
+
 2015-01-26 Andre Heinecke <aheinecke@intevation.de>
 
 	* winexe/winexe.c (main), winexe/wincmd.c (wincmd):
