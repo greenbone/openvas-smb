@@ -1,5 +1,12 @@
 2015-01-28 Andre Heinecke <aheinecke@intevation.de>
 
+	Add WMI command line tool.
+
+	* wmi/wmic.c: New. From wmi-1.3.14.
+	* wmi/CMakeLists.txt: Build and install wmic.
+
+2015-01-28 Andre Heinecke <aheinecke@intevation.de>
+
 	Add support for additional rpc interfaces.
 
 	* samba/lib/compression/mszip.c: New. From wmi-1.3.14.

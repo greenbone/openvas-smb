@@ -70,6 +70,10 @@ set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VER
 
 add_dependencies(openvas_wmiclient generated_tables)
 
+add_executable(wmic wmic.c)
+target_link_libraries(wmic openvas_wmiclient dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+install (TARGETS wmic RUNTIME DESTINATION ${BINDIR})
+
 install (TARGETS openvas_wmiclient
          LIBRARY DESTINATION ${LIBDIR}
          ARCHIVE DESTINATION ${LIBDIR})
