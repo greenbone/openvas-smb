@@ -121,6 +121,7 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_audiosrv.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_browser.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dbgidl.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dcerpc.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dcom.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dfs.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dnsserver.c
@@ -131,6 +132,7 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_echo.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_efs.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper_c.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_eventlog.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_frsapi.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_frsrpc.c
@@ -140,8 +142,11 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_krb5pac.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_lsa.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_mgmt.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_misc.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_msgsvc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_nbt.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_netlogon.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_netlogon_c.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_nfs4acl.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_ntsvcs.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_oxidresolver.c
@@ -151,9 +156,12 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_rot.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_samr.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_scerpc.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_schannel.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_security.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_spoolss.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_srvsvc.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl.c
+   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl_c.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_trkwks.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_unixinfo.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_w32time.c
@@ -163,25 +171,10 @@ set (RPC_GEN_SRC
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_winstation.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_wkssvc.c
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_wzcsvc.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_dcerpc.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_epmapper_c.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_irpc.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_krb5pac.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_lsa.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_misc.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_nbt.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_netlogon.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_netlogon_c.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_samr.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_schannel.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_security.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_svcctl_c.c
-   ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/ndr_winbind.c
 )
 
-STRING(REPLACE ".c;" ".h;" RPC_GEN_HEADERS "${RPC_GEN_SRC}")
+STRING(REPLACE ".c" ".h" RPC_GEN_HEADERS "${RPC_GEN_SRC}")
+STRING(REGEX REPLACE ";[^;]*_c.h;" ";" RPC_GEN_HEADERS "${RPC_GEN_HEADERS}")
 
 set (RPC_GEN_SRC ${RPC_GEN_SRC}
    ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.c)
