@@ -1,3 +1,26 @@
+openvas-smb 1.0.0 (2015-02-09)
+
+This is the first release of the openvas-smb module 1.0 for the Open
+Vulnerability Assessment Systems (OpenVAS).
+
+This release adds support for NTLMv2 to win_cmd_exec and includes the WMI
+command line tool "wmic". It also removes included libraries and uses the system
+libraries in their place and contains the result of several code cleanups.
+
+Many thanks to everyone who has contributed to this release:
+Andre Heinecke.
+
+Main changes compared to 1.0+beta2:
+* Support for NTLMv2 has been added to win_cmd_exec.
+* The WMI command line tool "wmic" has been added.
+* Included heimdal libraries have been removed, openvas-smb uses the system
+  libraries now.
+* Included popt library has been removed, openvas-smb uses the system
+  library now.
+* Several clean ups to remove unused code and to improve quality in both code
+  and build environment.
+
+
 openvas-smb 1.0+beta1 (2015-01-14)
 
 This is the first release of the openvas-smb module for the Open Vulnerability

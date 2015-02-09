@@ -1,3 +1,11 @@
+2015-02-09  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	Preparing the openvas-smb 1.0.0 release.
+
+	* CHANGES: Updated.
+
+	* CMakeLists.txt: Switch version scheme, set version to 1.0.0.
+
 2015-01-29 Andre Heinecke <aheinecke@intevation.de>
 
 	Remove duplicated rpc interface inclusion.
