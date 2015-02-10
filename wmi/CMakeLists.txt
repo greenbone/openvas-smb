@@ -61,12 +61,19 @@ set(WMICLIENT_SRC
    ${CMAKE_SOURCE_DIR}/samba/lib/com/tables.c
    ${CMAKE_SOURCE_DIR}/samba/librpc/ndr/ndr_orpc.c
 )
+
+set(WMI_HDR
+   openvas_smb_interface.h
+   openvas_wmi_interface.h
+)
+
 add_library(openvas_wmiclient SHARED ${WMICLIENT_SRC} ${GENERATED_SRC})
 
 target_link_libraries(openvas_wmiclient samba-static)
 
 set_target_properties (openvas_wmiclient PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
 set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
+set_target_properties (openvas_wmiclient PROPERTIES PUBLIC_HEADER "${WMI_HDR}")
 
 add_dependencies(openvas_wmiclient generated_tables)
 
@@ -76,4 +83,5 @@ install (TARGETS wmic RUNTIME DESTINATION ${BINDIR})
 
 install (TARGETS openvas_wmiclient
          LIBRARY DESTINATION ${LIBDIR}
-         ARCHIVE DESTINATION ${LIBDIR})
+         ARCHIVE DESTINATION ${LIBDIR}
+         PUBLIC_HEADER DESTINATION "${INCLUDEDIR}/openvas/smb")

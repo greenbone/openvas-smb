@@ -126,6 +126,10 @@ if (NOT LIBDIR)
   set (LIBDIR "${EXEC_PREFIX}/${LIBRARY_INSTALL_DIR}")
 endif (NOT LIBDIR)
 
+if (NOT INCLUDEDIR)
+  set (INCLUDEDIR "${CMAKE_INSTALL_PREFIX}/include")
+endif (NOT INCLUDEDIR)
+
 message ("-- Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
 pkg_check_modules (GNUTLS REQUIRED gnutls>=2.12)

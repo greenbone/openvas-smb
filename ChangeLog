@@ -1,3 +1,10 @@
+2015-02-10  Andre Heinecke <aheinecke@greenbone.net>
+
+	Install public headers
+
+	* CMakeLists.txt: Set includedir similar to openvas-libaries.
+	* wmi/CMakeLists.txt: Install public headers.
+
 2015-02-09  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	Post release version bump.
