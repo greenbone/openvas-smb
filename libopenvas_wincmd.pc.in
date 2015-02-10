@@ -1,12 +1,13 @@
 prefix=@CMAKE_INSTALL_PREFIX@
 exec_prefix=@EXEC_PREFIX@
 libdir=@LIBDIR@
+includedir=@INCLUDEDIR@
 
 Name: openvas-wmiclient
 Description: OpenVAS wincmd libraries
 Version: @CPACK_PACKAGE_VERSION@
 Requires:
-Cflags:
+Cflags: -I${includedir}/openvas/smb
 Libs: -L${libdir} -lopenvas_wincmd
 
 
