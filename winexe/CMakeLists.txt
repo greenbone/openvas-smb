@@ -81,7 +81,7 @@ add_executable(bin2c ${BINTOC_SOURCES})
 add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
-target_link_libraries(openvas_wincmd samba-static ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
 target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 

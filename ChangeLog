@@ -1,3 +1,8 @@
+2015-02-11  Andre Heinecke <aheinecke@greenbone.net>
+
+	* wmi/CMakeLists.txt, winexe/CMakeLists.txt: Link used libraries
+	explicitly.
+
 2015-02-11  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	* samba/lib/tls/tls.c (tls_init_server, tls_init_client): Remove calls

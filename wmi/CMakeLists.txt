@@ -69,7 +69,7 @@ set(WMI_HDR
 
 add_library(openvas_wmiclient SHARED ${WMICLIENT_SRC} ${GENERATED_SRC})
 
-target_link_libraries(openvas_wmiclient samba-static)
+target_link_libraries(openvas_wmiclient samba-static dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
 set_target_properties (openvas_wmiclient PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
 set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
