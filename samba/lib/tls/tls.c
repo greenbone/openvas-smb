@@ -505,7 +505,6 @@ struct socket_context *tls_init_server(struct tls_params *params,
 	gnutls_transport_set_ptr(tls->session, (gnutls_transport_ptr)tls);
 	gnutls_transport_set_pull_function(tls->session, (gnutls_pull_func)tls_pull);
 	gnutls_transport_set_push_function(tls->session, (gnutls_push_func)tls_push);
-	gnutls_transport_set_lowat(tls->session, 0);
 
 	tls->plain_chars = plain_chars;
 	if (plain_chars) {
@@ -584,7 +583,6 @@ struct socket_context *tls_init_client(struct socket_context *socket,
 	gnutls_transport_set_ptr(tls->session, (gnutls_transport_ptr)tls);
 	gnutls_transport_set_pull_function(tls->session, (gnutls_pull_func)tls_pull);
 	gnutls_transport_set_push_function(tls->session, (gnutls_push_func)tls_push);
-	gnutls_transport_set_lowat(tls->session, 0);
 	tls->tls_detect = False;
 
 	tls->output_pending  = False;

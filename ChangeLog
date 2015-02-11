@@ -1,3 +1,9 @@
+2015-02-11  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	* samba/lib/tls/tls.c (tls_init_server, tls_init_client): Remove calls
+	to gnutls_transport_set_lowat (). It is no longer necessary with the
+	supported GnuTLS >= 2.12 and is deprecated in GnuTLS 3.
+
 2015-02-10  Andre Heinecke <aheinecke@greenbone.net>
 
 	Add includedir to pkg-config.
