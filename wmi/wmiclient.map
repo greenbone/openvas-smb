@@ -1,0 +1,34 @@
+OPENVAS_WMICLIENT {
+    global:
+        SMB_HANDLE;
+        smb_versioninfo;
+        smb_connect;
+        smb_close;
+        smb_file_SDDL;
+        smb_file_OwnerSID;
+        smb_file_GroupSID;
+        smb_file_TrusteeRights;
+        WMI_HANDLE;
+        wmi_versioninfo;
+        wmi_connect;
+        wmi_close ;
+        wmi_query;
+        wmi_connect_rsop;
+        wmi_query_rsop;
+        wmi_connect_reg;
+        wmi_reg_get_sz;
+        wmi_reg_enum_value;
+        wmi_reg_enum_key;
+        wmi_reg_get_bin_val;
+        wmi_reg_get_dword_val;
+        wmi_reg_get_ex_string_val;
+        wmi_reg_get_mul_string_val;
+        wmi_reg_get_qword_val;
+        wmi_reg_set_dword_val;
+        wmi_reg_set_qword_val;
+        wmi_reg_set_ex_string_val;
+        wmi_reg_set_string_val;
+        wmi_reg_create_key;
+        wmi_reg_delete_key;
+    local: *;
+};
