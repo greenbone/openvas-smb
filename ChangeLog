@@ -1,3 +1,10 @@
+2015-02-23  Benoît Allard  <benoit.allard@greenbone.net>
+
+	Fix small typos in texts.
+
+	* winexe/winexe.c, winexe/wincmd.c, samba/auth/kerberos/kerberos_util.c,
+	  samba/auth/credentials/credentials_krb5.c: Updated
+
 2015-02-11  Andre Heinecke <aheinecke@greenbone.net>
 
 	* wmi/CMakeLists.txt, winexe/CMakeLists.txt: Link used libraries

@@ -388,7 +388,7 @@ static int create_keytab(TALLOC_CTX *parent_ctx,
 	/* Get the principal we will store the new keytab entries under */
 	ret = principal_from_credentials(mem_ctx, machine_account, smb_krb5_context, &princ);
 	if (ret) {
-		DEBUG(1,("create_keytab: makeing krb5 principal failed (%s)\n",
+		DEBUG(1,("create_keytab: making krb5 principal failed (%s)\n",
 			 smb_get_krb5_error_message(smb_krb5_context->krb5_context, 
 						    ret, mem_ctx)));
 		talloc_free(mem_ctx);
@@ -400,7 +400,7 @@ static int create_keytab(TALLOC_CTX *parent_ctx,
 					      smb_krb5_context, 
 					      &salt_princ);
 	if (ret) {
-		DEBUG(1,("create_keytab: makeing salt principal failed (%s)\n",
+		DEBUG(1,("create_keytab: making salt principal failed (%s)\n",
 			 smb_get_krb5_error_message(smb_krb5_context->krb5_context, 
 						    ret, mem_ctx)));
 		talloc_free(mem_ctx);
@@ -525,7 +525,7 @@ static krb5_error_code remove_old_entries(TALLOC_CTX *parent_ctx,
 	/* Get the principal we will store the new keytab entries under */
 	ret = principal_from_credentials(mem_ctx, machine_account, smb_krb5_context, &princ);
 	if (ret) {
-		DEBUG(1,("update_keytab: makeing krb5 principal failed (%s)\n",
+		DEBUG(1,("update_keytab: making krb5 principal failed (%s)\n",
 			 smb_get_krb5_error_message(smb_krb5_context->krb5_context, 
 						    ret, mem_ctx)));
 		talloc_free(mem_ctx);

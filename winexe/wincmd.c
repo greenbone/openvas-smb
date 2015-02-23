@@ -226,7 +226,7 @@ void on_ctrl_pipe_read(struct winexe_context *c, const char *data, int len)
 {
   const char *p;
   if ((p = cmd_check(data, CMD_STD_IO_ERR, len))) {
-    DEBUG(1, ("CTRL: Recieved command: %.*s", len, data));
+    DEBUG(1, ("CTRL: Received command: %.*s", len, data));
     unsigned int npipe = strtoul(p, 0, 16);
     c->ac_io = talloc_zero(c, struct async_context);
     c->ac_io->tree = c->tree;
