@@ -46,13 +46,8 @@ set(GENERATED_SRC
 
 set_source_files_properties(${GENERATED_SRC} PROPERTIES GENERATED 1)
 
-set(WMICLIENT_SRC
-   wmicso.c
-   wmicore.c
-   wmireg.c
-   wmirsop.c
-   wbemdata.c
-   winsmb.c
+set(WMI_SHARED_SRC
+   ${GENERATED_SRC}
    ${CMAKE_SOURCE_DIR}/samba/lib/com/dcom/main.c
    ${CMAKE_SOURCE_DIR}/samba/lib/com/main.c
    ${CMAKE_SOURCE_DIR}/samba/librpc/ndr/ndr_dcom.c
@@ -60,6 +55,15 @@ set(WMICLIENT_SRC
    ${CMAKE_SOURCE_DIR}/samba/lib/com/classes/simple.c
    ${CMAKE_SOURCE_DIR}/samba/lib/com/tables.c
    ${CMAKE_SOURCE_DIR}/samba/librpc/ndr/ndr_orpc.c
+   wmicore.c
+   wbemdata.c
+)
+
+set(WMICLIENT_SRC
+   wmicso.c
+   wmireg.c
+   wmirsop.c
+   winsmb.c
 )
 
 set(WMI_HDR
@@ -67,18 +71,20 @@ set(WMI_HDR
    openvas_wmi_interface.h
 )
 
-add_library(openvas_wmiclient SHARED ${WMICLIENT_SRC} ${GENERATED_SRC})
+add_library(openvas_wmiclient SHARED ${WMICLIENT_SRC} ${WMI_SHARED_SRC})
 
 target_link_libraries(openvas_wmiclient samba-static dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
 
 set_target_properties (openvas_wmiclient PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
 set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
 set_target_properties (openvas_wmiclient PROPERTIES PUBLIC_HEADER "${WMI_HDR}")
+set_target_properties (openvas_wmiclient PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wmiclient.map")
 
 add_dependencies(openvas_wmiclient generated_tables)
+add_dependencies(openvas_wmiclient wmiclient.map)
 
-add_executable(wmic wmic.c)
-target_link_libraries(wmic openvas_wmiclient dl ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+add_executable(wmic wmic.c ${WMI_SHARED_SRC})
+target_link_libraries(wmic openvas_wmiclient samba-static ${GNUTLS_LIBRARIES} resolv ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} dl)
 install (TARGETS wmic RUNTIME DESTINATION ${BINDIR})
 
 install (TARGETS openvas_wmiclient

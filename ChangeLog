@@ -1,3 +1,10 @@
+2015-02-23  Andre Heinecke <aheinecke@greenbone.net>
+
+	Hide private wmiclient symbols.
+
+	* wmi/wmiclient.map: New.
+	* wmi/CMakeLists.txt: Use symbol map. Split out common src.
+
 2015-02-23  Benoît Allard  <benoit.allard@greenbone.net>
 
 	Fix small typos in texts.
