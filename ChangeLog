@@ -1,5 +1,12 @@
 2015-02-23  Andre Heinecke <aheinecke@greenbone.net>
 
+	Hide private wincmd symbols.
+
+	* winexe/wincmd.map: New.
+	* winexe/CMakeLists.txt: Use symbol map.
+
+2015-02-23  Andre Heinecke <aheinecke@greenbone.net>
+
 	Hide private wmiclient symbols.
 
 	* wmi/wmiclient.map: New.

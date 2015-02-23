@@ -1,0 +1,5 @@
+OPENVAS_WINCMD{
+    global:
+        wincmd;
+    local: *;
+};
