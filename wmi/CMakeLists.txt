@@ -34,27 +34,7 @@ set (SMB_INCLUDES
 )
 include_directories(${SMB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-set(GENERATED_SRC
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/ndr_orpc.c
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/dcom_p.c
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/ndr_dcom.c
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/ndr_oxidresolver.c
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/ndr_oxidresolver_c.c
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/ndr_remact.c
-   ${CMAKE_BINARY_DIR}/samba/librpc/gen_ndr/ndr_remact_c.c
-)
-
-set_source_files_properties(${GENERATED_SRC} PROPERTIES GENERATED 1)
-
 set(WMI_SHARED_SRC
-   ${GENERATED_SRC}
-   ${CMAKE_SOURCE_DIR}/samba/lib/com/dcom/main.c
-   ${CMAKE_SOURCE_DIR}/samba/lib/com/main.c
-   ${CMAKE_SOURCE_DIR}/samba/librpc/ndr/ndr_dcom.c
-   ${CMAKE_SOURCE_DIR}/samba/librpc/rpc/table.c
-   ${CMAKE_SOURCE_DIR}/samba/lib/com/classes/simple.c
-   ${CMAKE_SOURCE_DIR}/samba/lib/com/tables.c
-   ${CMAKE_SOURCE_DIR}/samba/librpc/ndr/ndr_orpc.c
    wmicore.c
    wbemdata.c
 )
@@ -80,7 +60,6 @@ set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VER
 set_target_properties (openvas_wmiclient PROPERTIES PUBLIC_HEADER "${WMI_HDR}")
 set_target_properties (openvas_wmiclient PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wmiclient.map")
 
-add_dependencies(openvas_wmiclient generated_tables)
 add_dependencies(openvas_wmiclient wmiclient.map)
 
 add_executable(wmic wmic.c ${WMI_SHARED_SRC})
