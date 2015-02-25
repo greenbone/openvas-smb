@@ -153,7 +153,6 @@ int smb_connect(const char *server, const char *share, const char *username, con
   }
 
   *handle = (SMB_HANDLE) SmbClientState;
-  fprintf(stderr, "created: %p\n", SmbClientState);
   return 0;
 }
 
@@ -167,7 +166,6 @@ int smb_connect(const char *server, const char *share, const char *username, con
  */
 int smb_close(SMB_HANDLE handle) {
   if(handle){
-    fprintf(stderr, "closing: %p\n", handle);
     talloc_free((struct smbcli_state *) handle);
     talloc_free(mem_ctx);
     return 0;
