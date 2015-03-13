@@ -1,3 +1,24 @@
+openvas-smb 1.0.1 (2015-03-13)
+
+This is the first maintenance release of the openvas-smb module 1.0 for the Open
+Vulnerability Assessment Systems (OpenVAS).
+
+This release ensures openvas-smb builds with GnuTLS 3.0 or newer as well as
+addressing other build system issues.
+
+Many thanks to everyone who has contributed to this release:
+Benoît Allard, Andre Heinecke and Michael Wiegand.
+
+Main changes compared to 1.0.0:
+* An issue which caused a build failure when building with GnuTLS 3.0 or newer
+  has been fixed.
+* An issue which caused a build failure when building in Debian 8 ("Jessie")
+  has been fixed.
+* Public header files are now installed correctly.
+* Private symbols are now hidden.
+* Build performance has been improved.
+
+
 openvas-smb 1.0.0 (2015-02-09)
 
 This is the first release of the openvas-smb module 1.0 for the Open

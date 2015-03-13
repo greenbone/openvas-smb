@@ -1,3 +1,9 @@
+2015-03-13  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	Preparing the openvas-smb 1.0.1 release.
+
+	* CHANGES: Updated.
+
 2015-03-13  Benoît Allard  <benoit.allard@greenbone.net>
 
 	* winexe/CMakeLists.txt, INSTALL: Make it compile on jessie.
