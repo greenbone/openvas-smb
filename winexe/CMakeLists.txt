@@ -49,7 +49,7 @@ set (SMB_INCLUDES
 include_directories(${SMB_INCLUDES})
 include_directories(${POPT_INCLUDE_DIRS})
 
-find_program(MINGW_GCC i586-mingw32msvc-gcc)
+find_program(MINGW_GCC NAMES i686-w64-mingw32-gcc i586-mingw32msvc-gcc)
 
 find_package(GnuTLS REQUIRED)
 

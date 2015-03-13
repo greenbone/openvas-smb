@@ -1,3 +1,7 @@
+2015-03-13  Benoît Allard  <benoit.allard@greenbone.net>
+
+	* winexe/CMakeLists.txt, INSTALL: Make it compile on jessie.
+
 2015-02-24  Andre Heinecke <aheinecke@greenbone.net>
 
 	Enable building with ninja. Improve buildsystem.

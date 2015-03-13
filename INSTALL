@@ -8,7 +8,7 @@ necessary to install dependent development packages.
 Prerequisites for openvas-smb
 -----------------------------
 
-gcc-mingw32 libgnutls-dev perl-base heimdal-dev | heimdal-multidev libpopt-dev
+gcc-mingw32 | gcc-mingw-w64 libgnutls-dev perl-base heimdal-dev | heimdal-multidev libpopt-dev
 
 
 Compiling openvas-smb
