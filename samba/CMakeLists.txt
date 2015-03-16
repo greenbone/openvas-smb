@@ -435,7 +435,7 @@ add_custom_command(
    OUTPUT ${RPC_GEN_SRC}
    COMMAND ${PERL} ${CMAKE_CURRENT_SOURCE_DIR}/librpc/tables.pl --output=${CMAKE_CURRENT_BINARY_DIR}/librcp/gen_ndr/tables.c
            ${RPC_GEN_HEADERS} > ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.x &&
-           mv ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.x ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.c
+           mv -f ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.x ${CMAKE_CURRENT_BINARY_DIR}/librpc/gen_ndr/tables.c
    DEPENDS ${RPC_GEN_HEADERS}
    COMMENT "Generating IDL tables")
 

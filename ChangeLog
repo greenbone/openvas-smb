@@ -1,3 +1,9 @@
+2015-03-16  Andre Heinecke <aheinecke@greenbone.net>
+
+	Use mv -f to move generated tables file to tables.c
+
+	* samba/CMakeLists.txt: Use mv -f.
+
 2015-03-13  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	Post release version bump.
