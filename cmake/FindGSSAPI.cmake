@@ -107,6 +107,7 @@ if (UNIX)
     find_program(HEIMDAL_CONFIG
         NAMES
             krb5-config.heimdal
+            heimdal-krb5-config
         PATHS
             ${GSSAPI_ROOT_DIR}/bin
             /opt/local/bin)
@@ -134,7 +135,7 @@ if (UNIX)
             string(REGEX REPLACE " *-L" "" _GSSAPI_LIBS_STRING "${_GSSAPI_LIBS_STRING}")
             string(REGEX REPLACE " -l.*" "" _GSSAPI_LIBSDIR "${_GSSAPI_LIBS_STRING}")
             set(GSSAPI_FLAVOR_HEIMDAL TRUE)
-
+            set (FIND_LIBRARY_FLAGS NO_DEFAULT_PATH)
         endif()
 
         # Get the include dir

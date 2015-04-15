@@ -1,3 +1,9 @@
+2015-04-15  Andre Heinecke <aheinecke@greenbone.net>
+
+	Fix heimdal detection for RHEL Systems.
+
+	* cmake/FindGSSAPI.cmake: Check for heimdal-krb5-config.
+
 2015-03-16  Andre Heinecke <aheinecke@greenbone.net>
 
 	Use mv -f to move generated tables file to tables.c
