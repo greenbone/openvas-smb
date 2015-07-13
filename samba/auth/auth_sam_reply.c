@@ -52,7 +52,7 @@ NTSTATUS auth_convert_server_info_sambaseinfo(TALLOC_CTX *mem_ctx,
 	sam->home_drive.string = server_info->home_drive;
 
 	sam->logon_count = server_info->logon_count;
-	sam->bad_password_count = sam->bad_password_count;
+	sam->bad_password_count = server_info->bad_password_count;
 	sam->rid = server_info->account_sid->sub_auths[server_info->account_sid->num_auths-1];
 	sam->primary_gid = server_info->primary_group_sid->sub_auths[server_info->primary_group_sid->num_auths-1];
 
