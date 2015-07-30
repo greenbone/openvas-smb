@@ -1,3 +1,7 @@
+2015-07-30  Sven Haardiek <sven.haardiek@greenbone.net>
+
+	* CMakeLists.txt: Change non release version style to fit better to debian
+
 2015-07-13  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	* samba/auth/auth_sam_reply.c (auth_convert_server_info_sambaseinfo):
