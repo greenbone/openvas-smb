@@ -46,8 +46,12 @@ set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba/winexe
    ${CMAKE_BINARY_DIR}/samba
 )
+
+pkg_check_modules (GLIB REQUIRED glib-2.0)
+
 include_directories(${SMB_INCLUDES})
 include_directories(${POPT_INCLUDE_DIRS})
+include_directories(${GLIB_INCLUDE_DIRS})
 
 find_program(MINGW_GCC NAMES i686-w64-mingw32-gcc i586-mingw32msvc-gcc)
 
@@ -81,7 +85,7 @@ add_executable(bin2c ${BINTOC_SOURCES})
 add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
-target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${GLIB_LIBRARIES})
 set_target_properties (openvas_wincmd PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wincmd.map")
 
 add_dependencies(openvas_wincmd wincmd.map)
