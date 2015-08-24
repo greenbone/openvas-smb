@@ -1,5 +1,11 @@
 2015-08-24  Michael Wiegand <michael.wiegand@greenbone.net>
 
+	* winexe/CMakeLists.txt, wmi/CMakeLists.txt: Add .map files as library
+	sources and not as dependency between targets since the files are
+	static and there is no target providing the files.
+
+2015-08-24  Michael Wiegand <michael.wiegand@greenbone.net>
+
 	* winexe/CMakeLists.txt: Add proper checks and flags for glib usage.
 
 2015-08-24  Michael Wiegand <michael.wiegand@greenbone.net>

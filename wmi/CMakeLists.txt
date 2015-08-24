@@ -44,6 +44,7 @@ set(WMICLIENT_SRC
    wmireg.c
    wmirsop.c
    winsmb.c
+   wmiclient.map
 )
 
 set(WMI_HDR
@@ -59,8 +60,6 @@ set_target_properties (openvas_wmiclient PROPERTIES SOVERSION "${CPACK_PACKAGE_V
 set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
 set_target_properties (openvas_wmiclient PROPERTIES PUBLIC_HEADER "${WMI_HDR}")
 set_target_properties (openvas_wmiclient PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wmiclient.map")
-
-add_dependencies(openvas_wmiclient wmiclient.map)
 
 add_executable(wmic wmic.c ${WMI_SHARED_SRC})
 target_link_libraries(wmic openvas_wmiclient samba-static ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} dl)
