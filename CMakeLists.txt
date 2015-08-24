@@ -34,7 +34,7 @@ find_package(Popt REQUIRED)
 
 find_package(GSSAPI)
 if (NOT "${GSSAPI_FLAVOR_HEIMDAL}" STREQUAL "TRUE")
-  message (FATAL_ERROR "The heimdal GSS library could not be found. Please make sure the heimdal development package is installed.")
+  message (SEND_ERROR "The heimdal GSS library could not be found. Please make sure the heimdal development package is installed.")
 endif(NOT "${GSSAPI_FLAVOR_HEIMDAL}" STREQUAL "TRUE")
 
 include (FindPkgConfig)
