@@ -44,6 +44,8 @@
 #include "winexe.h"
 #include "winexesvc/shared.h"
 
+#include <glib.h> /* for g_malloc0 */
+
 #include <sys/fcntl.h>
 #include <sys/unistd.h>
 #include <sys/termios.h>

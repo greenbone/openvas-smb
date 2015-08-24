@@ -1,5 +1,9 @@
 2015-08-24  Michael Wiegand <michael.wiegand@greenbone.net>
 
+	* winexe/wincmd.c: Include glib.h since g_malloc0 is used.
+
+2015-08-24  Michael Wiegand <michael.wiegand@greenbone.net>
+
 	* winexe/CMakeLists.txt, wmi/CMakeLists.txt: Remove superfluous
 	linking against libresolv.
 
