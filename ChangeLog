@@ -1,7 +1,10 @@
 2015-08-24  Michael Wiegand <michael.wiegand@greenbone.net>
 
-	* CMakeLists.txt, winexe/CMakeLists.txt, wmi/CMakeLists.txt: Remove
-	superfluous linking against libresolv.
+	* winexe/CMakeLists.txt, wmi/CMakeLists.txt: Remove superfluous
+	linking against libresolv.
+
+	* CMakeLists.txt: Use SEND_ERROR instead of FATAL_ERROR for
+	consistency.
 
 2015-07-30  Sven Haardiek <sven.haardiek@greenbone.net>
 
