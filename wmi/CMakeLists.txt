@@ -54,7 +54,7 @@ set(WMI_HDR
 
 add_library(openvas_wmiclient SHARED ${WMICLIENT_SRC} ${WMI_SHARED_SRC})
 
-target_link_libraries(openvas_wmiclient samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+target_link_libraries(openvas_wmiclient samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${LINKER_HARDENING_FLAGS})
 
 set_target_properties (openvas_wmiclient PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
 set_target_properties (openvas_wmiclient PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
@@ -62,7 +62,7 @@ set_target_properties (openvas_wmiclient PROPERTIES PUBLIC_HEADER "${WMI_HDR}")
 set_target_properties (openvas_wmiclient PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wmiclient.map")
 
 add_executable(wmic wmic.c ${WMI_SHARED_SRC})
-target_link_libraries(wmic openvas_wmiclient samba-static ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} dl)
+target_link_libraries(wmic openvas_wmiclient samba-static ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} dl ${LINKER_HARDENING_FLAGS})
 install (TARGETS wmic RUNTIME DESTINATION ${BINDIR})
 
 install (TARGETS openvas_wmiclient

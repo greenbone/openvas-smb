@@ -86,10 +86,10 @@ add_executable(bin2c ${BINTOC_SOURCES})
 add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
-target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${GLIB_LIBRARIES})
+target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${GLIB_LIBRARIES} ${LINKER_HARDENING_FLAGS})
 set_target_properties (openvas_wincmd PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wincmd.map")
 
-target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES})
+target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${LINKER_HARDENING_FLAGS})
 
 install (TARGETS winexe RUNTIME DESTINATION ${BINDIR})
 

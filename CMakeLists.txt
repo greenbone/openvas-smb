@@ -134,8 +134,9 @@ message ("-- Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
 pkg_check_modules (GNUTLS REQUIRED gnutls>=2.12)
 
-set (CMAKE_C_FLAGS "-fPIC -O2 -D_FORTIFY_SOURCE=2 -fstack-protector -Wl,-z,relro -Wl,-z,now ${CMAKE_C_FLAGS}")
+set (CMAKE_C_FLAGS "-fPIC -O2 -D_FORTIFY_SOURCE=2 -fstack-protector ${CMAKE_C_FLAGS}")
 set (CMAKE_C_FLAGS "-Wno-unused-result -fno-strict-aliasing ${CMAKE_C_FLAGS}")
+set (LINKER_HARDENING_FLAGS     "-Wl,-z,relro -Wl,-z,now")
 
 ## Version
 
