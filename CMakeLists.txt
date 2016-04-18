@@ -92,14 +92,10 @@ set (CPACK_PACKAGE_VENDOR "The OpenVAS Project")
 # There is a lot of generated code in the build directory.
 # Please run CPack only from an out of source build.
 set (CPACK_SOURCE_IGNORE_FILES
+   "${CMAKE_BINARY_DIR}"
    "/.svn/"
    "/.hg/"
-   "/_CPack_Packages/"
-   "/CMakeFiles/"
-   "/build/"
    "swp$"
-   "swo$"
-   ".tar.gz"
 )
 
 include (CPack)
