@@ -6,7 +6,7 @@
 # Andre Heinecke <aheinecke@greenbone.net>
 #
 # Copyright:
-# Copyright (C) 2015 Greenbone Networks GmbH
+# Copyright (C) 2015-2016 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -128,7 +128,7 @@ endif (NOT INCLUDEDIR)
 
 message ("-- Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
-pkg_check_modules (GNUTLS REQUIRED gnutls>=2.12)
+pkg_check_modules (GNUTLS REQUIRED gnutls>=3.2.15)
 
 set (CMAKE_C_FLAGS "-fPIC -O2 -D_FORTIFY_SOURCE=2 -fstack-protector ${CMAKE_C_FLAGS}")
 set (CMAKE_C_FLAGS "-Wno-unused-result -fno-strict-aliasing ${CMAKE_C_FLAGS}")
