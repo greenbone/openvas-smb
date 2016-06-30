@@ -1,0 +1,103 @@
+.TH wmic 1 User Manuals
+.SH NAME
+wmic \- Command line tool to query a registry or RSOP service on a remote Windows host via WMI
+.SH SYNOPSIS
+\fBwmic OPTIONS //host query 
+\f1
+.SH DESCRIPTION
+This tool allows to run a query for a registry or RSOP service running on a remote Windows system via WMI. It is derived from the samba tools and shares several options with other samba tools. 
+.SH OPTIONS
+.TP
+\fB--namesspace=\fISTRING\fB\f1
+WMI namespace, default to root\cimv2.
+.TP
+\fB--delimiter=\fISTRING\fB\f1
+delimiter to use when querying multiple values, default to '|'.
+.TP
+\fB-?, --help\f1
+Show help.
+.TP
+\fB--usage\f1
+Display brief usage message.
+.TP
+\fB-d, --debuglevel=\fIDEBUGLEVEL\fB\f1
+Set debug level.
+.TP
+\fB--debug-stderr\f1
+Send debug output to STDERR.
+.TP
+\fB-s, --configfile=\fICONFIGFILE\fB\f1
+Use alternative configuration file.
+.TP
+\fB--option=\fINAME\fB=\fIVALUE\fB\f1
+Set smb.conf option from command line.
+.TP
+\fB-l, --log-basename=\fILOGFILEBASE\fB\f1
+Basename for log/debug files.
+.TP
+\fB--leak-report\f1
+enable talloc leak reporting on exit.
+.TP
+\fB--leak-report-full\f1
+enable full talloc leak reporting on exit.
+.TP
+\fB-R, --name-resolve=\fINAME-RESOLVE-ORDER\fB\f1
+Use these name resolution services only.
+.TP
+\fB-O, --socket-options=\fISOCKETOPTIONS\fB\f1
+socket options to use.
+.TP
+\fB-n, --netbiosname=\fINETBIOSNAME\fB\f1
+Primary netbios name.
+.TP
+\fB-W, --workgroup=\fIWORKGROUP\fB\f1
+Set the workgroup name.
+.TP
+\fB--realm=\fIREALM\fB\f1
+Set the realm name.
+.TP
+\fB-i, --scope=\fISCOPE\fB\f1
+Use this Netbios scope.
+.TP
+\fB-m, --maxprotocol=\fIMAXPROTOCOL\fB\f1
+Set max protocol level.
+.TP
+\fB-U, --user=[\fIDOMAIN\fB]\fIUSERNAME\fB[%\fIPASSWORD\fB]\f1
+Set the network username.
+.TP
+\fB-N, --no-pass\f1
+Don't ask for a password.
+.TP
+\fB--password=\fISTRING\fB\f1
+Password.
+.TP
+\fB-A, --authentication-file=\fIFILE\fB\f1
+Get the credentials from a file.
+.TP
+\fB-S, --signing=on|off|required\f1
+Set the client signing state.
+.TP
+\fB-P, --machine-pass\f1
+Use stored machine account password (implies -k).
+.TP
+\fB--simple-bind-dn=\fISTRING\fB\f1
+DN to use for a simple bind.
+.TP
+\fB-k, --kerberos-file=\fISTRING\fB\f1
+Use Kerberos.
+.TP
+\fB--use-security-mechanisms=\fISTRING\fB\f1
+Restricted list of authentication mechanisms available for use with this authentication.
+.TP
+\fB-V, -version\f1
+Print version.
+.SH EXAMPLES
+wmic -U [domain/]adminuser%mysecret //192.168.1.42 "select * from Win32_ComputerSystem"
+
+Connect to the Windows system running at IP address 192.168.1.42 with the user "adminuser" in domain "domain" and the password "mysecret". Then run the query and return the results. If you drop the password, it will be asked for. 
+.SH SEE ALSO
+\fBwinexe(1)\f1
+.SH MORE INFORMATION ABOUT THE OPENVAS PROJECT
+The canonical places where you will find more information about the OpenVAS project are: \fBhttp://www.openvas.org/\f1 (Official site) \fBhttp://wald.intevation.org/projects/openvas/\f1 (Development Platform) 
+.SH COPYRIGHT
+The omp command line client is released under the GNU GPL, version 2, or, at your option, any later version. 

@@ -1,3 +1,18 @@
+2016-06-30  Jan-Oliver Wagner <jan-oliver.wagner@greenbone.net>
+
+	* doc/winexe.1.xml: New. Man page for winexe.
+
+	* doc/wmic.1.xml: New. Man page for wmic.
+
+	* doc/winexe.1, doc/winexe.html: New. Generated from
+	winexe.1.xml.
+
+	* doc/wmic.1, doc/wmic.html: New. Generated from
+	wmic.1.xml.
+
+	* doc/CMakeLists.txt: Add subdirectory "doc" and define
+	DATADIR to make man page installation happy.
+
 2016-06-14  Jan-Oliver Wagner <jan-oliver.wagner@greenbone.net>
 
 	* CMakeLists.txt: Imcrease dependency for gnutls from 2.12 to

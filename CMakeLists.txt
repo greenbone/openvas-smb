@@ -122,6 +122,10 @@ if (NOT LIBDIR)
   set (LIBDIR "${EXEC_PREFIX}/${LIBRARY_INSTALL_DIR}")
 endif (NOT LIBDIR)
 
+if (NOT DATADIR)
+  set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
+endif (NOT DATADIR)
+
 if (NOT INCLUDEDIR)
   set (INCLUDEDIR "${CMAKE_INSTALL_PREFIX}/include")
 endif (NOT INCLUDEDIR)
@@ -159,3 +163,4 @@ install (FILES ${CMAKE_BINARY_DIR}/libopenvas_wincmd.pc
 add_subdirectory(samba)
 add_subdirectory(winexe)
 add_subdirectory(wmi)
+add_subdirectory(doc)

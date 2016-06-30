@@ -1,0 +1,217 @@
+<body text="#000000" link="#0000ff" bgcolor="#ffffff"><center><table width="80%">
+<tr><td><h1>wmic</h1>
+<h2>Command line tool to query a registry or RSOP service on a remote Windows host via WMI</h2>
+
+
+  <h2>Synopsis</h2>
+<b>
+    wmic OPTIONS //host query <br>
+
+  </b>
+
+
+  <h2>Description</h2>
+
+    <p>
+      This tool allows to run a query for a registry or RSOP service running on a remote Windows
+      system via WMI. It is derived from the samba tools and shares
+      several options with other samba tools.
+    </p>
+
+  
+
+
+  <h2>Options</h2>
+
+    
+      <p><b>--namesspace=<em>STRING</em></b></p>
+      <p>WMI namespace, default to root\cimv2.</p>
+    
+
+    
+      <p><b>--delimiter=<em>STRING</em></b></p>
+      <p>delimiter to use when querying multiple values, default to '|'.</p>
+    
+
+    
+      <p><b>-?, --help</b></p>
+      
+        <p>Show help.</p>
+      
+    
+
+    
+      <p><b>--usage</b></p>
+      <p>Display brief usage message.</p>
+    
+
+    
+      <p><b>-d, --debuglevel=<em>DEBUGLEVEL</em></b></p>
+      <p>Set debug level.</p>
+    
+
+    
+      <p><b>--debug-stderr</b></p>
+      <p>Send debug output to STDERR.</p>
+    
+
+    
+      <p><b>-s, --configfile=<em>CONFIGFILE</em></b></p>
+      <p>Use alternative configuration file.</p>
+    
+
+    
+      <p><b>--option=<em>NAME</em>=<em>VALUE</em></b></p>
+      <p>Set smb.conf option from command line.</p>
+    
+
+    
+      <p><b>-l, --log-basename=<em>LOGFILEBASE</em></b></p>
+      <p>Basename for log/debug files.</p>
+    
+
+    
+      <p><b>--leak-report</b></p>
+      <p>enable talloc leak reporting on exit.</p>
+    
+
+    
+      <p><b>--leak-report-full</b></p>
+      <p>enable full talloc leak reporting on exit.</p>
+    
+
+    
+      <p><b>-R, --name-resolve=<em>NAME-RESOLVE-ORDER</em></b></p>
+      <p>Use these name resolution services only.</p>
+    
+
+    
+      <p><b>-O, --socket-options=<em>SOCKETOPTIONS</em></b></p>
+      <p>socket options to use.</p>
+    
+
+    
+      <p><b>-n, --netbiosname=<em>NETBIOSNAME</em></b></p>
+      <p>Primary netbios name.</p>
+    
+
+    
+      <p><b>-W, --workgroup=<em>WORKGROUP</em></b></p>
+      <p>Set the workgroup name.</p>
+    
+
+    
+      <p><b>--realm=<em>REALM</em></b></p>
+      <p>Set the realm name.</p>
+    
+
+    
+      <p><b>-i, --scope=<em>SCOPE</em></b></p>
+      <p>Use this Netbios scope.</p>
+    
+
+    
+      <p><b>-m, --maxprotocol=<em>MAXPROTOCOL</em></b></p>
+      <p>Set max protocol level.</p>
+    
+
+    
+      <p><b>-U, --user=[<em>DOMAIN</em>]<em>USERNAME</em>[%<em>PASSWORD</em>]</b></p>
+      <p>Set the network username.</p>
+    
+
+    
+      <p><b>-N, --no-pass</b></p>
+      <p>Don't ask for a password.</p>
+    
+
+    
+      <p><b>--password=<em>STRING</em></b></p>
+      <p>Password.</p>
+    
+
+    
+      <p><b>-A, --authentication-file=<em>FILE</em></b></p>
+      <p>Get the credentials from a file.</p>
+    
+
+    
+      <p><b>-S, --signing=on|off|required</b></p>
+      <p>Set the client signing state.</p>
+    
+
+    
+      <p><b>-P, --machine-pass</b></p>
+      <p>Use stored machine account password (implies -k).</p>
+    
+
+    
+      <p><b>--simple-bind-dn=<em>STRING</em></b></p>
+      <p>DN to use for a simple bind.</p>
+    
+
+    
+      <p><b>-k, --kerberos-file=<em>STRING</em></b></p>
+      <p>Use Kerberos.</p>
+    
+
+    
+      <p><b>--use-security-mechanisms=<em>STRING</em></b></p>
+      <p>Restricted list of authentication mechanisms available for use with this authentication.</p>
+    
+
+    
+      <p><b>-V, -version</b></p>
+      <p>Print version.</p>
+    
+
+  
+
+  <h2>EXAMPLES</h2>
+
+    <p>wmic -U [domain/]adminuser%mysecret //192.168.1.42 &quot;select * from Win32_ComputerSystem&quot;</p>
+    <p>
+      Connect to the Windows system running at IP address 192.168.1.42 with
+      the user &quot;adminuser&quot; in domain &quot;domain&quot; and the password &quot;mysecret&quot;.
+      Then run the query and return the results.
+    <p>
+      If you drop the password, it will be asked for.
+    </p>
+    </p>
+  
+
+
+  <h2>SEE ALSO</h2>
+
+    <p>
+      <b>winexe (1)</b>
+    </p>
+  
+
+
+  <h2>MORE INFORMATION ABOUT THE OpenVAS PROJECT</h2>
+
+    <p>
+      The canonical places where you will find more information
+      about the OpenVAS project are:
+
+      <a href = "http://www.openvas.org/">http://www.openvas.org/</a>
+      (Official site)
+
+      <a href = "http://wald.intevation.org/projects/openvas/">http://wald.intevation.org/projects/openvas/</a>
+      (Development Platform)
+    </p>
+  
+
+
+  <h2>COPYRIGHT</h2>
+
+    <p>
+      The omp command line client is released under the GNU GPL,
+      version 2, or, at your option, any later version.
+    </p>
+  
+
+
+</td></tr></table></center>
+</body>
