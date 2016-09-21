@@ -1,5 +1,10 @@
 2016-09-21  Christian Fischer <christian.fischer@greenbone.net>
 
+	* samba/pidl/pidl (process_file): Removed deprecated
+	defined call on array. Patch by Sebastien Aucouturier. 
+
+2016-09-21  Christian Fischer <christian.fischer@greenbone.net>
+
 	* INSTALL: Added missing install prerequisites on debian.
 
 2016-06-30  Jan-Oliver Wagner <jan-oliver.wagner@greenbone.net>
