@@ -1,5 +1,11 @@
 2016-11-09  Michael Wiegand <michael.wiegand@greenbone.net>
 
+	Post release version bump.
+
+	* CMakeLists.txt: Updated version to 1.0.3.
+
+2016-11-09  Michael Wiegand <michael.wiegand@greenbone.net>
+
 	Preparing the openvas-smb 1.0.2 release.
 
 	* CHANGES: Updated.
