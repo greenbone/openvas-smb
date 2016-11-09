@@ -1,3 +1,9 @@
+2016-11-09  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	Preparing the openvas-smb 1.0.2 release.
+
+	* CHANGES: Updated.
+
 2016-09-21  Christian Fischer <christian.fischer@greenbone.net>
 
 	* samba/pidl/pidl (process_file): Removed deprecated

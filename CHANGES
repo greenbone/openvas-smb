@@ -1,3 +1,26 @@
+openvas-smb 1.0.2 (2016-11-09)
+
+This is the second maintenance release of the openvas-smb module 1.0 for the Open
+Vulnerability Assessment Systems (OpenVAS).
+
+This release features a number of minor improvements to both code and build
+process. It raises the minimum required version of the GnuTLS library and
+improves the documentation of the 'wmic' and 'winexe' binaries.
+
+Many thanks to everyone who has contributed to this release:
+Sebastien Aucouturier, Christian Fischer, Sven Haardiek, Andre Heinecke, Miguel
+Angel Cabrera Moya, Jan-Oliver Wagner and Michael Wiegand.
+
+Main changes compared to 1.0.1:
+* The minimum required version of the GnuTLS library has been raised to 3.2.15
+  in order to enforce the presence of newer (more secure) TLS and ciphers.
+* The build process has been improved in a number of places and is now more
+  consistent with the other OpenVAS modules.
+* Minor code clean-ups and fixes to make sure openvas-smb builds on more recent
+  systems.
+* The documentation has been improved.
+
+
 openvas-smb 1.0.1 (2015-03-13)
 
 This is the first maintenance release of the openvas-smb module 1.0 for the Open
