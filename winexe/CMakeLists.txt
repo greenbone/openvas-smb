@@ -93,7 +93,7 @@ target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRAR
 
 install (TARGETS winexe RUNTIME DESTINATION ${BINDIR})
 
-set_target_properties (openvas_wincmd PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
+set_target_properties (openvas_wincmd PROPERTIES SOVERSION "${PROJECT_VERSION_MAJOR}")
 set_target_properties (openvas_wincmd PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
 
 install (TARGETS openvas_wincmd

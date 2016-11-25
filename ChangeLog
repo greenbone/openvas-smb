@@ -1,3 +1,23 @@
+2016-11-25  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	Streamline handling of version information.
+
+	* CMakeLists.txt: Raise minimum required CMake version to 3.0 to make
+	setting the project version with the PROJECT command available. Set
+	project version using PROJECT command. Set project language properly.
+	Check parent directory when setting SVN_EXECUTABLE, because since 1.7
+	svn has a single .svn directory. Set project version independently of
+	CPack configuration. Make switching between beta and stable version
+	schemes easier. Use version string with possible SVN revision suffix
+	for the CPack package version. Do not set LIBOPENVASCONFIG_VERSION and
+	OPENVASLIB_VERSION since both are unused.
+
+	* winexe/CMakeLists.txt: Set SOVERSION from PROJECT_VERSION_MAJOR
+	instead of CPACK_PACKAGE_VERSION_MAJOR.
+
+	* wmi/CMakeLists.txt: Set SOVERSION from PROJECT_VERSION_MAJOR
+	instead of CPACK_PACKAGE_VERSION_MAJOR.
+
 2016-11-09  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	Post release version bump.

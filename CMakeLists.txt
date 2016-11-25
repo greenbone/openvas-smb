@@ -22,8 +22,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
-cmake_minimum_required(VERSION 2.8.8)
-project(openvas-smb)
+cmake_minimum_required(VERSION 3.0)
+
+project(openvas-smb
+  VERSION 1.0.3
+  LANGUAGES C)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -52,15 +55,35 @@ macro (Subversion_GET_REVISION dir variable)
 endmacro (Subversion_GET_REVISION)
 
 if (NOT CMAKE_BUILD_TYPE MATCHES "Release")
-  if (EXISTS "${CMAKE_SOURCE_DIR}/.svn/")
+  if (EXISTS "${CMAKE_SOURCE_DIR}/.svn/" OR EXISTS "${CMAKE_SOURCE_DIR}/../.svn/")
     if (SVN_EXECUTABLE)
       Subversion_GET_REVISION(. ProjectRevision)
       set (SVN_REVISION "~svn${ProjectRevision}")
     else (SVN_EXECUTABLE)
       set (SVN_REVISION "~svn")
     endif (SVN_EXECUTABLE)
-  endif (EXISTS "${CMAKE_SOURCE_DIR}/.svn/")
+  endif (EXISTS "${CMAKE_SOURCE_DIR}/.svn/" OR EXISTS "${CMAKE_SOURCE_DIR}/../.svn/")
 endif (NOT CMAKE_BUILD_TYPE MATCHES "Release")
+
+# Set beta version if this is a beta release series,
+# unset if this is a stable release series.
+set (PROJECT_BETA_RELEASE 0)
+
+if (SVN_REVISION)
+  set (PROJECT_VERSION_SVN "${SVN_REVISION}")
+endif (SVN_REVISION)
+
+# If PROJECT_BETA_RELEASE is set, the version string will be set to:
+#   "major.minor+beta${PROJECT_BETA_RELEASE}"
+# If PROJECT_BETA_RELEASE is NOT set, the version string will be set to:
+#   "major.minor.patch"
+if (PROJECT_BETA_RELEASE)
+  set (PROJECT_VERSION_SUFFIX "+beta${PROJECT_BETA_RELEASE}")
+else (PROJECT_BETA_RELEASE)
+  set (PROJECT_VERSION_SUFFIX ".${PROJECT_VERSION_PATCH}")
+endif (PROJECT_BETA_RELEASE)
+
+set (PROJECT_VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}${PROJECT_VERSION_SUFFIX}")
 
 # CPACK settings adapted from openvas-libraries
 set (CPACK_CMAKE_GENERATOR "Unix Makefiles")
@@ -75,15 +98,7 @@ set (CPACK_SOURCE_TOPLEVEL_TAG "")
 set (CPACK_SYSTEM_NAME "")
 set (CPACK_TOPLEVEL_TAG "")
 
-set (CPACK_PACKAGE_VERSION_MAJOR "1")
-set (CPACK_PACKAGE_VERSION_MINOR "0")
-
-# Use this scheme for stable releases:
-set (CPACK_PACKAGE_VERSION_PATCH "3${SVN_REVISION}")
-set (CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
-# Use this scheme for +betaN and +rcN releases:
-#set (CPACK_PACKAGE_VERSION_PATCH "+beta1${SVN_REVISION}")
-#set (CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}${CPACK_PACKAGE_VERSION_PATCH}")
+set (CPACK_PACKAGE_VERSION "${PROJECT_VERSION_STRING}${PROJECT_VERSION_SVN}")
 
 set (CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${CPACK_PACKAGE_VERSION}")
 set (CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${CPACK_PACKAGE_VERSION}")
@@ -139,16 +154,6 @@ set (CMAKE_C_FLAGS "-Wno-unused-result -fno-strict-aliasing ${CMAKE_C_FLAGS}")
 set (LINKER_HARDENING_FLAGS     "-Wl,-z,relro -Wl,-z,now")
 
 ## Version
-
-string (REPLACE "
-" "" OPENVASLIB_VERSION ${CPACK_PACKAGE_VERSION})
-
-string(SUBSTRING ${CPACK_PACKAGE_VERSION_PATCH} 0 1 BETA_INDICATOR)
-if (BETA_INDICATOR MATCHES "^\\+")
-  set (LIBOPENVASCONFIG_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.0")
-else (BETA_INDICATOR MATCHES "^\\+")
-  set (LIBOPENVASCONFIG_VERSION "${OPENVASLIB_VERSION}")
-endif (BETA_INDICATOR MATCHES "^\\+")
 
 configure_file (VERSION.in ${CMAKE_BINARY_DIR}/VERSION @ONLY)
 configure_file (libopenvas_wmiclient.pc.in ${CMAKE_BINARY_DIR}/libopenvas_wmiclient.pc @ONLY)
