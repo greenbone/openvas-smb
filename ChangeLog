@@ -1,5 +1,10 @@
 2017-01-03  Hani Benhabiles <hani.benhabiles@greenbone.net>
 
+	* samba/lib/tls/tls.c (tls_init_client): Fix build warnings on recent
+	gnutls versions due to usage of deprecated types.
+
+2017-01-03  Hani Benhabiles <hani.benhabiles@greenbone.net>
+
 	* samba/lib/tls/tls.c (tls_init_client): Remove superfluous call to
 	deprecated gnutls_certificate_type_set_priority() as gnutls_set_default_priority()
 	is already called. Fixes build with recent gnutls versions.

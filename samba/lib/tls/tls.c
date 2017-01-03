@@ -37,8 +37,8 @@ typedef gnutls_datum gnutls_datum_t;
 
 /* hold persistent tls data */
 struct tls_params {
-	gnutls_certificate_credentials x509_cred;
-	gnutls_dh_params dh_params;
+	gnutls_certificate_credentials_t x509_cred;
+	gnutls_dh_params_t dh_params;
 	BOOL tls_enabled;
 };
 #endif
@@ -49,14 +49,14 @@ struct tls_context {
 	struct fd_event *fde;
 	BOOL tls_enabled;
 #if ENABLE_GNUTLS
-	gnutls_session session;
+	gnutls_session_t session;
 	BOOL done_handshake;
 	BOOL have_first_byte;
 	uint8_t first_byte;
 	BOOL tls_detect;
 	const char *plain_chars;
 	BOOL output_pending;
-	gnutls_certificate_credentials xcred;
+	gnutls_certificate_credentials_t xcred;
 	BOOL interrupted;
 #endif
 };
@@ -108,7 +108,7 @@ static NTSTATUS tls_socket_init(struct socket_context *sock)
 /*
   callback for reading from a socket
 */
-static ssize_t tls_pull(gnutls_transport_ptr ptr, void *buf, size_t size)
+static ssize_t tls_pull(gnutls_transport_ptr_t ptr, void *buf, size_t size)
 {
 	struct tls_context *tls = talloc_get_type(ptr, struct tls_context);
 	NTSTATUS status;
@@ -147,7 +147,7 @@ static ssize_t tls_pull(gnutls_transport_ptr ptr, void *buf, size_t size)
 /*
   callback for writing to a socket
 */
-static ssize_t tls_push(gnutls_transport_ptr ptr, const void *buf, size_t size)
+static ssize_t tls_push(gnutls_transport_ptr_t ptr, const void *buf, size_t size)
 {
 	struct tls_context *tls = talloc_get_type(ptr, struct tls_context);
 	NTSTATUS status;
@@ -502,7 +502,7 @@ struct socket_context *tls_init_server(struct tls_params *params,
 					params->x509_cred));
 	gnutls_certificate_server_set_request(tls->session, GNUTLS_CERT_REQUEST);
 	gnutls_dh_set_prime_bits(tls->session, DH_BITS);
-	gnutls_transport_set_ptr(tls->session, (gnutls_transport_ptr)tls);
+	gnutls_transport_set_ptr(tls->session, (gnutls_transport_ptr_t)tls);
 	gnutls_transport_set_pull_function(tls->session, (gnutls_pull_func)tls_pull);
 	gnutls_transport_set_push_function(tls->session, (gnutls_push_func)tls_push);
 
@@ -578,7 +578,7 @@ struct socket_context *tls_init_client(struct socket_context *socket,
 
 	talloc_set_destructor(tls, tls_destructor);
 
-	gnutls_transport_set_ptr(tls->session, (gnutls_transport_ptr)tls);
+	gnutls_transport_set_ptr(tls->session, (gnutls_transport_ptr_t)tls);
 	gnutls_transport_set_pull_function(tls->session, (gnutls_pull_func)tls_pull);
 	gnutls_transport_set_push_function(tls->session, (gnutls_push_func)tls_push);
 	tls->tls_detect = False;
