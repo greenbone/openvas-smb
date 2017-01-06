@@ -1,3 +1,35 @@
+2017-01-06  Michael Wiegand <michael.wiegand@greenbone.net>
+
+	Use pkg-config for finding heimdal-gssapi and popt instead of custom
+	CMake modules, this enables us to set minimum required versions.
+	Setting required version of heimdal-gssapi to >= 1.6.0 based on report
+	from Dale Whitesell. Improve documentation of prerequisites and
+	required versions.
+
+	* CMakeLists.txt: Removed 'cmake/' directory from CMake module path.
+	Remove usage of 'FindPopt' and 'FindGSSAPI' modules and use
+	pkg_check_modules instead.
+
+	* INSTALL: Itemize prerequisites and note minimum required versions
+	where they are known.
+
+	* samba/CMakeLists.txt: Use variable set by pkg_check_modules for
+	include_directories. Use static GSSAPI flags for linking samba-static.
+
+	* winexe/CMakeLists.txt: Removed redundant find_package for GnuTLS.
+	Remove redundant use of GSSAPI libraries in linker command since they
+	are already passed to the linker via the samba-static target.
+
+	* wmi/CMakeLists.txt: Removed redundant use of GSSAPI libraries in
+	linker command since they are already passed to the linker via the
+	samba-static target.
+
+	* cmake/FindGSSAPI.cmake: Removed now obsolete CMake module.
+
+	* cmake/FindPopt.cmake: Removed now obsolete CMake module.
+
+	* cmake/: Remove directory.
+
 2017-01-03  Hani Benhabiles <hani.benhabiles@greenbone.net>
 
 	* samba/lib/tls/tls.c (tls_init_client): Fix build warnings on recent

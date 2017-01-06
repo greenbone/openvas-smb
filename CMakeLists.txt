@@ -28,17 +28,9 @@ project(openvas-smb
   VERSION 1.0.3
   LANGUAGES C)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
-
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Perl REQUIRED)
-find_package(Popt REQUIRED)
-
-find_package(GSSAPI)
-if (NOT "${GSSAPI_FLAVOR_HEIMDAL}" STREQUAL "TRUE")
-  message (SEND_ERROR "The heimdal GSS library could not be found. Please make sure the heimdal development package is installed.")
-endif(NOT "${GSSAPI_FLAVOR_HEIMDAL}" STREQUAL "TRUE")
 
 include (FindPkgConfig)
 
@@ -148,6 +140,8 @@ endif (NOT INCLUDEDIR)
 message ("-- Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
 pkg_check_modules (GNUTLS REQUIRED gnutls>=3.2.15)
+pkg_check_modules (GSSAPI REQUIRED heimdal-gssapi>=1.6.0)
+pkg_check_modules (POPT REQUIRED popt)
 
 set (CMAKE_C_FLAGS "-fPIC -O2 -D_FORTIFY_SOURCE=2 -fstack-protector ${CMAKE_C_FLAGS}")
 set (CMAKE_C_FLAGS "-Wno-unused-result -fno-strict-aliasing ${CMAKE_C_FLAGS}")

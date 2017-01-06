@@ -56,8 +56,6 @@ include_directories(${GLIB_INCLUDE_DIRS})
 
 find_program(MINGW_GCC NAMES i686-w64-mingw32-gcc i586-mingw32msvc-gcc)
 
-find_package(GnuTLS REQUIRED)
-
 if (NOT MINGW_GCC)
   message(SEND_ERROR "i586-mingw32msvc-gcc not found in PATH.\nIt is needed to build the Windows Service for winexe.")
 endif(NOT MINGW_GCC)
@@ -86,10 +84,10 @@ add_executable(bin2c ${BINTOC_SOURCES})
 add_executable(winexe ${WINEXE_SOURCES} ${SHARED_SOURCES})
 
 add_library(openvas_wincmd SHARED ${WINCMD_SOURCES} ${SHARED_SOURCES})
-target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${GLIB_LIBRARIES} ${LINKER_HARDENING_FLAGS})
+target_link_libraries(openvas_wincmd samba-static dl ${GNUTLS_LIBRARIES} ${POPT_LIBRARIES} ${GLIB_LIBRARIES} ${LINKER_HARDENING_FLAGS})
 set_target_properties (openvas_wincmd PROPERTIES LINK_FLAGS "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/wincmd.map")
 
-target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${LINKER_HARDENING_FLAGS})
+target_link_libraries(winexe samba-static dl ${GNUTLS_LIBRARIES} ${POPT_LIBRARIES} ${LINKER_HARDENING_FLAGS})
 
 install (TARGETS winexe RUNTIME DESTINATION ${BINDIR})
 
