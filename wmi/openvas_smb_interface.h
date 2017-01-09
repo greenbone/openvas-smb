@@ -35,7 +35,7 @@
 #ifndef _NASL_OPENVAS_SMB_INTERFACE_H
 #define _NASL_OPENVAS_SMB_INTERFACE_H
 
-typedef int SMB_HANDLE;
+typedef long int SMB_HANDLE;
 
 char * smb_versioninfo();
 int smb_connect(const char *, const char *, const char *, const char *, SMB_HANDLE *);

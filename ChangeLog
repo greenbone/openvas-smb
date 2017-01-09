@@ -1,3 +1,7 @@
+2017-01-10  Hani Benhabiles <hani.benhabiles@greenbone.net>
+
+	* wmi/openvas_smb_interface.h (SMB_HANDLE): Define to long int.
+
 2017-01-06  Michael Wiegand <michael.wiegand@greenbone.net>
 
 	Use pkg-config for finding heimdal-gssapi and popt instead of custom
