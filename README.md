@@ -1,5 +1,4 @@
-openvas-smb
-===========
+# openvas-smb
 
 This is the smb module for the Open Vulnerability Assessment System
 (OpenVAS). It includes libraries (openvas-wmiclient / openvas-wincmd) to
@@ -25,7 +24,7 @@ Please use the OpenVAS bug tracker located at http://bugs.openvas.org/ to report
 bugs.
 
 
-History:
+## History:
 
 This module is derived from a package distributed by Zenoss, Inc.,
 named wmi-1.3.14. The original location was:
