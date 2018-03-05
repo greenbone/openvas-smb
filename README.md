@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/greenbone/openvas-smb/tree/master.svg?style=svg)](https://circleci.com/gh/greenbone/openvas-smb/tree/master)
+
 # openvas-smb
 
 This is the smb module for the Open Vulnerability Assessment System
