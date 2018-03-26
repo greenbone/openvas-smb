@@ -1,3 +1,13 @@
+SUMMARY OF RELEASE CHANGES FOR OPENVAS-SMB
+==========================================
+
+For detailed code changes, please visit
+ https://github.com/greenbone/openvas-smb/commits/master
+or get the entire source code repository and view log history:
+$ git clone https://github.com/greenbone/openvas-smb.git
+$ cd openvas-smb && git log
+
+
 openvas-smb 1.0.2 (2016-11-09)
 
 This is the second maintenance release of the openvas-smb module 1.0 for the Open
