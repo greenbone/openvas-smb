@@ -25,8 +25,8 @@
 # Howto update man pages:
 # With "make man" and "make man-html", new files with ".8" and ".8.html" are
 # created in the build/doc directory. These files need to be copied to the
-# source doc directory and committed as "generated from .8.xml", see ChangeLog
-# for examples.
+# source doc directory and committed as "generated from .8.xml", see log
+# history for examples.
 
 ## Find xml2man
 
