@@ -4,7 +4,7 @@ SUMMARY OF RELEASE CHANGES FOR OPENVAS-SMB
 For detailed code changes, please visit
  https://github.com/greenbone/openvas-smb/commits/master
 or get the entire source code repository and view log history:
-$ git clone git@github.com:greenbone/openvas-smb.git
+$ git clone https://github.com/greenbone/openvas-smb.git
 $ cd openvas-smb && git log
 
 
