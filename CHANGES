@@ -7,6 +7,27 @@ or get the entire source code repository and view log history:
 $ git clone https://github.com/greenbone/openvas-smb.git
 $ cd openvas-smb && git log
 
+openvas-smb 1.0.3 (2018-03-26)
+
+This is the third maintenance release of the openvas-smb module 1.0 for the
+OpenVAS Scanner.
+
+This release features a number of minor improvements to both code and build process.
+It updates to Debian 9 Jessie as default and improves the documentation.
+
+Many thanks to everyone who has contributed to this release:
+ Bjoern Ricks, Hani Benhabiles, Christian Fischer, Jan-Oliver Wagner and Michael Wiegand.
+
+Main changes compared to 1.0.2:
+* Handling of version information has been improved.
+* Documentation has been improved.
+* Several issue which cause build failures and warnings with recent gnutls versions
+  have been addressed.
+* An issue which caused a memory access violation has been addressed.
+* The build process has been improved in a number of places and is now more
+  consistent with the other OpenVAS modules.
+* Update to Debian 9 as default has been done.
+
 
 openvas-smb 1.0.2 (2016-11-09)
 
