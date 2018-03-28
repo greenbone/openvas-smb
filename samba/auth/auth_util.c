@@ -23,7 +23,7 @@
 */
 
 #include "includes.h"
-#include <gssapi/gssapi.h>
+#include <heimdal/gssapi/gssapi.h>
 #include "auth/auth.h"
 #include "libcli/security/security.h"
 #include "libcli/auth/libcli_auth.h"
