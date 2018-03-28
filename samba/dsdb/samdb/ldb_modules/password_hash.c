@@ -209,12 +209,12 @@ static int add_krb5_keys_from_password(struct ldb_module *module, struct ldb_mes
 	}
 
 	/* TODO: We may wish to control the encryption types chosen in future */
-#ifdef NEW_HEIMDAL
-	krb5_ret = hdb_generate_key_set_password(smb_krb5_context->krb5_context,
-						 salt_principal, sambaPassword, &keys, &num_keys);
-#else
+#ifdef OLD_HEIMDAL
 	krb5_ret = hdb_generate_key_set_password(smb_krb5_context->krb5_context,
                                                  salt_principal, sambaPassword, NULL, 0, &keys, &num_keys);	
+#else
+	krb5_ret = hdb_generate_key_set_password(smb_krb5_context->krb5_context,
+						 salt_principal, sambaPassword, &keys, &num_keys);
 #endif
 	krb5_free_principal(smb_krb5_context->krb5_context, salt_principal);
 
