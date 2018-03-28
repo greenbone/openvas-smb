@@ -146,9 +146,9 @@ pkg_check_modules (GNUTLS REQUIRED gnutls>=3.2.15)
 pkg_check_modules (GSSAPI REQUIRED heimdal-gssapi>=1.6.0)
 pkg_check_modules (POPT REQUIRED popt)
 
-if (${GSSAPI_VERSION}  VERSION_LESS "7.1.0")
+if(${GSSAPI_VERSION} VERSION_LESS "7.1.0")
 	add_definitions(-DOLD_HEIMDAL)
-endif
+endif()
 set (CMAKE_C_FLAGS "-fPIC -O2 -D_FORTIFY_SOURCE=2 -fstack-protector ${CMAKE_C_FLAGS}")
 set (CMAKE_C_FLAGS "-Wno-unused-result -fno-strict-aliasing ${CMAKE_C_FLAGS}")
 set (LINKER_HARDENING_FLAGS     "-Wl,-z,relro -Wl,-z,now")
