@@ -27,7 +27,7 @@
 #include "lib/socket/socket.h"
 #include "system/network.h"
 #include "lib/events/events.h"
-#include "roken.h"
+#include <heimdal/roken.h>
 
 #include <heimdal/krb5.h>
 

@@ -24,7 +24,7 @@
 
 #include "includes.h"
 #include "system/kerberos.h"
-#include "roken.h"
+#include <heimdal/roken.h>
 
 #ifdef HAVE_KRB5
 

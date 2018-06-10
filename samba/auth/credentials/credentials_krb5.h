@@ -21,7 +21,7 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#include <gssapi/gssapi.h>
+#include <heimdal/gssapi/gssapi.h>
 
 struct ccache_container;
 

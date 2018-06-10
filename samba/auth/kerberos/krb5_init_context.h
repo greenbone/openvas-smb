@@ -17,6 +17,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
+#include <heimdal/krb5.h>
 
 struct smb_krb5_context {
 	struct krb5_context_data *krb5_context;

@@ -23,9 +23,9 @@
 */
 
 #include "includes.h"
-#include <gssapi/gssapi_krb5.h>
+#include <heimdal/gssapi/gssapi_krb5.h>
 #include "system/kerberos.h"
-#include <gssapi/gssapi.h>
+#include <heimdal/gssapi/gssapi.h>
 #include "auth/kerberos/kerberos.h"
 #include "librpc/gen_ndr/krb5pac.h"
 #include "auth/auth.h"
