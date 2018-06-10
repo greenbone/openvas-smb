@@ -25,7 +25,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(openvas-smb
-  VERSION 1.0.3
+  VERSION 1.0.4
   LANGUAGES C)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -46,6 +46,7 @@ macro (Git_GET_REVISION dir variable)
                   WORKING_DIRECTORY ${dir}
                   OUTPUT_VARIABLE GIT_COMMIT_HASH
                   OUTPUT_STRIP_TRAILING_WHITESPACE)
+  string (REPLACE "/" "_" GIT_BRANCH ${GIT_BRANCH})
   set (${variable} "${GIT_COMMIT_HASH}-${GIT_BRANCH}")
 endmacro (Git_GET_REVISION)
 
@@ -53,7 +54,7 @@ if (NOT CMAKE_BUILD_TYPE MATCHES "Release")
   if (EXISTS "${CMAKE_SOURCE_DIR}/.git/")
     if (GIT_FOUND)
       Git_GET_REVISION(. ProjectRevision)
-      set (GIT_REVISION "~git$-{ProjectRevision}")
+      set (GIT_REVISION "~git-${ProjectRevision}")
     else (GIT_FOUND)
       set (GIT_REVISION "~git")
     endif (GIT_FOUND)
