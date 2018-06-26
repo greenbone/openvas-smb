@@ -118,20 +118,14 @@ static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
 /**
  * @brief Estiablish connection to a WMI RSOP service.
  *
- * @param[in] username - The username for getting access to WMI service
+ * @param[in] argc      Number wmic of arguments.
  *
- * @param[in] password - The password that corresponds to username
+ * @param[in] argv      Array of wmic arguments.
  *
- * @param[in] host - The host system to connect to
- *
- * @param[in] namespace - The WMI namespace of the service.
- *
- * @param[out] handle - A connection handle in case of success.
- *
- * @return, 0 on success, -1 on failure
+ * @return, WMI_HANDLE on success, NULL on failure.
  */
-
-int wmi_connect_rsop(int argc, char **argv, WMI_HANDLE *handle)
+WMI_HANDLE
+wmi_connect_rsop (int argc, char **argv)
 {
   /*Works only for domain based systems and not for WORKGROUP */
 
@@ -154,7 +148,7 @@ int wmi_connect_rsop(int argc, char **argv, WMI_HANDLE *handle)
   if(ret == 1)
   {
     DEBUG(1, ("ERROR: %s\n", "Invalid input arguments"));
-    return -1;
+    return NULL;
   }
 
 
@@ -209,13 +203,12 @@ int wmi_connect_rsop(int argc, char **argv, WMI_HANDLE *handle)
   namespace = talloc_asprintf_append(v.v_string, "%s", "\\computer");
   result = WBEM_ConnectServer(ctx, args.hostname, namespace, 0, 0, 0, 0, 0, 0, &pWS);
 
-  *handle = (WMI_HANDLE) pWS;
-  return 0;
+  return pWS;
 
 error:
   status = werror_to_ntstatus(result);
   DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status)));
-  return -1;
+  return NULL;
 }
 
 
