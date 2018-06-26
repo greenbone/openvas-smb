@@ -118,19 +118,14 @@ static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
 /**
  * @brief Estiablish connection to a WMI Registry service.
  *
- * @param[in] username - The username for getting access to WMI service
+ * @param[in] argc      Number wmic of arguments.
  *
- * @param[in] password - The password that corresponds to username
+ * @param[in] argv      Array of wmic arguments.
  *
- * @param[in] host - The host system to connect to
- *
- * @param[in] namespace - The WMI namespace of the service.
- *
- * @param[out] handle - A connection handle in case of success.
- *
- * @return, 0 on success, -1 on failure
+ * @return, WMI_HANDLE on success, NULL on failure.
  */
-int wmi_connect_reg(int argc, char **argv, WMI_HANDLE *handle)
+WMI_HANDLE
+wmi_connect_reg (int argc, char **argv)
 {
   WERROR result;
   NTSTATUS status;
@@ -144,7 +139,7 @@ int wmi_connect_reg(int argc, char **argv, WMI_HANDLE *handle)
   if(ret == 1)
   {
     DEBUG(1, ("ERROR: %s\n", "Invalid input arguments"));
-    return -1;
+    return NULL;
   }
 
   dcerpc_init();
@@ -164,14 +159,12 @@ int wmi_connect_reg(int argc, char **argv, WMI_HANDLE *handle)
 
   result = WBEM_ConnectServer(ctx, args.hostname, "root\\default", 0, 0, 0, 0, 0, 0, &pWS);
   WERR_CHECK("Login to remote object.\n");
-  *handle = (WMI_HANDLE) pWS;
-
-  return 0;
+  return pWS;
 
 error:
   status = werror_to_ntstatus(result);
   DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status)));
-  return -1;
+  return NULL;
 }
 
 

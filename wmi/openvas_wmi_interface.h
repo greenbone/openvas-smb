@@ -35,19 +35,24 @@
 #ifndef _NASL_OPENVAS_WMI_INTERFACE_H
 #define _NASL_OPENVAS_WMI_INTERFACE_H
 
-typedef int WMI_HANDLE;
+typedef struct IWbemServices * WMI_HANDLE;
 
 char *wmi_versioninfo ();
-int wmi_connect(int argc, char **argv, WMI_HANDLE * handle);
-//int wmi_connect (const char *, const char *, const char *, const char *,
-//                 WMI_HANDLE *);
+
+WMI_HANDLE
+wmi_connect (int, char **);
+
 int wmi_close (WMI_HANDLE);
 int wmi_query (WMI_HANDLE, const char *, char **);
 
-int wmi_connect_rsop(int argc, char **argv, WMI_HANDLE * handle);
+WMI_HANDLE
+wmi_connect_rsop (int, char **);
+
 int wmi_query_rsop (WMI_HANDLE, const char *, char **);
 
-int wmi_connect_reg(int argc, char **argv, WMI_HANDLE * handle);
+WMI_HANDLE
+wmi_connect_reg (int, char **);
+
 int wmi_reg_get_sz (WMI_HANDLE, unsigned int, const char *, const char *,
                     char **);
 int wmi_reg_enum_value (WMI_HANDLE, unsigned int, const char *, char **);
