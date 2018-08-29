@@ -7,13 +7,28 @@ or get the entire source code repository and view log history:
 $ git clone https://github.com/greenbone/openvas-smb.git
 $ cd openvas-smb && git log
 
+openvas-smb 1.0.4 (2018-08-29)
+
+This is the fourth maintenance release of the openvas-smb module 1.0 for the
+OpenVAS Scanner.
+
+This release features a number of minor improvements to both code and build process.
+
+Many thanks to everyone who has contributed to this release:
+Hani Benhabiles, Christian Fischer, Bjoern Ricks and Michael Wiegand.
+
+Main changes compared to 1.0.3:
+* Support to build with heimdal version 7.5.0 has been added.
+* An issue which caused overflow on wmi_connect*() functions has been addressed.
+
+
 openvas-smb 1.0.3 (2018-03-26)
 
 This is the third maintenance release of the openvas-smb module 1.0 for the
 OpenVAS Scanner.
 
 This release features a number of minor improvements to both code and build process.
-It updates to Debian 9 Jessie as default and improves the documentation.
+It updates to Debian 9 Stretch as default and improves the documentation.
 
 Many thanks to everyone who has contributed to this release:
  Bjoern Ricks, Hani Benhabiles, Christian Fischer, Jan-Oliver Wagner and Michael Wiegand.
