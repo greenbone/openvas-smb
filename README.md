@@ -1,30 +1,55 @@
-[![CircleCI](https://circleci.com/gh/greenbone/openvas-smb/tree/master.svg?style=svg)](https://circleci.com/gh/greenbone/openvas-smb/tree/master)
+![Greenbone Logo](https://www.greenbone.net/wp-content/uploads/gb_logo_resilience_horizontal.png)
 
 # openvas-smb
 
-This is the smb module for the OpenVAS Scanner. It includes libraries
-(openvas-wmiclient / openvas-wincmd) to interface with Microsoft Windows
-Systems through the Windows Management Instrumentation API and a winexe
+[![GitHub releases](https://img.shields.io/github/release/greenbone/openvas-smb.svg)](https://github.com/greenbone/openvas-smb/releases)
+[![CircleCI](https://circleci.com/gh/greenbone/openvas-smb/tree/master.svg?style=svg)](https://circleci.com/gh/greenbone/openvas-smb/tree/master)
+
+This is the `smb` module for the OpenVAS Scanner. It includes libraries
+(`openvas-wmiclient`/`openvas-wincmd`) to interface with Microsoft Windows
+Systems through the Windows Management Instrumentation API and a `winexe`
 binary to execute processes remotely on that system.
 
-For more information, please refer to http://www.greenbone.net or
-to http://www.openvas.org.
+## Installation
 
-Please see the file COPYING for the license information.
+This module can be configured, built and installed with following commands:
 
-To build and install openvas-smb, please refer to the instructions provided in
-the file INSTALL.  If you are not familiar or comfortable with building from
-source code, we recommend that you use the prepared virtual machine with a
-readily available setup.  Information regarding the virtual machine is available
-at http://www.greenbone.net/en/community-edition/.
+    cmake .
+    make install
 
-An overview on commercial options is available at
-http://www.greenbone.net/en/product-comparison/.
+For detailed installation requirements and instructions, please see the file
+[INSTALL.md](INSTALL.md).
 
-You can report bugs to https://github.com/greenbone/openvas-smb/issues
+If you are not familiar or comfortable building from source code, we recommend
+that you use the Greenbone Community Edition, a prepared virtual machine with a
+readily available setup. Information regarding the virtual machine is available
+at <https://www.greenbone.net/en/community-edition/>.
 
+## Support
 
-## History:
+For any question on the usage of `openvas-smb` please use the [Greenbone
+Community Portal](https://community.greenbone.net/c/gse). If you found a
+problem with the software, please [create an
+issue](https://github.com/greenbone/openvas-smb/issues) on GitHub. If you are a
+Greenbone customer you may alternatively or additionally forward your issue to
+the Greenbone Support Portal.
+
+## Maintainer
+
+This project is maintained by [Greenbone Networks GmbH](https://www.greenbone.net/).
+
+## Contributing
+
+Your contributions are highly appreciated. Please [create a pull
+request](https://github.com/greenbone/openvas-smb/pulls) on GitHub. Bigger
+changes need to be discussed with the development team via the [issues section
+at github](https://github.com/greenbone/openvas-smb/issues) first.
+
+## License
+
+Licensed under the [GNU General Public License v2.0 or later](COPYING).
+
+## History
 
 This module is derived from a package distributed by Zenoss, Inc.,
 named wmi-1.3.14. The original location was:

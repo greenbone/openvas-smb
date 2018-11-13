@@ -2,7 +2,7 @@ INSTALLATION INSTRUCTIONS FOR OPENVAS-SMB
 =========================================
 
 Please note: The reference system used by most of the developers is Debian
-GNU/Linux 'Stretch' 9. The build might fail on any other system. Also it is
+GNU/Linux 'Stretch' 9. The build might fail on any other system. Also, it is
 necessary to install dependent development packages.
 
 Prerequisites for openvas-smb
@@ -16,36 +16,38 @@ Prerequisites for openvas-smb
 * libglib2.0-dev
 
 Install prerequisites on Debian GNU/Linux 'Stretch' 9:
-# apt-get install install gcc cmake pkg-config gcc-mingw-w64 libgnutls28-dev \
-  perl-base heimdal-dev libpopt-dev libglib2.0-dev
+
+    apt-get install gcc cmake pkg-config gcc-mingw-w64 libgnutls28-dev \
+                    perl-base heimdal-dev libpopt-dev libglib2.0-dev
 
 Compiling openvas-smb
 ---------------------
 
 Create a build directory and change into it with
 
-    $ mkdir build
-    $ cd build
+    mkdir build
+    cd build
 
 Configure the build with
 
-    $ cmake -DCMAKE_INSTALL_PREFIX=/path/to/your/installation ..
+    cmake -DCMAKE_INSTALL_PREFIX=/path/to/your/installation ..
 
 or (if you want to use the default installation path /usr/local)
 
-    $ cmake ..
+    cmake ..
 
 This only needs to be done once.
 
 Thereafter, the following commands are useful.
 
-    $ make                # build the binaries
-    $ make install        # install the build
-    $ make rebuild_cache  # rebuild the cmake cache
+    make                # build the libraries
+    make doc            # build the documentation
+    make doc-full       # build more developer-oriented documentation
+    make install        # install the build
+    make rebuild_cache  # rebuild the cmake cache
 
-Please note that you may have to execute "make install" as root, especially if
+Please note that you may have to execute `make install` as root, especially if
 you have specified a prefix for which your user does not have full permissions.
 
-To clean up the build environment, simply remove the contents of the "build"
+To clean up the build environment, simply remove the contents of the `build`
 directory you created above.
-
