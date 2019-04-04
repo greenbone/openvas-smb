@@ -7,6 +7,15 @@ or get the entire source code repository and view log history:
 $ git clone https://github.com/greenbone/openvas-smb.git
 $ cd openvas-smb && git log
 
+openvas-smb 1.0.5 (2019-04-05)
+
+This is the fifth maintenance release of the openvas-smb module 1.0 for the
+Greenbone Vulnerability Management 10 (GVM-10) framework.
+
+Main changes compared to 1.0.4:
+* Documentation has been updated and improved.
+
+
 openvas-smb 1.0.4 (2018-08-29)
 
 This is the fourth maintenance release of the openvas-smb module 1.0 for the
