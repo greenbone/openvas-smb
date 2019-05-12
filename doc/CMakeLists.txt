@@ -76,12 +76,7 @@ endif (NOT DOXYGEN_EXECUTABLE)
 
 if (XMLTOMAN_EXECUTABLE)
   add_custom_target (man COMMENT "Building manual page..."
-    DEPENDS winexe.1 wmic.1)
-
-  add_custom_command (OUTPUT winexe.1
-    COMMAND sh
-    ARGS -c \"${XMLTOMAN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/winexe.1.xml > ${CMAKE_CURRENT_BINARY_DIR}/winexe.1\;\"
-    DEPENDS winexe.1.xml)
+    DEPENDS wmic.1)
 
   add_custom_command (OUTPUT wmic.1
     COMMAND sh
@@ -98,12 +93,7 @@ endif (XMLTOMAN_EXECUTABLE)
 
 if (XMLMANTOHTML_EXECUTABLE)
   add_custom_target (man-html COMMENT "Building manual page HTML..."
-    DEPENDS winexe.html wmic.html)
-
-  add_custom_command (OUTPUT winexe.html
-    COMMAND sh
-    ARGS -c \"${XMLMANTOHTML_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/winexe.1.xml > ${CMAKE_CURRENT_BINARY_DIR}/winexe.html\;\"
-    DEPENDS winexe.1.xml)
+    DEPENDS wmic.html)
 
   add_custom_command (OUTPUT wmic.html
     COMMAND sh
@@ -112,11 +102,9 @@ if (XMLMANTOHTML_EXECUTABLE)
 
 else (XMLMANTOHTML_EXECUTABLE)
   message (STATUS "WARNING: xmlmantohtml is required for manpage in HTML docs.")
-  add_custom_command (OUTPUT winexe.html
-    COMMAND echo "[Error: xmlmantohtml required to see manpage here]" > winexe.html)
   add_custom_command (OUTPUT wmic.html
     COMMAND echo "[Error: xmlmantohtml required to see manpage here]" > wmic.html)
 endif (XMLMANTOHTML_EXECUTABLE)
 
-install (FILES winexe.1 wmic.1
+install (FILES wmic.1
   DESTINATION ${DATADIR}/man/man1 )

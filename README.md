@@ -7,8 +7,8 @@
 
 This is the `smb` module for the OpenVAS Scanner. It includes libraries
 (`openvas-wmiclient`/`openvas-wincmd`) to interface with Microsoft Windows
-Systems through the Windows Management Instrumentation API and a `winexe`
-binary to execute processes remotely on that system.
+Systems through the Windows Management Instrumentation API and a `wmic`
+binary to execute queries remotely on that system.
 
 ## Installation
 
