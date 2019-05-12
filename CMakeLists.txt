@@ -167,6 +167,5 @@ install (FILES ${CMAKE_BINARY_DIR}/libopenvas_wincmd.pc
          DESTINATION ${LIBDIR}/pkgconfig)
 
 add_subdirectory(samba)
-add_subdirectory(winexe)
 add_subdirectory(wmi)
 add_subdirectory(doc)

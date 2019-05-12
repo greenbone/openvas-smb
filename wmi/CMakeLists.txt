@@ -29,7 +29,6 @@ set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba/lib/replace
    ${CMAKE_SOURCE_DIR}/samba/ntvfs
    ${CMAKE_SOURCE_DIR}/samba/param
-   ${CMAKE_SOURCE_DIR}/samba/winexe
    ${CMAKE_BINARY_DIR}/samba
 )
 include_directories(${SMB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/..)
