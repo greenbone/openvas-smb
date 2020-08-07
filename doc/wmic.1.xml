@@ -205,22 +205,25 @@
     </p>
   </section>
 
-  <section name="MORE INFORMATION ABOUT THE OpenVAS PROJECT">
+  <section name="MORE INFORMATION">
     <p>
       The canonical places where you will find more information
       about the OpenVAS project are:
 
-      <url href="http://www.openvas.org/"/>
-      (Official site)
+      <url href="https://community.greenbone.net"/>
+      (Community Portal)
 
-      <url href="http://wald.intevation.org/projects/openvas/"/>
+      <url href="https://github.com/greenbone"/>
       (Development Platform)
+
+      <url href="https://www.openvas.org"/>
+      (Traditional home site)
     </p>
   </section>
 
   <section name="COPYRIGHT">
     <p>
-      The omp command line client is released under the GNU GPL,
+      The smb module is released under the GNU GPL,
       version 2, or, at your option, any later version.
     </p>
   </section>
