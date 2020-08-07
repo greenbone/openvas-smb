@@ -18,174 +18,174 @@
       several options with other samba tools.
     </p>
 
-  
+
 
 
   <h2>Options</h2>
 
-    
+
       <p><b>--uninstall</b></p>
       <p>Uninstall winexe service after remote execution.</p>
-    
 
-    
+
+
       <p><b>--reinstall</b></p>
       <p>Reinstall winexe service before remote execution.</p>
-    
 
-    
+
+
       <p><b>--system</b></p>
       <p>Use SYSTEM account.</p>
-    
 
-    
+
+
       <p><b>--runas=[<em>DOMAIN</em>\]<em>USERNAME</em>%<em>PASSWORD</em></b></p>
       <p>Run as user (BEWARE: password is sent in cleartext over net).</p>
-    
 
-    
+
+
       <p><b>--interactive=<em>INT</em></b></p>
       <p>Desktop interaction: 0 - disallow, 1 - allow. If you allow use also --system switch (Win requirement). Vista do not support this option.</p>
-    
 
-    
+
+
       <p><b>--ntlmv1=<em>INT</em></b></p>
       <p>Only use the NTLM v1 protocol for authentication: 0 - disabled, 1 - NTLMv2 Authentication disabled.</p>
-    
 
-    
+
+
       <p><b>-?, --help</b></p>
-      
-        <p>Show help.</p>
-      
-    
 
-    
+        <p>Show help.</p>
+
+
+
+
       <p><b>--usage</b></p>
       <p>Display brief usage message.</p>
-    
 
-    
+
+
       <p><b>-d, --debuglevel=<em>DEBUGLEVEL</em></b></p>
       <p>Set debug level.</p>
-    
 
-    
+
+
       <p><b>--debug-stderr</b></p>
       <p>Send debug output to STDERR.</p>
-    
 
-    
+
+
       <p><b>-s, --configfile=<em>CONFIGFILE</em></b></p>
       <p>Use alternative configuration file.</p>
-    
 
-    
+
+
       <p><b>--option=<em>NAME</em>=<em>VALUE</em></b></p>
       <p>Set smb.conf option from command line.</p>
-    
 
-    
+
+
       <p><b>-l, --log-basename=<em>LOGFILEBASE</em></b></p>
       <p>Basename for log/debug files.</p>
-    
 
-    
+
+
       <p><b>--leak-report</b></p>
       <p>enable talloc leak reporting on exit.</p>
-    
 
-    
+
+
       <p><b>--leak-report-full</b></p>
       <p>enable full talloc leak reporting on exit.</p>
-    
 
-    
+
+
       <p><b>-R, --name-resolve=<em>NAME-RESOLVE-ORDER</em></b></p>
       <p>Use these name resolution services only.</p>
-    
 
-    
+
+
       <p><b>-O, --socket-options=<em>SOCKETOPTIONS</em></b></p>
       <p>socket options to use.</p>
-    
 
-    
+
+
       <p><b>-n, --netbiosname=<em>NETBIOSNAME</em></b></p>
       <p>Primary netbios name.</p>
-    
 
-    
+
+
       <p><b>-W, --workgroup=<em>WORKGROUP</em></b></p>
       <p>Set the workgroup name.</p>
-    
 
-    
+
+
       <p><b>--realm=<em>REALM</em></b></p>
       <p>Set the realm name.</p>
-    
 
-    
+
+
       <p><b>-i, --scope=<em>SCOPE</em></b></p>
       <p>Use this Netbios scope.</p>
-    
 
-    
+
+
       <p><b>-m, --maxprotocol=<em>MAXPROTOCOL</em></b></p>
       <p>Set max protocol level.</p>
-    
 
-    
+
+
       <p><b>-U, --user=[<em>DOMAIN</em>]<em>USERNAME</em>[%<em>PASSWORD</em>]</b></p>
       <p>Set the network username.</p>
-    
 
-    
+
+
       <p><b>-N, --no-pass</b></p>
       <p>Don't ask for a password.</p>
-    
 
-    
+
+
       <p><b>--password=<em>STRING</em></b></p>
       <p>Password.</p>
-    
 
-    
+
+
       <p><b>-A, --authentication-file=<em>FILE</em></b></p>
       <p>Get the credentials from a file.</p>
-    
 
-    
+
+
       <p><b>-S, --signing=on|off|required</b></p>
       <p>Set the client signing state.</p>
-    
 
-    
+
+
       <p><b>-P, --machine-pass</b></p>
       <p>Use stored machine account password (implies -k).</p>
-    
 
-    
+
+
       <p><b>--simple-bind-dn=<em>STRING</em></b></p>
       <p>DN to use for a simple bind.</p>
-    
 
-    
+
+
       <p><b>-k, --kerberos-file=<em>STRING</em></b></p>
       <p>Use Kerberos.</p>
-    
 
-    
+
+
       <p><b>--use-security-mechanisms=<em>STRING</em></b></p>
       <p>Restricted list of authentication mechanisms available for use with this authentication.</p>
-    
 
-    
+
+
       <p><b>-V, -version</b></p>
       <p>Print version.</p>
-    
 
-  
+
+
 
   <h2>EXAMPLES</h2>
 
@@ -197,7 +197,7 @@
       If you drop the password, it will be asked for.
     </p>
     </p>
-  
+
 
 
   <h2>SEE ALSO</h2>
@@ -205,31 +205,34 @@
     <p>
       <b>wmic (1)</b>
     </p>
-  
 
 
-  <h2>MORE INFORMATION ABOUT THE OpenVAS PROJECT</h2>
+
+  <h2>MORE INFORMATION</h2>
 
     <p>
       The canonical places where you will find more information
       about the OpenVAS project are:
 
-      <a href = "http://www.openvas.org/">http://www.openvas.org/</a>
-      (Official site)
+      <a href = "https://community.greenbone.net">https://community.greenbone.net</a>
+      (Community Portal)
 
-      <a href = "http://wald.intevation.org/projects/openvas/">http://wald.intevation.org/projects/openvas/</a>
+      <a href = "https://github.com/greenbone">https://github.com/greenbone</a>
       (Development Platform)
+
+      <a href = "https://www.openvas.org">https://www.openvas.org</a>
+      (Traditional home site)
     </p>
-  
+
 
 
   <h2>COPYRIGHT</h2>
 
     <p>
-      The omp command line client is released under the GNU GPL,
+      The smb module is released under the GNU GPL,
       version 2, or, at your option, any later version.
     </p>
-  
+
 
 
 </td></tr></table></center>

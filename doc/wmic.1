@@ -2,10 +2,10 @@
 .SH NAME
 wmic \- Command line tool to query a registry or RSOP service on a remote Windows host via WMI
 .SH SYNOPSIS
-\fBwmic OPTIONS //host query 
+\fBwmic OPTIONS //host query
 \f1
 .SH DESCRIPTION
-This tool allows to run a query for a registry or RSOP service running on a remote Windows system via WMI. It is derived from the samba tools and shares several options with other samba tools. 
+This tool allows to run a query for a registry or RSOP service running on a remote Windows system via WMI. It is derived from the samba tools and shares several options with other samba tools.
 .SH OPTIONS
 .TP
 \fB--namesspace=\fISTRING\fB\f1
@@ -94,10 +94,25 @@ Print version.
 .SH EXAMPLES
 wmic -U [domain/]adminuser%mysecret //192.168.1.42 "select * from Win32_ComputerSystem"
 
-Connect to the Windows system running at IP address 192.168.1.42 with the user "adminuser" in domain "domain" and the password "mysecret". Then run the query and return the results. If you drop the password, it will be asked for. 
+Connect to the Windows system running at IP address 192.168.1.42 with the user "adminuser" in domain "domain" and the password "mysecret". Then run the query and return the results. If you drop the password, it will be asked for.
 .SH SEE ALSO
 \fBwinexe(1)\f1
-.SH MORE INFORMATION ABOUT THE OPENVAS PROJECT
-The canonical places where you will find more information about the OpenVAS project are: \fBhttp://www.openvas.org/\f1 (Official site) \fBhttp://wald.intevation.org/projects/openvas/\f1 (Development Platform) 
+.SH MORE INFORMATION
+The canonical places where you will find more information
+about OpenVAS are:
+
+.RS
+.UR https://community.greenbone.net
+Community Portal
+.UE
+.br
+.UR https://github.com/greenbone
+Development Platform
+.UE
+.br
+.UR https://www.openvas.org
+Traditional home site
+.UE
+.RE
 .SH COPYRIGHT
-The omp command line client is released under the GNU GPL, version 2, or, at your option, any later version. 
+The smb module is released under the GNU GPL, version 2, or, at your option, any later version.
