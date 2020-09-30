@@ -248,9 +248,10 @@ error:
  *
  * @param[in] query - The WQL query string
  *
- * @param[out] result - Result of query as string
+ * @param[out] res - Result of query as string, or the error.
  *
- * @return, 0 on success, -1 on failure
+ * @return, 0 on success, -1 on failure. If fail and res is filled, res must
+ *          be free'd.
  */
 int wmi_query(WMI_HANDLE handle, const char *query, char **res)
 {
@@ -277,7 +278,8 @@ int wmi_query(WMI_HANDLE handle, const char *query, char **res)
 
     result = IEnumWbemClassObject_SmartNext(pEnum, pWS->ctx, 0xFFFFFFFF, cnt, co, &ret);
     /* WERR_BADFUNC is OK, it means only that there is less returned objects than requested */
-    if (!W_ERROR_EQUAL(result, WERR_BADFUNC)) {
+    if (!W_ERROR_EQUAL(result, WERR_BADFUNC)
+        && W_ERROR_V(result) != WBEM_E_INVALID_CLASS) {
       WERR_CHECK("Retrieve result data.");
     }
     else {
@@ -309,6 +311,8 @@ int wmi_query(WMI_HANDLE handle, const char *query, char **res)
   error:
     status = werror_to_ntstatus(result);
     DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status)));
+    *res = strdup (("NTSTATUS: %s", nt_errstr(status)));
+
     return -1;
 }
 
