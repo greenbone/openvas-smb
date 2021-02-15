@@ -53,7 +53,6 @@ set(WMI_HDR
 )
 
 add_library(openvas_wmiclient SHARED ${WMICLIENT_SRC} ${WMI_SHARED_SRC})
-
 target_link_libraries(openvas_wmiclient samba-static dl ${GNUTLS_LIBRARIES} ${GSSAPI_LIBRARIES} ${POPT_LIBRARIES} ${LINKER_HARDENING_FLAGS})
 
 set_target_properties (openvas_wmiclient PROPERTIES SOVERSION "${PROJECT_VERSION_MAJOR}")

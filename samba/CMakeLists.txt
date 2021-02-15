@@ -36,6 +36,7 @@ set(CMAKE_C_CREATE_STATIC_LIBRARY "<CMAKE_AR> rc <TARGET> <LINK_FLAGS> <OBJECTS>
 
 include_directories(${GSSAPI_INCLUDE_DIRS})
 include_directories(${POPT_INCLUDE_DIRS})
+include_directories(${GNUTLS_INCLUDE_DIRS})
 
 set (SMB_INCLUDES
    ${CMAKE_SOURCE_DIR}/samba
@@ -450,5 +451,5 @@ add_custom_command(
 add_library(samba-static STATIC ${RPC_GEN_SRC} ${SAMBA_SRC} ${RPC_GEN_HEADERS})
 # Link against static heimdal-gssapi ldflags returned by pkg-config
 # Link against libhdb as well since it is missing from the list
-target_link_libraries (samba-static ${GSSAPI_STATIC_LDFLAGS} hdb)
+target_link_libraries (samba-static ${GSSAPI_STATIC_LDFLAGS} ${GNUTLS_STATIC_LDFLAGS} hdb)
 set_target_properties (samba-static PROPERTIES CMAKE_POSITION_INDEPENDENT_CODE TRUE)
