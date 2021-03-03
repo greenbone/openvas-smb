@@ -2,7 +2,7 @@ INSTALLATION INSTRUCTIONS FOR OPENVAS-SMB
 =========================================
 
 Please note: The reference system used by most of the developers is Debian
-GNU/Linux 'Stretch' 9. The build might fail on any other system. Also, it is
+GNU/Linux 'Buster' 10. The build might fail on any other system. Also, it is
 necessary to install dependent development packages.
 
 Prerequisites for openvas-smb
@@ -14,11 +14,13 @@ Prerequisites for openvas-smb
 * heimdal-dev | heimdal-multidev >= 1.6.0
 * libpopt-dev
 * libglib2.0-dev
+* libunistring-dev
 
 Install prerequisites on Debian GNU/Linux 'Stretch' 9:
 
     apt-get install gcc cmake pkg-config gcc-mingw-w64 libgnutls28-dev \
-                    perl-base heimdal-dev libpopt-dev libglib2.0-dev
+                    perl-base heimdal-dev libpopt-dev libglib2.0-dev \
+                    libunistring-dev
 
 Compiling openvas-smb
 ---------------------
