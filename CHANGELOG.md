@@ -11,5 +11,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   [#26](https://github.com/greenbone/openvas-smb/pull/26)
 - Use results of pkgconfig for gnutls. [#30](https://github.com/greenbone/openvas-smb/pull/30)
 - Update INSTALL.md: Update reference system and add new dependency. [#32](https://github.com/greenbone/openvas-smb/pull/32)
+  [#36](https://github.com/greenbone/openvas-smb/pull/36)
 
 [21.04.0]: https://github.com/greenbone/openvas-smb/compare/v1.0.5...master
