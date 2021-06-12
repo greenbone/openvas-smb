@@ -71,7 +71,7 @@ set (BINTOC_SOURCES
 
 add_custom_command(
    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/winexesvc.exe
-   COMMAND ${MINGW_GCC} ${WINEXESVC_SOURCES} -o winexesvc.exe
+   COMMAND ${MINGW_GCC} -Xlinker --no-insert-timestamp ${WINEXESVC_SOURCES} -o winexesvc.exe
    DEPENDS ${WINEXESVC_SOURCES})
 
 add_custom_command(
