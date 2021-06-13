@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 ### Removed
 
-[21.04.0]: https://github.com/greenbone/openvas-smb/compare/v21.4.0...master
+[Unreleased]: https://github.com/greenbone/openvas-smb/compare/v21.4.0...master
 
 ## [21.04.0] (2021-04-15)
 
