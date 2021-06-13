@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+### Changed
+### Fixed
+### Removed
+
+[21.04.0]: https://github.com/greenbone/openvas-smb/compare/v21.4.0...master
+
 ## [21.04.0] (2021-04-15)
 
 ### Changed
