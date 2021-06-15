@@ -1,8 +1,8 @@
-/* 
+/*
    Unix SMB/CIFS implementation.
 
    Kerberos backend for GENSEC
-   
+
    Copyright (C) Andrew Bartlett <abartlet@samba.org> 2004
    Copyright (C) Andrew Tridgell 2001
    Copyright (C) Luke Howard 2002-2003
@@ -12,13 +12,13 @@
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
 
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -63,23 +63,23 @@ static int gensec_krb5_destroy(struct gensec_krb5_state *gensec_krb5_state)
 		/* We can't clean anything else up unless we started up this far */
 		return 0;
 	}
-	if (gensec_krb5_state->enc_ticket.length) { 
-		kerberos_free_data_contents(gensec_krb5_state->smb_krb5_context->krb5_context, 
-					    &gensec_krb5_state->enc_ticket); 
+	if (gensec_krb5_state->enc_ticket.length) {
+		kerberos_free_data_contents(gensec_krb5_state->smb_krb5_context->krb5_context,
+					    &gensec_krb5_state->enc_ticket);
 	}
 
 	if (gensec_krb5_state->ticket) {
-		krb5_free_ticket(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		krb5_free_ticket(gensec_krb5_state->smb_krb5_context->krb5_context,
 				 gensec_krb5_state->ticket);
 	}
 
 	/* ccache freed in a child destructor */
 
-	krb5_free_keyblock(gensec_krb5_state->smb_krb5_context->krb5_context, 
+	krb5_free_keyblock(gensec_krb5_state->smb_krb5_context->krb5_context,
 			   gensec_krb5_state->keyblock);
-		
+
 	if (gensec_krb5_state->auth_context) {
-		krb5_auth_con_free(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		krb5_auth_con_free(gensec_krb5_state->smb_krb5_context->krb5_context,
 				   gensec_krb5_state->auth_context);
 	}
 
@@ -93,7 +93,7 @@ static NTSTATUS gensec_krb5_start(struct gensec_security *gensec_security)
 	struct cli_credentials *creds;
 	const struct socket_address *my_addr, *peer_addr;
 	krb5_address my_krb5_addr, peer_krb5_addr;
-	
+
 	creds = gensec_get_credentials(gensec_security);
 	if (!creds) {
 		return NT_STATUS_INVALID_PARAMETER;
@@ -114,7 +114,7 @@ static NTSTATUS gensec_krb5_start(struct gensec_security *gensec_security)
 	gensec_krb5_state->pac = data_blob(NULL, 0);
 	gensec_krb5_state->gssapi = False;
 
-	talloc_set_destructor(gensec_krb5_state, gensec_krb5_destroy); 
+	talloc_set_destructor(gensec_krb5_state, gensec_krb5_destroy);
 
 	if (cli_credentials_get_krb5_context(creds, &gensec_krb5_state->smb_krb5_context)) {
 		talloc_free(gensec_krb5_state);
@@ -123,19 +123,19 @@ static NTSTATUS gensec_krb5_start(struct gensec_security *gensec_security)
 
 	ret = krb5_auth_con_init(gensec_krb5_state->smb_krb5_context->krb5_context, &gensec_krb5_state->auth_context);
 	if (ret) {
-		DEBUG(1,("gensec_krb5_start: krb5_auth_con_init failed (%s)\n", 
-			 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		DEBUG(1,("gensec_krb5_start: krb5_auth_con_init failed (%s)\n",
+			 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 						    ret, gensec_krb5_state)));
 		talloc_free(gensec_krb5_state);
 		return NT_STATUS_INTERNAL_ERROR;
 	}
 
-	ret = krb5_auth_con_setflags(gensec_krb5_state->smb_krb5_context->krb5_context, 
+	ret = krb5_auth_con_setflags(gensec_krb5_state->smb_krb5_context->krb5_context,
 				     gensec_krb5_state->auth_context,
 				     KRB5_AUTH_CONTEXT_DO_SEQUENCE);
 	if (ret) {
-		DEBUG(1,("gensec_krb5_start: krb5_auth_con_setflags failed (%s)\n", 
-			 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		DEBUG(1,("gensec_krb5_start: krb5_auth_con_setflags failed (%s)\n",
+			 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 						    ret, gensec_krb5_state)));
 		talloc_free(gensec_krb5_state);
 		return NT_STATUS_INTERNAL_ERROR;
@@ -143,11 +143,11 @@ static NTSTATUS gensec_krb5_start(struct gensec_security *gensec_security)
 
 	my_addr = gensec_get_my_addr(gensec_security);
 	if (my_addr && my_addr->sockaddr) {
-		ret = krb5_sockaddr2address(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		ret = krb5_sockaddr2address(gensec_krb5_state->smb_krb5_context->krb5_context,
 					    my_addr->sockaddr, &my_krb5_addr);
 		if (ret) {
-			DEBUG(1,("gensec_krb5_start: krb5_sockaddr2address (local) failed (%s)\n", 
-				 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+			DEBUG(1,("gensec_krb5_start: krb5_sockaddr2address (local) failed (%s)\n",
+				 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 							    ret, gensec_krb5_state)));
 			talloc_free(gensec_krb5_state);
 			return NT_STATUS_INTERNAL_ERROR;
@@ -156,24 +156,24 @@ static NTSTATUS gensec_krb5_start(struct gensec_security *gensec_security)
 
 	peer_addr = gensec_get_peer_addr(gensec_security);
 	if (peer_addr && peer_addr->sockaddr) {
-		ret = krb5_sockaddr2address(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		ret = krb5_sockaddr2address(gensec_krb5_state->smb_krb5_context->krb5_context,
 					    peer_addr->sockaddr, &peer_krb5_addr);
 		if (ret) {
-			DEBUG(1,("gensec_krb5_start: krb5_sockaddr2address (local) failed (%s)\n", 
-				 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+			DEBUG(1,("gensec_krb5_start: krb5_sockaddr2address (local) failed (%s)\n",
+				 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 							    ret, gensec_krb5_state)));
 			talloc_free(gensec_krb5_state);
 			return NT_STATUS_INTERNAL_ERROR;
 		}
 	}
 
-	ret = krb5_auth_con_setaddrs(gensec_krb5_state->smb_krb5_context->krb5_context, 
+	ret = krb5_auth_con_setaddrs(gensec_krb5_state->smb_krb5_context->krb5_context,
 				     gensec_krb5_state->auth_context,
-				     my_addr ? &my_krb5_addr : NULL, 
+				     my_addr ? &my_krb5_addr : NULL,
 				     peer_addr ? &peer_krb5_addr : NULL);
 	if (ret) {
-		DEBUG(1,("gensec_krb5_start: krb5_auth_con_setaddrs failed (%s)\n", 
-			 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		DEBUG(1,("gensec_krb5_start: krb5_auth_con_setaddrs failed (%s)\n",
+			 smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 						    ret, gensec_krb5_state)));
 		talloc_free(gensec_krb5_state);
 		return NT_STATUS_INTERNAL_ERROR;
@@ -191,7 +191,7 @@ static NTSTATUS gensec_krb5_server_start(struct gensec_security *gensec_security
 	if (!NT_STATUS_IS_OK(nt_status)) {
 		return nt_status;
 	}
-	
+
 	gensec_krb5_state = gensec_security->private_data;
 	gensec_krb5_state->state_position = GENSEC_KRB5_SERVER_START;
 
@@ -235,7 +235,7 @@ static NTSTATUS gensec_krb5_client_start(struct gensec_security *gensec_security
 		DEBUG(2, ("krb5 to 'localhost' does not make sense"));
 		return NT_STATUS_INVALID_PARAMETER;
 	}
-			
+
 	nt_status = gensec_krb5_start(gensec_security);
 	if (!NT_STATUS_IS_OK(nt_status)) {
 		return nt_status;
@@ -246,42 +246,42 @@ static NTSTATUS gensec_krb5_client_start(struct gensec_security *gensec_security
 
 	ret = cli_credentials_get_ccache(gensec_get_credentials(gensec_security), &ccache_container);
 	if (ret) {
-		DEBUG(1,("gensec_krb5_start: cli_credentials_get_ccache failed: %s\n", 
+		DEBUG(1,("gensec_krb5_start: cli_credentials_get_ccache failed: %s\n",
 			 error_message(ret)));
 		return NT_STATUS_UNSUCCESSFUL;
 	}
 
 	in_data.length = 0;
-	
+
 	principal = gensec_get_target_principal(gensec_security);
 	if (principal && lp_client_use_spnego_principal()) {
 		krb5_principal target_principal;
 		ret = krb5_parse_name(gensec_krb5_state->smb_krb5_context->krb5_context, principal,
 				      &target_principal);
 		if (ret == 0) {
-			ret = krb5_mk_req_exact(gensec_krb5_state->smb_krb5_context->krb5_context, 
+			ret = krb5_mk_req_exact(gensec_krb5_state->smb_krb5_context->krb5_context,
 						&gensec_krb5_state->auth_context,
-						ap_req_options, 
+						ap_req_options,
 						target_principal,
-						&in_data, ccache_container->ccache, 
+						&in_data, ccache_container->ccache,
 						&gensec_krb5_state->enc_ticket);
-			krb5_free_principal(gensec_krb5_state->smb_krb5_context->krb5_context, 
+			krb5_free_principal(gensec_krb5_state->smb_krb5_context->krb5_context,
 					    target_principal);
 		}
 	} else {
-		ret = krb5_mk_req(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		ret = krb5_mk_req(gensec_krb5_state->smb_krb5_context->krb5_context,
 				  &gensec_krb5_state->auth_context,
 				  ap_req_options,
 				  gensec_get_target_service(gensec_security),
 				  hostname,
-				  &in_data, ccache_container->ccache, 
+				  &in_data, ccache_container->ccache,
 				  &gensec_krb5_state->enc_ticket);
 	}
 	switch (ret) {
 	case 0:
 		return NT_STATUS_OK;
 	case KRB5KDC_ERR_S_PRINCIPAL_UNKNOWN:
-		DEBUG(3, ("Server [%s] is not registered with our KDC: %s\n", 
+		DEBUG(3, ("Server [%s] is not registered with our KDC: %s\n",
 			  hostname, smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, ret, gensec_krb5_state)));
 		return NT_STATUS_INVALID_PARAMETER; /* Make SPNEGO ignore us, we can't go any further here */
 	case KRB5_KDC_UNREACH:
@@ -295,21 +295,21 @@ static NTSTATUS gensec_krb5_client_start(struct gensec_security *gensec_security
 	case KRB5KRB_AP_ERR_SKEW:
 	case KRB5_KDCREP_SKEW:
 	{
-		DEBUG(3, ("kerberos (mk_req) failed: %s\n", 
+		DEBUG(3, ("kerberos (mk_req) failed: %s\n",
 			  smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, ret, gensec_krb5_state)));
 		/*fall through*/
 	}
-	
+
 	/* just don't print a message for these really ordinary messages */
 	case KRB5_FCC_NOFILE:
 	case KRB5_CC_NOTFOUND:
 	case ENOENT:
-		
+
 		return NT_STATUS_UNSUCCESSFUL;
 		break;
-		
+
 	default:
-		DEBUG(0, ("kerberos: %s\n", 
+		DEBUG(0, ("kerberos: %s\n",
 			  smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, ret, gensec_krb5_state)));
 		return NT_STATUS_UNSUCCESSFUL;
 	}
@@ -329,15 +329,15 @@ static NTSTATUS gensec_fake_gssapi_krb5_client_start(struct gensec_security *gen
 
 /**
  * Check if the packet is one for this mechansim
- * 
+ *
  * @param gensec_security GENSEC state
  * @param in The request, as a DATA_BLOB
  * @return Error, INVALID_PARAMETER if it's not a packet for us
- *                or NT_STATUS_OK if the packet is ok. 
+ *                or NT_STATUS_OK if the packet is ok.
  */
 
-static NTSTATUS gensec_fake_gssapi_krb5_magic(struct gensec_security *gensec_security, 
-				  const DATA_BLOB *in) 
+static NTSTATUS gensec_fake_gssapi_krb5_magic(struct gensec_security *gensec_security,
+				  const DATA_BLOB *in)
 {
 	if (gensec_gssapi_check_oid(in, GENSEC_OID_KERBEROS5)) {
 		return NT_STATUS_OK;
@@ -349,18 +349,18 @@ static NTSTATUS gensec_fake_gssapi_krb5_magic(struct gensec_security *gensec_sec
 
 /**
  * Next state function for the Krb5 GENSEC mechanism
- * 
+ *
  * @param gensec_krb5_state KRB5 State
  * @param out_mem_ctx The TALLOC_CTX for *out to be allocated on
  * @param in The request, as a DATA_BLOB
  * @param out The reply, as an talloc()ed DATA_BLOB, on *out_mem_ctx
- * @return Error, MORE_PROCESSING_REQUIRED if a reply is sent, 
- *                or NT_STATUS_OK if the user is authenticated. 
+ * @return Error, MORE_PROCESSING_REQUIRED if a reply is sent,
+ *                or NT_STATUS_OK if the user is authenticated.
  */
 
-static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security, 
-				   TALLOC_CTX *out_mem_ctx, 
-				   const DATA_BLOB in, DATA_BLOB *out) 
+static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
+				   TALLOC_CTX *out_mem_ctx,
+				   const DATA_BLOB in, DATA_BLOB *out)
 {
 	struct gensec_krb5_state *gensec_krb5_state = gensec_security->private_data;
 	krb5_error_code ret = 0;
@@ -370,10 +370,10 @@ static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
 	case GENSEC_KRB5_CLIENT_START:
 	{
 		DATA_BLOB unwrapped_out;
-		
+
 		if (gensec_krb5_state->gssapi) {
 			unwrapped_out = data_blob_talloc(out_mem_ctx, gensec_krb5_state->enc_ticket.data, gensec_krb5_state->enc_ticket.length);
-			
+
 			/* wrap that up in a nice GSS-API wrapping */
 			*out = gensec_gssapi_gen_krb5_wrap(out_mem_ctx, &unwrapped_out, TOK_ID_KRB_AP_REQ);
 		} else {
@@ -383,7 +383,7 @@ static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
 		nt_status = NT_STATUS_MORE_PROCESSING_REQUIRED;
 		return nt_status;
 	}
-		
+
 	case GENSEC_KRB5_CLIENT_MUTUAL_AUTH:
 	{
 		DATA_BLOB unwrapped_in;
@@ -404,7 +404,7 @@ static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
 
 		inbuf.data = unwrapped_in.data;
 		inbuf.length = unwrapped_in.length;
-		ret = krb5_rd_rep(gensec_krb5_state->smb_krb5_context->krb5_context, 
+		ret = krb5_rd_rep(gensec_krb5_state->smb_krb5_context->krb5_context,
 				  gensec_krb5_state->auth_context,
 				  &inbuf, &repl);
 		if (ret) {
@@ -434,17 +434,17 @@ static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
 
 		if (!in.data) {
 			return NT_STATUS_INVALID_PARAMETER;
-		}	
+		}
 
 		/* Grab the keytab, however generated */
 		ret = cli_credentials_get_keytab(gensec_get_credentials(gensec_security), &keytab);
 		if (ret) {
 			return NT_STATUS_CANT_ACCESS_DOMAIN_INFO;
 		}
-		
+
 		/* This ensures we lookup the correct entry in that keytab */
-		ret = principal_from_credentials(out_mem_ctx, gensec_get_credentials(gensec_security), 
-						 gensec_krb5_state->smb_krb5_context, 
+		ret = principal_from_credentials(out_mem_ctx, gensec_get_credentials(gensec_security),
+						 gensec_krb5_state->smb_krb5_context,
 						 &server_in_keytab);
 
 		if (ret) {
@@ -462,10 +462,10 @@ static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
 		}
 
 		ret = smb_rd_req_return_stuff(gensec_krb5_state->smb_krb5_context->krb5_context,
-					      &gensec_krb5_state->auth_context, 
-					      &inbuf, keytab->keytab, server_in_keytab,  
-					      &outbuf, 
-					      &gensec_krb5_state->ticket, 
+					      &gensec_krb5_state->auth_context,
+					      &inbuf, keytab->keytab, server_in_keytab,
+					      &outbuf,
+					      &gensec_krb5_state->ticket,
 					      &gensec_krb5_state->keyblock);
 
 		if (ret) {
@@ -491,8 +491,8 @@ static NTSTATUS gensec_krb5_update(struct gensec_security *gensec_security,
 	}
 }
 
-static NTSTATUS gensec_krb5_session_key(struct gensec_security *gensec_security, 
-					DATA_BLOB *session_key) 
+static NTSTATUS gensec_krb5_session_key(struct gensec_security *gensec_security,
+					DATA_BLOB *session_key)
 {
 	struct gensec_krb5_state *gensec_krb5_state = gensec_security->private_data;
 	krb5_context context = gensec_krb5_state->smb_krb5_context->krb5_context;
@@ -514,9 +514,9 @@ static NTSTATUS gensec_krb5_session_key(struct gensec_security *gensec_security,
 		break;
 	}
 	if (err == 0 && skey != NULL) {
-		DEBUG(10, ("Got KRB5 session key of length %d\n",  
+		DEBUG(10, ("Got KRB5 session key of length %d\n",
 			   (int)KRB5_KEY_LENGTH(skey)));
-		gensec_krb5_state->session_key = data_blob_talloc(gensec_krb5_state, 
+		gensec_krb5_state->session_key = data_blob_talloc(gensec_krb5_state,
 						KRB5_KEY_DATA(skey), KRB5_KEY_LENGTH(skey));
 		*session_key = gensec_krb5_state->session_key;
 		dump_data_pw("KRB5 Session Key:\n", session_key->data, session_key->length);
@@ -530,7 +530,7 @@ static NTSTATUS gensec_krb5_session_key(struct gensec_security *gensec_security,
 }
 
 static NTSTATUS gensec_krb5_session_info(struct gensec_security *gensec_security,
-					 struct auth_session_info **_session_info) 
+					 struct auth_session_info **_session_info)
 {
 	NTSTATUS nt_status = NT_STATUS_UNSUCCESSFUL;
 	struct gensec_krb5_state *gensec_krb5_state = gensec_security->private_data;
@@ -541,7 +541,7 @@ static NTSTATUS gensec_krb5_session_info(struct gensec_security *gensec_security
 
 	krb5_principal client_principal;
 	char *principal_string;
-	
+
 	DATA_BLOB pac;
 	krb5_data pac_data;
 
@@ -551,48 +551,48 @@ static NTSTATUS gensec_krb5_session_info(struct gensec_security *gensec_security
 	if (!mem_ctx) {
 		return NT_STATUS_NO_MEMORY;
 	}
-	
+
 	ret = krb5_ticket_get_client(context, gensec_krb5_state->ticket, &client_principal);
 	if (ret) {
-		DEBUG(5, ("krb5_ticket_get_client failed to get cleint principal: %s\n", 
-			  smb_get_krb5_error_message(context, 
-						     ret, mem_ctx)));
-		talloc_free(mem_ctx);
-		return NT_STATUS_NO_MEMORY;
-	}
-	
-	ret = krb5_unparse_name(gensec_krb5_state->smb_krb5_context->krb5_context, 
-				client_principal, &principal_string);
-	if (ret) {
-		DEBUG(1, ("Unable to parse client principal: %s\n",
-			  smb_get_krb5_error_message(context, 
+		DEBUG(5, ("krb5_ticket_get_client failed to get client principal: %s\n",
+			  smb_get_krb5_error_message(context,
 						     ret, mem_ctx)));
 		talloc_free(mem_ctx);
 		return NT_STATUS_NO_MEMORY;
 	}
 
-	ret = krb5_ticket_get_authorization_data_type(context, gensec_krb5_state->ticket, 
-						      KRB5_AUTHDATA_WIN2K_PAC, 
+	ret = krb5_unparse_name(gensec_krb5_state->smb_krb5_context->krb5_context,
+				client_principal, &principal_string);
+	if (ret) {
+		DEBUG(1, ("Unable to parse client principal: %s\n",
+			  smb_get_krb5_error_message(context,
+						     ret, mem_ctx)));
+		talloc_free(mem_ctx);
+		return NT_STATUS_NO_MEMORY;
+	}
+
+	ret = krb5_ticket_get_authorization_data_type(context, gensec_krb5_state->ticket,
+						      KRB5_AUTHDATA_WIN2K_PAC,
 						      &pac_data);
-	
+
 	if (ret && lp_parm_bool(-1, "gensec", "require_pac", False)) {
 		DEBUG(1, ("Unable to find PAC in ticket from %s, failing to allow access: %s \n",
 			  principal_string,
-			  smb_get_krb5_error_message(context, 
+			  smb_get_krb5_error_message(context,
 						     ret, mem_ctx)));
 		krb5_free_principal(context, client_principal);
 		free(principal_string);
 		return NT_STATUS_ACCESS_DENIED;
 	} else if (ret) {
 		/* NO pac */
-		DEBUG(5, ("krb5_ticket_get_authorization_data_type failed to find PAC: %s\n", 
-			  smb_get_krb5_error_message(context, 
+		DEBUG(5, ("krb5_ticket_get_authorization_data_type failed to find PAC: %s\n",
+			  smb_get_krb5_error_message(context,
 						     ret, mem_ctx)));
 		nt_status = sam_get_server_info_principal(mem_ctx, principal_string,
 							  &server_info);
 		krb5_free_principal(context, client_principal);
 		free(principal_string);
-		
+
 		if (!NT_STATUS_IS_OK(nt_status)) {
 			talloc_free(mem_ctx);
 			return nt_status;
@@ -623,10 +623,10 @@ static NTSTATUS gensec_krb5_session_info(struct gensec_security *gensec_security
 		}
 
 		validation.sam3 = &logon_info->info3;
-		nt_status = make_server_info_netlogon_validation(mem_ctx, 
+		nt_status = make_server_info_netlogon_validation(mem_ctx,
 								 NULL,
 								 3, &validation,
-								 &server_info); 
+								 &server_info);
 		if (!NT_STATUS_IS_OK(nt_status)) {
 			talloc_free(mem_ctx);
 			return nt_status;
@@ -655,9 +655,9 @@ static NTSTATUS gensec_krb5_session_info(struct gensec_security *gensec_security
 	return NT_STATUS_OK;
 }
 
-static NTSTATUS gensec_krb5_wrap(struct gensec_security *gensec_security, 
-				   TALLOC_CTX *mem_ctx, 
-				   const DATA_BLOB *in, 
+static NTSTATUS gensec_krb5_wrap(struct gensec_security *gensec_security,
+				   TALLOC_CTX *mem_ctx,
+				   const DATA_BLOB *in,
 				   DATA_BLOB *out)
 {
 	struct gensec_krb5_state *gensec_krb5_state = gensec_security->private_data;
@@ -667,17 +667,17 @@ static NTSTATUS gensec_krb5_wrap(struct gensec_security *gensec_security,
 	krb5_data input, output;
 	input.length = in->length;
 	input.data = in->data;
-	
+
 	if (gensec_have_feature(gensec_security, GENSEC_FEATURE_SEAL)) {
 		ret = krb5_mk_priv(context, auth_context, &input, &output, NULL);
 		if (ret) {
-			DEBUG(1, ("krb5_mk_priv failed: %s\n", 
-				  smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+			DEBUG(1, ("krb5_mk_priv failed: %s\n",
+				  smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 							     ret, mem_ctx)));
 			return NT_STATUS_ACCESS_DENIED;
 		}
 		*out = data_blob_talloc(mem_ctx, output.data, output.length);
-		
+
 		krb5_data_free(&output);
 	} else {
 		return NT_STATUS_ACCESS_DENIED;
@@ -685,9 +685,9 @@ static NTSTATUS gensec_krb5_wrap(struct gensec_security *gensec_security,
 	return NT_STATUS_OK;
 }
 
-static NTSTATUS gensec_krb5_unwrap(struct gensec_security *gensec_security, 
-				     TALLOC_CTX *mem_ctx, 
-				     const DATA_BLOB *in, 
+static NTSTATUS gensec_krb5_unwrap(struct gensec_security *gensec_security,
+				     TALLOC_CTX *mem_ctx,
+				     const DATA_BLOB *in,
 				     DATA_BLOB *out)
 {
 	struct gensec_krb5_state *gensec_krb5_state = gensec_security->private_data;
@@ -698,17 +698,17 @@ static NTSTATUS gensec_krb5_unwrap(struct gensec_security *gensec_security,
 	krb5_replay_data replay;
 	input.length = in->length;
 	input.data = in->data;
-	
+
 	if (gensec_have_feature(gensec_security, GENSEC_FEATURE_SEAL)) {
 		ret = krb5_rd_priv(context, auth_context, &input, &output, &replay);
 		if (ret) {
-			DEBUG(1, ("krb5_rd_priv failed: %s\n", 
-				  smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context, 
+			DEBUG(1, ("krb5_rd_priv failed: %s\n",
+				  smb_get_krb5_error_message(gensec_krb5_state->smb_krb5_context->krb5_context,
 							     ret, mem_ctx)));
 			return NT_STATUS_ACCESS_DENIED;
 		}
 		*out = data_blob_talloc(mem_ctx, output.data, output.length);
-		
+
 		krb5_data_free(&output);
 	} else {
 		return NT_STATUS_ACCESS_DENIED;
@@ -722,19 +722,19 @@ static BOOL gensec_krb5_have_feature(struct gensec_security *gensec_security,
 	struct gensec_krb5_state *gensec_krb5_state = gensec_security->private_data;
 	if (feature & GENSEC_FEATURE_SESSION_KEY) {
 		return True;
-	} 
-	if (!gensec_krb5_state->gssapi && 
+	}
+	if (!gensec_krb5_state->gssapi &&
 	    (feature & GENSEC_FEATURE_SEAL)) {
 		return True;
-	} 
-	
+	}
+
 	return False;
 }
 
-static const char *gensec_krb5_oids[] = { 
+static const char *gensec_krb5_oids[] = {
 	GENSEC_OID_KERBEROS5,
 	GENSEC_OID_KERBEROS5_OLD,
-	NULL 
+	NULL
 };
 
 static const struct gensec_security_ops gensec_fake_gssapi_krb5_security_ops = {

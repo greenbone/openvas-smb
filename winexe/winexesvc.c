@@ -178,7 +178,7 @@ int cmd_set(connection_context *c)
             (cmdline[l = strlen(var_runas)] == ' ')) {
 		c->runas = strdup(cmdline + l + 1);
 	} else {
-	    hprintf(c->pipe, "error Unknown commad (%s)\n", c->cmd);
+	    hprintf(c->pipe, "error Unknown command (%s)\n", c->cmd);
 	    goto finish;
 	}
 	res = 1;
@@ -376,7 +376,7 @@ int cmd_run(connection_context *c)
 
 	if (CreateProcessAsUser(
 			  c->token,
-			  NULL, 
+			  NULL,
 			  cmdline,	/* command line */
 			  NULL,	/* process security attributes */
 			  NULL,	/* primary thread security attributes */
@@ -390,7 +390,7 @@ int cmd_run(connection_context *c)
 		HANDLE hlist[2] = {c->pipe->o.hEvent, pi.hProcess};
 		DWORD ec;
 		char str[1];
-		
+
 		if (!ResetEvent(c->pipe->o.hEvent))
 			SvcDebugOut("ResetEvent error - %d\n", GetLastError());
                 if (!ReadFile(c->pipe->h, str, 1, NULL, &c->pipe->o) && GetLastError() != ERROR_IO_PENDING)
@@ -444,7 +444,7 @@ VOID handle_connection(connection_data *data)
 	connection_context _c, *c = &_c;
         cmd = malloc(MAX_COMMAND_LENGTH);
         if (!cmd) {
-	    hprintf(data->pipe, 
+	    hprintf(data->pipe,
 		    "error: unable to allocate buffer for command\n");
 	    return;
 	}

@@ -1,20 +1,20 @@
-/* 
+/*
    Unix SMB/CIFS implementation.
 
    fast routines for getting the wire size of security objects
 
    Copyright (C) Andrew Tridgell 2003
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -81,7 +81,7 @@ size_t ndr_size_security_descriptor(const struct security_descriptor *sd, int fl
 {
 	size_t ret;
 	if (!sd) return 0;
-	
+
 	ret = 20;
 	ret += ndr_size_dom_sid(sd->owner_sid, flags);
 	ret += ndr_size_dom_sid(sd->group_sid, flags);
@@ -121,8 +121,8 @@ NTSTATUS ndr_pull_dom_sid2(struct ndr_pull *ndr, int ndr_flags, struct dom_sid *
 	NDR_CHECK(ndr_pull_uint32(ndr, NDR_SCALARS, &num_auths));
 	NDR_CHECK(ndr_pull_dom_sid(ndr, ndr_flags, sid));
 	if (sid->num_auths != num_auths) {
-		return ndr_pull_error(ndr, NDR_ERR_ARRAY_SIZE, 
-				      "Bad array size %u should exceed %u", 
+		return ndr_pull_error(ndr, NDR_ERR_ARRAY_SIZE,
+				      "Bad array size %u should exceed %u",
 				      num_auths, sid->num_auths);
 	}
 	return NT_STATUS_OK;
@@ -141,7 +141,7 @@ NTSTATUS ndr_push_dom_sid2(struct ndr_push *ndr, int ndr_flags, const struct dom
 }
 
 /*
-  parse a dom_sid28 - this is a dom_sid in a fixed 28 byte buffer, so we need to ensure there are only upto 5 sub_auth
+  parse a dom_sid28 - this is a dom_sid in a fixed 28 byte buffer, so we need to ensure there are only up to 5 sub_auth
 */
 NTSTATUS ndr_pull_dom_sid28(struct ndr_pull *ndr, int ndr_flags, struct dom_sid *sid)
 {
@@ -185,8 +185,8 @@ NTSTATUS ndr_push_dom_sid28(struct ndr_push *ndr, int ndr_flags, const struct do
 	}
 
 	if (sid->num_auths > 5) {
-		return ndr_push_error(ndr, NDR_ERR_RANGE, 
-				      "dom_sid28 allows only upto 5 sub auth [%u]", 
+		return ndr_push_error(ndr, NDR_ERR_RANGE,
+				      "dom_sid28 allows only up to 5 sub auth [%u]",
 				      sid->num_auths);
 	}
 
@@ -201,4 +201,3 @@ NTSTATUS ndr_push_dom_sid28(struct ndr_push *ndr, int ndr_flags, const struct do
 
 	return NT_STATUS_OK;
 }
-
