@@ -17,7 +17,7 @@ PRIVATE_DEPENDENCIES = \
 #################################
 # Start Library libwincmd
 [LIBRARY::wincmd]
-VERSION=0.80
+VERSION=0.81
 SO_VERSION=1
 LIBRARY_REALNAME = libwincmd.$(SHLIBEXT)
 OBJ_FILES = \
