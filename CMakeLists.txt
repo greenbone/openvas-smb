@@ -158,12 +158,8 @@ set (LINKER_HARDENING_FLAGS     "-Wl,-z,relro -Wl,-z,now")
 
 configure_file (VERSION.in ${CMAKE_BINARY_DIR}/VERSION @ONLY)
 configure_file (libopenvas_wmiclient.pc.in ${CMAKE_BINARY_DIR}/libopenvas_wmiclient.pc @ONLY)
-configure_file (libopenvas_wincmd.pc.in ${CMAKE_BINARY_DIR}/libopenvas_wincmd.pc @ONLY)
 
 install (FILES ${CMAKE_BINARY_DIR}/libopenvas_wmiclient.pc
-         DESTINATION ${LIBDIR}/pkgconfig)
-
-install (FILES ${CMAKE_BINARY_DIR}/libopenvas_wincmd.pc
          DESTINATION ${LIBDIR}/pkgconfig)
 
 add_subdirectory(samba)

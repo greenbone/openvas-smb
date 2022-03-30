@@ -5,8 +5,8 @@
 [![GitHub releases](https://img.shields.io/github/release/greenbone/openvas-smb.svg)](https://github.com/greenbone/openvas-smb/releases)
 [![CircleCI](https://circleci.com/gh/greenbone/openvas-smb/tree/master.svg?style=svg)](https://circleci.com/gh/greenbone/openvas-smb/tree/master)
 
-This is the `smb` module for the OpenVAS Scanner. It includes libraries
-(`openvas-wmiclient`/`openvas-wincmd`) to interface with Microsoft Windows
+This is the `smb` module for the OpenVAS Scanner. It includes the
+openvas-wmiclient library to interface with Microsoft Windows
 Systems through the Windows Management Instrumentation API and a `wmic`
 binary to execute queries remotely on that system.
 
