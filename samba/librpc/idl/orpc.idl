@@ -30,7 +30,7 @@ interface ObjectRpcBaseTypes
 
 	/* current version */
 	const uint16 COM_MAJOR_VERSION = 5;
-	const uint16 COM_MINOR_VERSION = 1;
+	const uint16 COM_MINOR_VERSION = 7;
 
 	/* Body Extensions */
 	const string dcom_ext_debugging = "f1f19680-4d2a-11ce-a66a-0020af6e72f4";
