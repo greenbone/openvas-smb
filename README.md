@@ -4,6 +4,8 @@
 
 [![GitHub releases](https://img.shields.io/github/release/greenbone/openvas-smb.svg)](https://github.com/greenbone/openvas-smb/releases)
 [![Build and test](https://github.com/greenbone/openvas-smb/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/greenbone/openvas-smb/actions/workflows/ci.yml?query=branch%3Amain++)
+[![Docker Pulls](https://img.shields.io/docker/pulls/greenbone/openvas-smb.svg)](https://hub.docker.com/r/greenbone/openvas-smb/)
+[![Docker Image Size](https://img.shields.io/docker/image-size/greenbone/openvas-smb.svg?maxAge=2592000)](https://hub.docker.com/r/greenbone/openvas-smb/)
 
 This is the `smb` module for the OpenVAS Scanner. It includes the
 openvas-wmiclient library to interface with Microsoft Windows
