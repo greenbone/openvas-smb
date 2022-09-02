@@ -9,7 +9,7 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    container: ${{ github.repository }}-build:unstable
+    container: ${{ github.repository }}-build:latest
     steps:
       - name: Check out openvas-smb
         uses: actions/checkout@v3
