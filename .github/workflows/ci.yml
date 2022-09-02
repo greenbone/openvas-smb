@@ -1,0 +1,19 @@
+name: Build openvas-smb
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    container: ${{ github.repository }}-build:latest
+    steps:
+      - name: Check out openvas-smb
+        uses: actions/checkout@v3
+      - name: Configure and build
+        run: |
+          mkdir build && cd build/ && cmake -DCMAKE_BUILD_TYPE=Release .. && make install
+
