@@ -3,7 +3,7 @@
 # openvas-smb
 
 [![GitHub releases](https://img.shields.io/github/release/greenbone/openvas-smb.svg)](https://github.com/greenbone/openvas-smb/releases)
-[![CircleCI](https://circleci.com/gh/greenbone/openvas-smb/tree/master.svg?style=svg)](https://circleci.com/gh/greenbone/openvas-smb/tree/master)
+[![Build and test](https://github.com/greenbone/openvas-smb/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/greenbone/openvas-smb/actions/workflows/ci.yml?query=branch%3Amain++)
 
 This is the `smb` module for the OpenVAS Scanner. It includes the
 openvas-wmiclient library to interface with Microsoft Windows
