@@ -23,18 +23,17 @@ For detailed installation requirements and instructions, please see the file
 [INSTALL.md](INSTALL.md).
 
 If you are not familiar or comfortable building from source code, we recommend
-that you use the Greenbone Security Manager TRIAL (GSM TRIAL), a prepared virtual
-machine with a readily available setup. Information regarding the virtual machine
+that you use the Greenbone Enterprise TRIAL, a prepared virtual machine with a
+readily available setup. Information regarding the virtual machine
 is available at <https://www.greenbone.net/en/testnow>.
 
 ## Support
 
 For any question on the usage of `openvas-smb` please use the [Greenbone
-Community Portal](https://community.greenbone.net/c/gse). If you found a
-problem with the software, please [create an
-issue](https://github.com/greenbone/openvas-smb/issues) on GitHub. If you are a
-Greenbone customer you may alternatively or additionally forward your issue to
-the Greenbone Support Portal.
+Community Forum](https://forum.greenbone.net/). If you found a problem with the
+software, please [create an issue](https://github.com/greenbone/openvas-smb/issues)
+on GitHub. If you are a Greenbone customer you may alternatively or additionally
+forward your issue to the Greenbone Support Portal.
 
 ## Maintainer
 
