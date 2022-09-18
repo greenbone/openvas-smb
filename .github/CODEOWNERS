@@ -1,5 +1,5 @@
 # default reviewers
-*                 @greenbone/openvas-scanner-maintainers
+*                 @greenbone/scanner-maintainers
 
-.github           @greenbone/devops @greenbone/openvas-scanner-maintainers
-.docker           @greenbone/devops @greenbone/openvas-scanner-maintainers
+.github           @greenbone/devops @greenbone/scanner-maintainers
+.docker           @greenbone/devops @greenbone/scanner-maintainers
