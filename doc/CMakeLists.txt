@@ -6,7 +6,7 @@
 # Matthew Mundell <matthew.mundell@greenbone.net>
 #
 # Copyright:
-# Copyright (C) 2016 Greenbone Networks GmbH
+# Copyright (C) 2016 Greenbone AG
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
