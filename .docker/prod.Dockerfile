@@ -2,7 +2,7 @@ ARG VERSION=latest
 
 FROM debian:stable-slim AS build
 COPY . /source
-RUN sh /source/install-openvas-smb-dependencies.sh
+RUN sh /source/.github/install-openvas-smb-dependencies.sh
 
 RUN cmake -DCMAKE_BUILD_TYPE=Release -B/build /source
 RUN DESTDIR=/install cmake --build /build -- install
