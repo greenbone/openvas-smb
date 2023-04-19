@@ -505,7 +505,7 @@ static struct composite_context *dcom_determine_rpc_binding(
     if (!NT_STATUS_IS_OK(status))
     {
         /* build a binding string using NCACN_IP_TCP */
-        char *bindstr = talloc_asprintf(c, "ncacn_ip_tcp:%s", server);
+        char *bindstr = talloc_asprintf(c, "ncacn_ip_tcp:%s[sign,seal]", server);
         if (composite_nomem(bindstr, c)) return c;
 
         status = dcerpc_parse_binding(c, bindstr, &activation_state->binding);
