@@ -8,7 +8,7 @@
  * Chandrashekhar B <bchandra@secpod.com>
  *
  * Copyright:
- * Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+ * Copyright (c) 2009 Greenbone AG, http://www.greenbone.net
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2
