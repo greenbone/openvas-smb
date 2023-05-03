@@ -17,6 +17,7 @@ jobs:
       actions: read
       contents: read
       security-events: write
+    container: ${{ github.repository }}-build:unstable
 
     strategy:
       fail-fast: false
@@ -34,10 +35,12 @@ jobs:
         languages: ${{ matrix.language }}
         queries: security-and-quality
 
-    # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
-    # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    # build between init and analyze ...
+    - name: Configure and Compile boreas
+      run: |
+        mkdir build && cd build/ && cmake \
+        -DCMAKE_BUILD_TYPE=Release .. && make install
+      working-directory: ${{ github.WORKSPACE }}
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
