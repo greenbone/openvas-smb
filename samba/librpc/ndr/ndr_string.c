@@ -85,7 +85,7 @@ _PUBLIC_ NTSTATUS ndr_pull_string(struct ndr_pull *ndr, int ndr_flags, const cha
 			ret = convert_string_talloc(ndr->current_mem_ctx,
 						    chset, CH_UNIX, 
 						    ndr->data+ndr->offset, 
-						    (len2 + c_len_term)*byte_mul,
+						    (size_t) (len2 + c_len_term)*byte_mul,
 						    (void **)&as);
 			if (ret == -1) {
 				return ndr_pull_error(ndr, NDR_ERR_CHARCNV, 
@@ -122,7 +122,7 @@ _PUBLIC_ NTSTATUS ndr_pull_string(struct ndr_pull *ndr, int ndr_flags, const cha
 			ret = convert_string_talloc(ndr->current_mem_ctx,
 						    chset, CH_UNIX, 
 						    ndr->data+ndr->offset, 
-						    (len1 + c_len_term)*byte_mul,
+						    (size_t) (len1 + c_len_term)*byte_mul,
 						    (void **)&as);
 			if (ret == -1) {
 				return ndr_pull_error(ndr, NDR_ERR_CHARCNV, 
@@ -160,7 +160,7 @@ _PUBLIC_ NTSTATUS ndr_pull_string(struct ndr_pull *ndr, int ndr_flags, const cha
 			ret = convert_string_talloc(ndr->current_mem_ctx,
 						    chset, CH_UNIX, 
 						    ndr->data+ndr->offset, 
-						    (len1 + c_len_term)*byte_mul,
+						    (size_t) (len1 + c_len_term)*byte_mul,
 						    (void **)&as);
 			if (ret == -1) {
 				return ndr_pull_error(ndr, NDR_ERR_CHARCNV, 
