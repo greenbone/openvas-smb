@@ -762,11 +762,12 @@ void ldb_msg_remove_element(struct ldb_message *msg, struct ldb_message_element 
 */
 char *ldb_timestring(TALLOC_CTX *mem_ctx, time_t t)
 {
-	struct tm *tm = gmtime(&t);
+	struct tm tm, *tm_p;
 	char *ts;
 	int r;
 
-	if (!tm) {
+	tm_p = gmtime_r(&t, &tm);
+	if (!tm_p) {
 		return NULL;
 	}
 
@@ -776,9 +777,9 @@ char *ldb_timestring(TALLOC_CTX *mem_ctx, time_t t)
 	/* formatted like: 20040408072012.0Z */
 	r = snprintf(ts, 18,
 			"%04u%02u%02u%02u%02u%02u.0Z",
-			tm->tm_year+1900, tm->tm_mon+1,
-			tm->tm_mday, tm->tm_hour, tm->tm_min,
-			tm->tm_sec);
+			tm.tm_year+1900, tm.tm_mon+1,
+			tm.tm_mday, tm.tm_hour, tm.tm_min,
+			tm.tm_sec);
 
 	if (r != 17) {
 		talloc_free(ts);
