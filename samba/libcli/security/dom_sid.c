@@ -283,9 +283,19 @@ char *dom_sid_string(TALLOC_CTX *mem_ctx, const struct dom_sid *sid)
 
 	ofs = snprintf(ret, maxlen, "S-%u-%lu", 
 		       (unsigned int)sid->sid_rev_num, (unsigned long)ia);
+	if (ofs < 0 || ofs >= maxlen) {
+			talloc_free(ret);
+			return talloc_strdup(mem_ctx, "(SID ERR)");
+	}
+
 
 	for (i = 0; i < sid->num_auths; i++) {
-		ofs += snprintf(ret + ofs, maxlen - ofs, "-%lu", (unsigned long)sid->sub_auths[i]);
+		int n = snprintf(ret + ofs, maxlen - ofs, "-%lu", (unsigned long)sid->sub_auths[i]);
+		if (n < 0 || n >= maxlen - ofs) {
+			talloc_free(ret);
+			return talloc_strdup(mem_ctx, "(SID ERR)");
+		}
+		ofs += n;
 	}
 	
 	return ret;
