@@ -1628,19 +1628,20 @@ BOOL lp_file_list_changed(void)
 	while (f) {
 		pstring n2;
 		time_t mod_time;
+		char buf[26];
 
 		pstrcpy(n2, f->name);
 		standard_sub_basic(n2,sizeof(n2));
 
 		DEBUGADD(6, ("file %s -> %s  last mod_time: %s\n",
-			     f->name, n2, ctime(&f->modtime)));
+			     f->name, n2, ctime_r(&f->modtime, buf)));
 
 		mod_time = file_modtime(n2);
 
 		if (mod_time && ((f->modtime != mod_time) || (f->subfname == NULL) || (strcmp(n2, f->subfname) != 0))) {
 			DEBUGADD(6,
 				 ("file %s modified: %s\n", n2,
-				  ctime(&mod_time)));
+				  ctime_r(&mod_time, buf)));
 			f->modtime = mod_time;
 			SAFE_FREE(f->subfname);
 			f->subfname = strdup(n2);
