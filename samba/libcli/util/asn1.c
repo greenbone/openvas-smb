@@ -18,6 +18,8 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+#include<limits.h>
+
 #include "includes.h"
 #include "libcli/util/asn_1.h"
 
@@ -305,7 +307,7 @@ BOOL asn1_load(struct asn1_data *data, DATA_BLOB blob)
 /* Peek into an ASN1 buffer, not advancing the pointer */
 BOOL asn1_peek(struct asn1_data *data, void *p, int len)
 {
-	if (len < 0 || data->ofs + len < data->ofs || data->ofs + len < len)
+	if (len < 0 || data->ofs > INT_MAX - len)
 		return False;
 
 	if (data->ofs + len > data->length) {

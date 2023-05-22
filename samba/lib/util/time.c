@@ -161,7 +161,7 @@ static uint16_t make_dos_time1(struct tm *t)
 ********************************************************************/
 static uint32_t make_dos_date(time_t unixdate, int zone_offset)
 {
-	struct tm *t;
+	struct tm tm, *tm_p;
 	uint32_t ret=0;
 
 	if (unixdate == 0) {
@@ -170,13 +170,13 @@ static uint32_t make_dos_date(time_t unixdate, int zone_offset)
 
 	unixdate -= zone_offset;
 
-	t = gmtime(&unixdate);
-	if (!t) {
+	tm_p = gmtime_r(&unixdate, &tm);
+	if (!tm_p) {
 		return 0xFFFFFFFF;
 	}
 
-	ret = make_dos_date1(t);
-	ret = ((ret&0xFFFF)<<16) | make_dos_time1(t);
+	ret = make_dos_date1(&tm);
+	ret = ((ret&0xFFFF)<<16) | make_dos_time1(&tm);
 
 	return ret;
 }
@@ -294,19 +294,22 @@ _PUBLIC_ char *http_timestring(TALLOC_CTX *mem_ctx, time_t t)
 {
 	char *buf;
 	char tempTime[60];
-	struct tm *tm = localtime(&t);
+	struct tm tm, *tm_p; 
+	
+	tm_p = localtime_r(&t, &tm);
 
-	if (!tm) {
+	if (!tm_p) {
 		return talloc_asprintf(mem_ctx,"%ld seconds since the Epoch",(long)t);
 	}
 
 #ifndef HAVE_STRFTIME
-	buf = talloc_strdup(mem_ctx, asctime(tm));
+	char tbuf[26]; // buffer for asctime_r
+	buf = talloc_strdup(mem_ctx, asctime_r(&tm, tbuf));
 	if (buf[strlen(buf)-1] == '\n') {
 		buf[strlen(buf)-1] = 0;
 	}
 #else
-	strftime(tempTime, sizeof(tempTime)-1, "%a, %d %b %Y %H:%M:%S %Z", tm);
+	strftime(tempTime, sizeof(tempTime)-1, "%a, %d %b %Y %H:%M:%S %Z", &tm);
 	buf = talloc_strdup(mem_ctx, tempTime);
 #endif /* !HAVE_STRFTIME */
 
@@ -320,10 +323,10 @@ _PUBLIC_ char *timestring(TALLOC_CTX *mem_ctx, time_t t)
 {
 	char *TimeBuf;
 	char tempTime[80];
-	struct tm *tm;
+	struct tm tm, *tm_p;
 
-	tm = localtime(&t);
-	if (!tm) {
+	tm_p = localtime_r(&t, &tm);
+	if (!tm_p) {
 		return talloc_asprintf(mem_ctx,
 				       "%ld seconds since the Epoch",
 				       (long)t);
@@ -334,10 +337,11 @@ _PUBLIC_ char *timestring(TALLOC_CTX *mem_ctx, time_t t)
 	   in the gcc warning, not a bug in this code. See a recent
 	   strftime() manual page for details.
 	 */
-	strftime(tempTime,sizeof(tempTime)-1,"%c %Z",tm);
+	strftime(tempTime,sizeof(tempTime)-1,"%c %Z",&tm);
 	TimeBuf = talloc_strdup(mem_ctx, tempTime);
 #else
-	TimeBuf = talloc_strdup(mem_ctx, asctime(tm));
+	char *buf[26]; // buffer for asctime_r
+	TimeBuf = talloc_strdup(mem_ctx, asctime_r(&tm, buf));
 #endif
 
 	return TimeBuf;
@@ -611,13 +615,15 @@ static int tm_diff(struct tm *a, struct tm *b)
  */
 _PUBLIC_ int get_time_zone(time_t t)
 {
-	struct tm *tm = gmtime(&t);
+	struct tm tm, *tm_p;
 	struct tm tm_utc;
-	if (!tm)
+
+	tm_p = gmtime_r(&t, &tm);
+	if (!tm_p)
 		return 0;
-	tm_utc = *tm;
-	tm = localtime(&t);
-	if (!tm)
+	tm_utc = tm;
+	tm_p = localtime_r(&t, &tm);
+	if (!tm_p)
 		return 0;
-	return tm_diff(&tm_utc,tm);
+	return tm_diff(&tm_utc, &tm);
 }
