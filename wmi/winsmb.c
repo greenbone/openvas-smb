@@ -92,7 +92,6 @@ int smb_connect(const char *server, const char *share, const char *username, con
   int opt;
   poptContext pc;
   struct smbcli_state * SmbClientState;
-  struct smbcli_options smb_options;
   NTSTATUS status;
   struct cli_credentials *creds;
   char *DelimAt = NULL;

@@ -494,7 +494,6 @@ int wmi_reg_get_dword_val(WMI_HANDLE handle, const unsigned int hive, const char
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -572,7 +571,6 @@ int wmi_reg_get_ex_string_val(WMI_HANDLE handle, const unsigned int hive, const 
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -735,7 +733,6 @@ int wmi_reg_get_qword_val(WMI_HANDLE handle, const unsigned int hive, const char
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -809,7 +806,6 @@ int wmi_reg_set_dword_val(WMI_HANDLE handle, const char *key, const char *val_na
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -879,7 +875,6 @@ int wmi_reg_set_qword_val(WMI_HANDLE handle, const char *key, const char *val_na
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -949,7 +944,6 @@ int wmi_reg_set_ex_string_val(WMI_HANDLE handle, const char *key, const char *va
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -1020,7 +1014,6 @@ int wmi_reg_set_string_val(WMI_HANDLE handle, const char *key, const char *val_n
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -1087,7 +1080,6 @@ int wmi_reg_create_key(WMI_HANDLE handle, const char *key)
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
@@ -1145,7 +1137,6 @@ int wmi_reg_delete_key(WMI_HANDLE handle, const char *key)
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
   struct IWbemClassObject *out = NULL;
-  int i = 0;
   WERROR result;
   NTSTATUS status;
   union CIMVAR v;
