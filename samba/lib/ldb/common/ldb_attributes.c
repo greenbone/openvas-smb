@@ -289,7 +289,8 @@ void ldb_subclass_remove(struct ldb_context *ldb, const char *classname)
 	c = &ldb->schema.classes[i];
 	talloc_free(c->name);
 	talloc_free(c->subclasses);
-	if (ldb->schema.num_classes-(i+1) > 0) {
+	// If subclass was not on last position, close gap in array
+	if (ldb->schema.num_classes-(i+1) != 0) {
 		memmove(c, c+1, sizeof(*c) * (ldb->schema.num_classes-(i+1)));
 	}
 	ldb->schema.num_classes--;

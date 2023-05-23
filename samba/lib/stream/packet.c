@@ -227,7 +227,7 @@ static void packet_next_event(struct event_context *ev, struct timed_event *te,
 */
 _PUBLIC_ void packet_recv(struct packet_context *pc)
 {
-	size_t npending;
+	size_t npending = 0;
 	NTSTATUS status;
 	size_t nread = 0;
 	DATA_BLOB blob;

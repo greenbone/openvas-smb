@@ -132,7 +132,6 @@ wmi_connect_rsop (int argc, char **argv)
   struct com_context *ctx = NULL;
   NTSTATUS status;
   struct IWbemServices *pWS = NULL;
-  uint32_t *ret_code;
 
   struct IWbemClassObject *wco = NULL;
   struct IWbemClassObject *inc, *outc, *in;
@@ -192,12 +191,6 @@ wmi_connect_rsop (int argc, char **argv)
                                     "RsopCreateSession", 0, NULL, in, &out,
                                      NULL);
   WERR_CHECK("IWbemServices_ExecMethod.");
-
-  if(ret_code){
-    result = WbemClassObject_Get(out->object_data, ctx, "nameSpace", 0, &v,
-                                 0, 0);
-    WERR_CHECK("IWbemClassObject_Put(CommandLine).");
-  }
 
   /* Computer namespace only, user namespace doesn't seem to work */
   namespace = talloc_asprintf_append(v.v_string, "%s", "\\computer");

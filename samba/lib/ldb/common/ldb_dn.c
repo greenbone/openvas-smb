@@ -236,7 +236,7 @@ static bool ldb_dn_explode(struct ldb_dn *dn)
 	bool is_oid = false;
 	bool escape = false;
 	unsigned x;
-	int l;
+	int l = 0;
 
 	if ( ! dn || dn->invalid) return false;
 
