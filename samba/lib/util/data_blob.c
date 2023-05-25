@@ -215,10 +215,6 @@ _PUBLIC_ NTSTATUS data_blob_append(TALLOC_CTX *mem_ctx, DATA_BLOB *blob,
 	if (new_len < length || new_len < old_len) {
 		return NT_STATUS_NO_MEMORY;
 	}
-
-	if ((const uint8_t *)p + length < (const uint8_t *)p) {
-		return NT_STATUS_NO_MEMORY;
-	}
 	
 	status = data_blob_realloc(mem_ctx, blob, new_len);
 	if (!NT_STATUS_IS_OK(status)) {
