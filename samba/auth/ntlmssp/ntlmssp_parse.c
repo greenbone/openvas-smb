@@ -233,7 +233,7 @@ BOOL msrpc_parse(TALLOC_CTX *mem_ctx, const DATA_BLOB *blob,
 					/* if odd length and unicode */
 					return False;
 				}
-				if (blob->data + ptr < (uint8_t *)ptr || blob->data + ptr < blob->data)
+				if (ptr > blob->length)
 					return False;
 
 				if (0 < len1) {
@@ -263,7 +263,7 @@ BOOL msrpc_parse(TALLOC_CTX *mem_ctx, const DATA_BLOB *blob,
 					return False;
 				}
 
-				if (blob->data + ptr < (uint8_t *)ptr || blob->data + ptr < blob->data)
+				if (ptr > blob->length)
 					return False;	
 
 				if (0 < len1) {
@@ -293,7 +293,7 @@ BOOL msrpc_parse(TALLOC_CTX *mem_ctx, const DATA_BLOB *blob,
 					return False;
 				}
 
-				if (blob->data + ptr < (uint8_t *)ptr || blob->data + ptr < blob->data)
+				if (head_ofs > blob->length)
 					return False;	
 			
 				*b = data_blob_talloc(mem_ctx, blob->data + ptr, len1);
@@ -304,7 +304,7 @@ BOOL msrpc_parse(TALLOC_CTX *mem_ctx, const DATA_BLOB *blob,
 			len1 = va_arg(ap, uint_t);
 			/* make sure its in the right format - be strict */
 			NEED_DATA(len1);
-			if (blob->data + head_ofs < (uint8_t *)head_ofs || blob->data + head_ofs < blob->data)
+			if (head_ofs > blob->length)
 				return False;	
 			
 			*b = data_blob_talloc(mem_ctx, blob->data + head_ofs, len1);
@@ -318,8 +318,8 @@ BOOL msrpc_parse(TALLOC_CTX *mem_ctx, const DATA_BLOB *blob,
 		case 'C':
 			s = va_arg(ap, char *);
 
-			if (blob->data + head_ofs < (uint8_t *)head_ofs || blob->data + head_ofs < blob->data)
-				return False;	
+			if (head_ofs > blob->length)
+				return False;
 	
 			head_ofs += pull_string(p, blob->data+head_ofs, sizeof(p), 
 						blob->length - head_ofs, 
