@@ -25,7 +25,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(openvas-smb
-  VERSION 22.5.1
+  VERSION 22.5.2
   LANGUAGES C)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
