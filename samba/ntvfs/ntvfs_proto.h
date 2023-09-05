@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __NTVFS_NTVFS_PROTO_H__
 #define __NTVFS_NTVFS_PROTO_H__
 

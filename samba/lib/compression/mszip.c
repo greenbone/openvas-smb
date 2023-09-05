@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* mszip decompression - based on cabextract.c code from
  * Stuart Caie
  *

@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __AUTH_AUTH_SAM_H__
 #define __AUTH_AUTH_SAM_H__
 

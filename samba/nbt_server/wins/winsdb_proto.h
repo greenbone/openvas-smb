@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __NBT_SERVER_WINS_WINSDB_PROTO_H__
 #define __NBT_SERVER_WINS_WINSDB_PROTO_H__
 

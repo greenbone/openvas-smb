@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell 2003
+ * SPDX-FileCopyrightText: James Myers 2003
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    client trans2 operations

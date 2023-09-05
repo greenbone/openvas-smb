@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: James Myers 2003 <myersjj@samba.org>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    raw trans/trans2/nttrans operations

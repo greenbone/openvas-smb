@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Stefan Metzmacher 2005
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2001-2005
+ * SPDX-FileCopyrightText: Andrew Tridgell      2001
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/Netbios implementation.
    Version 3.0

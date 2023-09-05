@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Stefan Metzmacher 2004
+ * SPDX-FileCopyrightText: Andrew Tridgell 2005
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Wrapper for krb5_init_context

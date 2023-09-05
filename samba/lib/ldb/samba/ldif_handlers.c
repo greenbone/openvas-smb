@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Bartlett 2006
+ * SPDX-FileCopyrightText: Andrew Tridgell 2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    ldb database library - ldif handlers for Samba
 

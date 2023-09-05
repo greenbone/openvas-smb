@@ -1,4 +1,10 @@
 /*
+ * SPDX-FileCopyrightText: 2006 Andrzej Hajda <andrzej.hajda@wp.pl>
+ * SPDX-FileCopyrightText: 2004 Jelmer Vernooij <jelmer@samba.org>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    Unix SMB/CIFS implementation.
    COM class tables
    Copyright (C) 2004 Jelmer Vernooij <jelmer@samba.org>

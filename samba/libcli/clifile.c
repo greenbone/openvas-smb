@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: James Myers 2003
+ * SPDX-FileCopyrightText: Jeremy Allison 2001-2002
+ * SPDX-FileCopyrightText: Andrew Tridgell 1994-1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    client file operations

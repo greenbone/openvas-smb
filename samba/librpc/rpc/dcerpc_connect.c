@@ -1,3 +1,11 @@
+/*
+ * SPDX-FileCopyrightText: Rafal Szczesniak  2005
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2005
+ * SPDX-FileCopyrightText: Jelmer Vernooij 2004
+ * SPDX-FileCopyrightText: Andrew Tridgell 2003
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
 

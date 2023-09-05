@@ -1,3 +1,13 @@
+/*
+ * SPDX-FileCopyrightText: Martin Pool		      2002
+ * SPDX-FileCopyrightText: Simo Sorce                   2001-2002
+ * SPDX-FileCopyrightText: Paul Ashton                  1998-2000
+ * SPDX-FileCopyrightText: Luke Kenneth Casson Leighton 1996-2000
+ * SPDX-FileCopyrightText: John H Terpstra              1996-2002
+ * SPDX-FileCopyrightText: Andrew Tridgell              1992-2000
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    SMB parameters and setup, plus a whole lot more.

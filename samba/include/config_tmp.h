@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* include/config_tmp.h.  Generated from config_tmp.h.in by configure.  */
 /* include/config_tmp.h.in.  Generated from configure.ac by autoheader.  */
 

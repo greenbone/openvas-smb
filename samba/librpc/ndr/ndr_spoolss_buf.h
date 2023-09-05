@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __LIBRPC_NDR_NDR_SPOOLSS_BUF_H__
 #define __LIBRPC_NDR_NDR_SPOOLSS_BUF_H__
 

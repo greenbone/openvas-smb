@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #define BLD_PRODUCT "Samba4"
 #define BLD_NAME "Samba4 SWAT"
 #define BLD_VERSION "4"

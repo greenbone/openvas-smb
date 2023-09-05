@@ -1,3 +1,12 @@
+/*
+ * SPDX-FileCopyrightText: James J Myers 2003
+ * SPDX-FileCopyrightText: Jim McDonough (jmcd@us.ibm.com)  2003.
+ * SPDX-FileCopyrightText: Simo Sorce 2001
+ * SPDX-FileCopyrightText: Jeremy Allison 2001-2002
+ * SPDX-FileCopyrightText: Andrew Tridgell 1992-1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Samba utility functions

@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Jim McDonough (jmcd@us.ibm.com)  2003.
+ * SPDX-FileCopyrightText: 2001 by Martin Pool <mbp@samba.org>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Copyright (C) 2001 by Martin Pool <mbp@samba.org>

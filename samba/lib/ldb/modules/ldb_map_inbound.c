@@ -1,4 +1,10 @@
 /*
+ * SPDX-FileCopyrightText: Martin Kuehl <mkhl@samba.org> 2006
+ * SPDX-FileCopyrightText: Jelmer Vernooij 2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    ldb database mapping module
 
    Copyright (C) Jelmer Vernooij 2005

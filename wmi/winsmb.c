@@ -1,4 +1,8 @@
 /*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
 ###############################################################################
 # SMB Client lib
 # This is a derivative work of smbclient (clien/client.c)

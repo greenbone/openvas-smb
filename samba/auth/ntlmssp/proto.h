@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __AUTH_NTLMSSP_PROTO_H__
 #define __AUTH_NTLMSSP_PROTO_H__
 

@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: *  Copyright (C) Tim Potter 2000
+ * SPDX-FileCopyrightText: *  Copyright (C) Andrew Bartlett 2001
+ * SPDX-FileCopyrightText: *  Copyright (C) Andrew Tridgell 2001
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
  *  Unix SMB/CIFS implementation.
  *  error mapping functions

@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: 2006 Andrzej Hajda <andrzej.hajda@wp.pl>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
 ###############################################################################
 # WMI Client lib
 # This is a derivative work of the WMI Sample command line client

@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #define STR_ASCII	LIBNDR_FLAG_STR_ASCII
 #define STR_LEN4	LIBNDR_FLAG_STR_LEN4
 #define STR_SIZE4	LIBNDR_FLAG_STR_SIZE4

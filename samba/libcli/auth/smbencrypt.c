@@ -1,3 +1,11 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2002-2003
+ * SPDX-FileCopyrightText: Luke Kennethc Casson Leighton 1996-2000.
+ * SPDX-FileCopyrightText: Jeremy Allison 1995-2000.
+ * SPDX-FileCopyrightText: Andrew Tridgell 1992-1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    SMB parameters and setup

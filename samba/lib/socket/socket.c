@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Stefan Metzmacher 2004
+ * SPDX-FileCopyrightText: Tim Potter      2000-2001
+ * SPDX-FileCopyrightText: Andrew Tridgell 1992-1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Socket functions

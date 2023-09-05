@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Simo Sorce  2005-2006
+ * SPDX-FileCopyrightText: Stefan Metzmacher  2004
+ * SPDX-FileCopyrightText: Andrew Tridgell  2004
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    ldb database library
 

@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell 2001
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.   
    simple ASN1 code

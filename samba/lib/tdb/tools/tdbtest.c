@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* a test program for tdb - the trivial database */
 
 #include "replace.h"

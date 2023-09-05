@@ -1,4 +1,10 @@
 /*
+ * SPDX-FileCopyrightText: James Myers 2003 <myersjj@samba.org>
+ * SPDX-FileCopyrightText: Andrew Tridgell 2004
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    Unix SMB/CIFS implementation.
    SMB parameters and setup
    Copyright (C) Andrew Tridgell 2004
