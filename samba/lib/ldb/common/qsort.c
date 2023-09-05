@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: /* Copyright (C) 1991,1992,1996,1997,1999,2004 Free Software Foundation, Inc.
+ * SPDX-FileCopyrightText: 1991,1992,1996,1997,1999,2004 Free Software Foundation, Inc.
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 

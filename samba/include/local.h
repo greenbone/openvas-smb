@@ -1,6 +1,6 @@
 /*
- * SPDX-FileCopyrightText: /* Copyright (C) 1998 John H Terpstra <jht@aquasoft.com.au> */
- * SPDX-FileCopyrightText: /* Copyright (C) 1995-1998 Samba-Team */
+ * SPDX-FileCopyrightText: 1998 John H Terpstra <jht@aquasoft.com.au>
+ * SPDX-FileCopyrightText: 1995-1998 Samba-Team
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
