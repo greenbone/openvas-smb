@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2009 SecPod, http://www.secpod.com
  * SPDX-FileCopyrightText: 2006 Andrzej Hajda <andrzej.hajda@wp.pl>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
