@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __LIBCLI_SMB_COMPOSITE_PROTO_H__
 #define __LIBCLI_SMB_COMPOSITE_PROTO_H__
 

@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2003-2004
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 

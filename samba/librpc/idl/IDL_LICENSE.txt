@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: GPL-2.0-or-later
-
 The IDL files in this directory are made available by the Samba Team
 under the following license:
 

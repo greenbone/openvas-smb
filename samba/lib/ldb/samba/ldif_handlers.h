@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __LIB_LDB_SAMBA_LDIF_HANDLERS_H__
 #define __LIB_LDB_SAMBA_LDIF_HANDLERS_H__
 

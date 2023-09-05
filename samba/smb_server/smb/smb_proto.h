@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __SMB_SERVER_SMB_SMB_PROTO_H__
 #define __SMB_SERVER_SMB_SMB_PROTO_H__
 

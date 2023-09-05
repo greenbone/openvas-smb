@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 1986 Gary S. Brown.
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 

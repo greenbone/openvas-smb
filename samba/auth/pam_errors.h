@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __AUTH_PAM_ERRORS_H__
 #define __AUTH_PAM_ERRORS_H__
 

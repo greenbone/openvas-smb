@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __LIB_COM_DCOM_PROTO_H__
 #define __LIB_COM_DCOM_PROTO_H__
 

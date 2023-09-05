@@ -1,4 +1,7 @@
 /*
+ * SPDX-FileCopyrightText: Theodore Ts'o               1996, 1997,
+ * SPDX-FileCopyrightText: Jim McDonough                     2002.
+ * SPDX-FileCopyrightText: Andrew Tridgell                   2003.
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 

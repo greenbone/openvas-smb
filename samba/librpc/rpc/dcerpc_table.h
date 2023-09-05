@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __LIBRPC_RPC_DCERPC_TABLE_H__
 #define __LIBRPC_RPC_DCERPC_TABLE_H__
 

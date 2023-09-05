@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __PARAM_SHARE_PROTO_H__
 #define __PARAM_SHARE_PROTO_H__
 

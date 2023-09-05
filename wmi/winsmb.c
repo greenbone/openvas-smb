@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2009 Intevation GmbH, http://www.intevation.net
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 

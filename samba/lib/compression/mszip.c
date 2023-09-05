@@ -1,4 +1,6 @@
 /*
+ * SPDX-FileCopyrightText: 2000-2001 Stuart Caie <kyzer@4u.net>
+ * SPDX-FileCopyrightText: Andrew Tridgell and Stefan Metzmacher 2005
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 

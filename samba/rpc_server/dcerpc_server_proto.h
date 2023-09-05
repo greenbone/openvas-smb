@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __RPC_SERVER_DCERPC_SERVER_PROTO_H__
 #define __RPC_SERVER_DCERPC_SERVER_PROTO_H__
 

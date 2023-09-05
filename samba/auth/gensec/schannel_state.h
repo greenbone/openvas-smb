@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __AUTH_GENSEC_SCHANNEL_STATE_H__
 #define __AUTH_GENSEC_SCHANNEL_STATE_H__
 

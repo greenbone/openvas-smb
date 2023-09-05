@@ -1,9 +1,11 @@
 /*
+ * SPDX-FileCopyrightText: 1997 - 2006 Kungliga Tekniska Hï¿½gskolan (Royal Institute of Technology, Stockholm, Sweden). 
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /*
- * Copyright (c) 1997 - 2006 Kungliga Tekniska Högskolan
+ * Copyright (c) 1997 - 2006 Kungliga Tekniska Hï¿½gskolan
  * (Royal Institute of Technology, Stockholm, Sweden). 
  * All rights reserved. 
  *

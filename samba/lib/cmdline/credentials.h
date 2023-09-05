@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __LIB_CMDLINE_CREDENTIALS_H__
 #define __LIB_CMDLINE_CREDENTIALS_H__
 

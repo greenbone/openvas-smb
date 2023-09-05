@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: GPL-2.0-or-later
-
 Here is how to use gcov to test code coverage in ldb.
 
 Step 1: build ldb with gcov enabled

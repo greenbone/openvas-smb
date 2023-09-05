@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
 #ifndef __WMI_PROTO_H__
 #define __WMI_PROTO_H__
 

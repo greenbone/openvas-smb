@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2009 Greenbone AG, http://www.greenbone.net
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
