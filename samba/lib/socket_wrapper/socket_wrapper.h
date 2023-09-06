@@ -1,4 +1,10 @@
 /*
+ * SPDX-FileCopyrightText: * Copyright (C) Stefan Metzmacher 2006 <metze@samba.org>
+ * SPDX-FileCopyrightText: * Copyright (C) Jelmer Vernooij 2005 <jelmer@samba.org>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
  * Copyright (C) Jelmer Vernooij 2005 <jelmer@samba.org>
  * Copyright (C) Stefan Metzmacher 2006 <metze@samba.org>
  *

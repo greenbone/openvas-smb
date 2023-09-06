@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Paul Ashton 1997
+ * SPDX-FileCopyrightText: Luke Kenneth Casson Leighton 1996-1997
+ * SPDX-FileCopyrightText: Andrew Tridgell 1992-1997
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    SMB parameters and setup

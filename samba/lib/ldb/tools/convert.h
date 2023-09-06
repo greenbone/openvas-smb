@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 struct syntax_map {
 	const char *Standard_OID;
 	const char *AD_OID;

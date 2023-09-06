@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: *  Copyright (C) Andrew Bartlett <abartlet@samba.org> 2003-2005
+ * SPDX-FileCopyrightText: *  Copyright (C) Luke Kenneth Casson Leighton 1996-2001
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
  *  Unix SMB/CIFS implementation.
  *  Version 3.0

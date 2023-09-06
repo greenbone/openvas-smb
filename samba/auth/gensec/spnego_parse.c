@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Jim McDonough <jmcd@us.ibm.com>   2003
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
 

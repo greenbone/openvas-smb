@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2015-2016 Greenbone AG
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 # openvas-smb
 # $Id$
 # Description: Top-level cmake control for the openvas-smb library.

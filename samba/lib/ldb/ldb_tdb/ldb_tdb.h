@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 
 #ifdef _SAMBA_BUILD_
 #include "system/filesys.h"

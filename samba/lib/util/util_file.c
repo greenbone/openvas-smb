@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: * Copyright (C) Andrew Tridgell 1992-1998 Modified by Jeremy Allison 1995.
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
  * Unix SMB/CIFS implementation.
  * SMB parameters and setup
  * Copyright (C) Andrew Tridgell 1992-1998 Modified by Jeremy Allison 1995.

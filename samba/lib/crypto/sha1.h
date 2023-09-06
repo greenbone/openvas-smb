@@ -1,4 +1,8 @@
 /*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
  This file contains the reference implementation of SHA-1
  from http://www.ietf.org/rfc/rfc3174.txt
 */

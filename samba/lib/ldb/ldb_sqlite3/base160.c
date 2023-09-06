@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2004 Derrell Lipman
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    base160 code used by ldb_sqlite3
 

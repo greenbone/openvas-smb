@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell  2004
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    ldb database library
 

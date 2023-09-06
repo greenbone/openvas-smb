@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell 2005
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2005
+ * SPDX-FileCopyrightText: Simo Sorce  2004-2006
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    ldb database library
 

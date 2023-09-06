@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell 1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    some simple double linked list macros

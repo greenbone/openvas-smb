@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: Stefan Metzmacher            2005
+ * SPDX-FileCopyrightText: Jelmer Vernooij              2002
+ * SPDX-FileCopyrightText: Andrew Bartlett         2001-2002
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Generic authentication types

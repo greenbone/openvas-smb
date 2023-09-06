@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    samba -- Unix SMB/CIFS implementation.
 

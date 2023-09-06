@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 
 /* A handy macro to report Out of Memory conditions */
 #define map_oom(module) ldb_set_errstring(module->ldb, talloc_asprintf(module, "Out of Memory"));

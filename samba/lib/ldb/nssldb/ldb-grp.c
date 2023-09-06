@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Simo Sorce 2006
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    LDB nsswitch module
 

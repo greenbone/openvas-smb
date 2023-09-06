@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef _WIN32_REPLACE_H
 #define _WIN32_REPLACE_H
 

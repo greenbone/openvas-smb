@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Stefan Metzmacher 2006
+ * SPDX-FileCopyrightText: Andrew Tridgell 2004-2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef _TALLOC_H_
 #define _TALLOC_H_
 /* 

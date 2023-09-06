@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell 1997-1998.
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    a implementation of MD4 designed for use in the SMB authentication protocol

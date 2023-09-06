@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Tridgell 1992-2000
+ * SPDX-FileCopyrightText: Luke Kenneth Casson Leighton 1996-2000
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    HMAC MD5 code for use in NTLMv2

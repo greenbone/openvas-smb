@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: James J Myers 2003
+ * SPDX-FileCopyrightText: Andrew Tridgell 2003
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef _MUTEX_H_
 #define _MUTEX_H_
 /* 

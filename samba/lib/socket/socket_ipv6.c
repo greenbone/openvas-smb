@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Jelmer Vernooij 2004
+ * SPDX-FileCopyrightText: Stefan Metzmacher 2004
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Socket IPv6 functions

@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: *  Copyright (C) Tim Potter 2002.
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
  *  Unix SMB/CIFS implementation.
  *  DOS error routines

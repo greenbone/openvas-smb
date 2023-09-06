@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __LIB_UTIL_WRAP_XATTR_H__
 #define __LIB_UTIL_WRAP_XATTR_H__
 

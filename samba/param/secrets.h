@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: * Copyright (C) Andrew Tridgell              2000
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
  * Unix SMB/CIFS implementation. 
  * secrets.tdb file format info
  * Copyright (C) Andrew Tridgell              2000

@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: Jeremy Allison 2002.
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    Unix SMB/CIFS implementation.
  
    Donated by HP to enable Winbindd to build on HPUX 11.x.

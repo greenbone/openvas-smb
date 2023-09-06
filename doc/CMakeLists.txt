@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2016 Greenbone AG
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 # OpenVAS
 # $Id$
 # Description: CMakefile for the OpenVAS CLI documentation

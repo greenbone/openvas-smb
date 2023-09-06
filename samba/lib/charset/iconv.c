@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Jelmer Vernooij 2002
+ * SPDX-FileCopyrightText: Andrew Tridgell 2001
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    minimal iconv implementation

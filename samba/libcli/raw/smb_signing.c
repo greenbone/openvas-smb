@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: James J Myers <myersjj@samba.org> 2003
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2002-2003
+ * SPDX-FileCopyrightText: Jeremy Allison 2002.
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    SMB Signing Code

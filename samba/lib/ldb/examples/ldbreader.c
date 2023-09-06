@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Brad Hards (bradh@frogmouth.net) 2005-2006
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    example code for the ldb database library
 
