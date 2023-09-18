@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Stefan Metzmacher 2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
 

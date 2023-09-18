@@ -1,3 +1,13 @@
+/*
+ * SPDX-FileCopyrightText: James Myers 2003 <myersjj@samba.org>
+ * SPDX-FileCopyrightText: Jim McDonough (jmcd@us.ibm.com)  2003.
+ * SPDX-FileCopyrightText: Stefan (metze) Metzmacher 2002
+ * SPDX-FileCopyrightText: Alexander Bokovoy 2002
+ * SPDX-FileCopyrightText: Simo Sorce 2001
+ * SPDX-FileCopyrightText: Karl Auer 1993-1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Parameter loading functions

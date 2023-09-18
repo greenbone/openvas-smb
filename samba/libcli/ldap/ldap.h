@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Volker Lendecke 2004
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS Implementation.
    LDAP protocol helper functions for SAMBA

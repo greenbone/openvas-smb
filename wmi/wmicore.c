@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: Zenoss, Inc. 2008
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    WMI Core Functionality
    Copyright (C) Zenoss, Inc. 2008
 

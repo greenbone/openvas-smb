@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2002 by Martin Pool <mbp@samba.org>
+ * SPDX-FileCopyrightText: Andrew Tridgell 1994-1998
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef _INCLUDES_H
 #define _INCLUDES_H
 /* 

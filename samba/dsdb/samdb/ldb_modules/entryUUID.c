@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: Andrew Bartlett <abartlet@samba.org> 2006
+ * SPDX-FileCopyrightText: Jelmer Vernooij 2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    ldb database module
 

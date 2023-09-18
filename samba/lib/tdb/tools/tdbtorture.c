@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* this tests tdb by doing lots of ops from several simultaneous
    writers - that stresses the locking code. 
 */

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2015 Greenbone AG
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 # openvas-smb
 # $Id$
 # Description: Cmake control for the smaba library parts.

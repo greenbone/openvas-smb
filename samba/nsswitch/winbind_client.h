@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "nsswitch/winbind_nss_config.h"
 #include "nsswitch/winbindd_nss.h"
 

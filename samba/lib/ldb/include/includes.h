@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef _LDB_PRIVATE_INCLUDES_H_
 #define _LDB_PRIVATE_INCLUDES_H_
 /*

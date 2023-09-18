@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: 2004-2005 Jelmer Vernooij <jelmer@samba.org>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    Unix SMB/CIFS implementation.
    Simple class
    Copyright (C) 2004-2005 Jelmer Vernooij <jelmer@samba.org>

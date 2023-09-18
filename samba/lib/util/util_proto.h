@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef __LIB_UTIL_UTIL_PROTO_H__
 #define __LIB_UTIL_UTIL_PROTO_H__
 

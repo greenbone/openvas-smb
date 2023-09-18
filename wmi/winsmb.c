@@ -1,4 +1,9 @@
 /*
+ * SPDX-FileCopyrightText: 2009 Intevation GmbH, http://www.intevation.net
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
 ###############################################################################
 # SMB Client lib
 # This is a derivative work of smbclient (clien/client.c)

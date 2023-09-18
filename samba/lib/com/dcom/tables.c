@@ -1,4 +1,10 @@
 /*
+ * SPDX-FileCopyrightText: 2006 Andrzej Hajda <andrzej.hajda@wp.pl>
+ * SPDX-FileCopyrightText: 2005 Jelmer Vernooij <jelmer@samba.org>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
    Unix SMB/CIFS implementation.
    DCOM proxy tables functionality
    Copyright (C) 2005 Jelmer Vernooij <jelmer@samba.org>

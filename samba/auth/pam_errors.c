@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: *  Copyright (C) Andrew Bartlett 2002
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
  *  Unix SMB/CIFS implementation.
  *  PAM error mapping functions

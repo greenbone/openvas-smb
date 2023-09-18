@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: * This module Copyright (C) 1997-1998 by the University of Minnesota
+ * SPDX-FileCopyrightText: * This module Copyright (C) 1990-1998 Karl Auer
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* -------------------------------------------------------------------------- **
  * Microsoft Network Services for Unix, AKA., Andrew Tridgell's SAMBA.
  *

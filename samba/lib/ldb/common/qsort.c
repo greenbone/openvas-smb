@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 1991,1992,1996,1997,1999,2004 Free Software Foundation, Inc.
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* Copyright (C) 1991,1992,1996,1997,1999,2004 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
    Written by Douglas C. Schmidt (schmidt@ics.uci.edu).

@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Jelmer Vernooij 2005
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    ldb database library - Samba3 SAM compatibility backend
 

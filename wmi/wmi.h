@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Zenoss, Inc. 2008
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef WMI_H_
 #define WMI_H_
 /*

@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: James Myers 2003 <myersjj@samba.org>
+ * SPDX-FileCopyrightText: Andrew Tridgell 2003
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef _REQUEST_H
 #define _REQUEST_H
 /*

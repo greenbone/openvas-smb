@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: Jelmer Vernooij	2003
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 /* 
    Unix SMB/CIFS implementation.
    Common popt arguments
