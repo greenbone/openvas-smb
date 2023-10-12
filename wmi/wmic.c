@@ -39,26 +39,22 @@
 #include "lib/com/dcom/proto.h"
 
 #include "wmi/wmi.h"
+#include "wmi/program_args_utils.h"
 
 struct WBEMCLASS;
 struct WBEMOBJECT;
 
 #include "wmi/proto.h"
 
-struct program_args {
-    char *hostname;
-    char *query;
-    char *ns;
-    char *delim;
-};
-
-static void parse_args(int argc, char *argv[], struct program_args *pmyargs)
+static void parse_args(int argc, char *argv[], progr_args_t **pmyargs)
 {
     poptContext pc;
     int opt, i;
 
     int argc_new;
     char **argv_new;
+    char *ns = NULL;
+    char *delim = NULL;
 
     struct poptOption long_options[] = {
 	POPT_AUTOHELP
@@ -66,9 +62,9 @@ static void parse_args(int argc, char *argv[], struct program_args *pmyargs)
 	POPT_COMMON_CONNECTION
 	POPT_COMMON_CREDENTIALS
 	POPT_COMMON_VERSION
-        {"namespace", 0, POPT_ARG_STRING, &pmyargs->ns, 0,
+        {"namespace", 0, POPT_ARG_STRING, &ns, 0,
          "WMI namespace, default to root\\cimv2", 0},
-	{"delimiter", 0, POPT_ARG_STRING, &pmyargs->delim, 0,
+	{"delimiter", 0, POPT_ARG_STRING, &delim, 0,
 	 "delimiter to use when querying multiple values, default to '|'", 0},
 	POPT_TABLEEND
     };
@@ -101,9 +97,20 @@ static void parse_args(int argc, char *argv[], struct program_args *pmyargs)
 	exit(1);
     }
 
+    if (ns) {
+      (*pmyargs)->ns=calloc(strlen(ns) + 1, sizeof(char));
+      memcpy ((*pmyargs)->ns, ns, strlen(ns) + 1);
+    }
+    if (delim) {
+      (*pmyargs)->delim=calloc(strlen(delim) + 1, sizeof(char));
+      memcpy ((*pmyargs)->delim, delim, strlen(delim) + 1);
+    }
+
     /* skip over leading "//" in host name */
-    pmyargs->hostname = argv_new[1] + 2;
-    pmyargs->query = argv_new[2];
+    (*pmyargs)->hostname=calloc(strlen(argv_new[1] + 2), sizeof(char));
+    (*pmyargs)->query = calloc(strlen(argv_new[2]), sizeof(char));
+    memcpy ((*pmyargs)->hostname, argv_new[1] + 2, strlen(argv_new[1] + 2));
+    memcpy ((*pmyargs)->query, argv_new[2], strlen(argv_new[2]));
     poptFreeContext(pc);
 }
 
@@ -169,7 +176,7 @@ char *string_CIMVAR(TALLOC_CTX *mem_ctx, union CIMVAR *v, enum CIMTYPE_ENUMERATI
 
 int main(int argc, char **argv)
 {
-	struct program_args args = {};
+        progr_args_t *args = init_program_args();
 	uint32_t cnt = 5, ret;
 	char *class_name = NULL;
 	WERROR result;
@@ -177,10 +184,18 @@ int main(int argc, char **argv)
 	struct IWbemServices *pWS = NULL;
 
         parse_args(argc, argv, &args);
-	
+
 	/* apply default values if not given by user*/
-	if (!args.ns) args.ns = "root\\cimv2";
-	if (!args.delim) args.delim = "|";
+        if (!args->ns){
+          size_t len = strlen("root\\cimv2") + 1;
+          args->ns=calloc(len, sizeof (char));
+          memcpy (args->ns, "root\\cimv2", len);
+        }
+	if (!args->delim){
+          size_t len = strlen("|") + 1;
+          args->delim=calloc(len, sizeof (char));
+          memcpy (args->delim, "|", len);
+        }
 
 	dcerpc_init();
 	dcerpc_table_init();
@@ -197,11 +212,11 @@ int main(int argc, char **argv)
 	com_init_ctx(&ctx, NULL);
 	dcom_client_init(ctx, cmdline_credentials);
 
-	result = WBEM_ConnectServer(ctx, args.hostname, args.ns, 0, 0, 0, 0, 0, 0, &pWS);
+	result = WBEM_ConnectServer(ctx, args->hostname, args->ns, 0, 0, 0, 0, 0, 0, &pWS);
 	WERR_CHECK("Login to remote object.");
 
 	struct IEnumWbemClassObject *pEnum = NULL;
-	result = IWbemServices_ExecQuery(pWS, ctx, "WQL", args.query, WBEM_FLAG_RETURN_IMMEDIATELY | WBEM_FLAG_ENSURE_LOCATABLE, NULL, &pEnum);
+	result = IWbemServices_ExecQuery(pWS, ctx, "WQL", args->query, WBEM_FLAG_RETURN_IMMEDIATELY | WBEM_FLAG_ENSURE_LOCATABLE, NULL, &pEnum);
 	WERR_CHECK("WMI query execute.");
 
 	IEnumWbemClassObject_Reset(pEnum, ctx);
@@ -226,22 +241,24 @@ int main(int argc, char **argv)
 				class_name = talloc_strdup(ctx, co[i]->obj_class->__CLASS);
 				printf("CLASS: %s\n", class_name);
 				for (j = 0; j < co[i]->obj_class->__PROPERTY_COUNT; ++j)
-					printf("%s%s", j?args.delim:"", co[i]->obj_class->properties[j].name);
+					printf("%s%s", j?args->delim:"", co[i]->obj_class->properties[j].name);
 				printf("\n");
 			}
 			for (j = 0; j < co[i]->obj_class->__PROPERTY_COUNT; ++j) {
 				char *s;
 				s = string_CIMVAR(ctx, &co[i]->instance->data[j], co[i]->obj_class->properties[j].desc->cimtype & CIM_TYPEMASK);
-				printf("%s%s", j?args.delim:"", s);
+				printf("%s%s", j?args->delim:"", s);
 			}
 			printf("\n");
 		}
 	} while (ret == cnt);
 	talloc_free(ctx);
+        free_program_args(args);
 	return 0;
 error:
 	status = werror_to_ntstatus(result);
 	fprintf(stderr, "NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status));
 	talloc_free(ctx);
+        free_program_args(args);
 	return 1;
 }
