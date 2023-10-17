@@ -59,6 +59,7 @@ struct WBEMOBJECT;
 
 #include "wmi/proto.h"
 #include "wmi/wmi.h"
+#include "wmi/program_args_utils.h"
 #include "openvas_wmi_interface.h"
 
 
@@ -69,12 +70,7 @@ struct WBEMOBJECT;
                             DEBUG(1, ("OK   : %s\n", msg)); \
                         }
 
-struct program_args {
-  char *hostname;       // Hostname
-};
-
-
-static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
+static int parse_args(int argc, char *argv[], progr_args_t **pmyargs)
 {
     poptContext pc;
     int opt, i;
@@ -113,8 +109,8 @@ static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
       poptFreeContext(pc);
           return 1;
     }
- 
-    pmyargs->hostname = argv_new[1] + 2;
+    (*pmyargs)->hostname=calloc(strlen(argv_new[1] + 2), sizeof(char));
+    memcpy ((*pmyargs)->hostname, argv_new[1] + 2, strlen(argv_new[1] + 2));
     poptFreeContext(pc);
     return 0;
 }
@@ -145,7 +141,7 @@ wmi_connect_rsop (int argc, char **argv)
   union CIMVAR v;
   char *namespace = NULL;
   int ret;
-  struct program_args args = {};
+  progr_args_t *args = init_program_args();
 
   ret = parse_args(argc, argv, &args);
  
@@ -172,7 +168,7 @@ wmi_connect_rsop (int argc, char **argv)
   dcom_client_init(ctx, cmdline_credentials);
 
   /* Connect to RSOP namespace */
-  result = WBEM_ConnectServer(ctx, args.hostname, "root\\rsop", 0, 0, 0, 0, 0, 0, &pWS);
+  result = WBEM_ConnectServer(ctx, args->hostname, "root\\rsop", 0, 0, 0, 0, 0, 0, &pWS);
   WERR_CHECK("WBEM_ConnectServer.");
 
   result = IWbemServices_GetObject(pWS, ctx, "RsopLoggingModeProvider",
@@ -199,13 +195,14 @@ wmi_connect_rsop (int argc, char **argv)
 
   /* Computer namespace only, user namespace doesn't seem to work */
   namespace = talloc_asprintf_append(v.v_string, "%s", "\\computer");
-  result = WBEM_ConnectServer(ctx, args.hostname, namespace, 0, 0, 0, 0, 0, 0, &pWS);
-
+  result = WBEM_ConnectServer(ctx, args->hostname, namespace, 0, 0, 0, 0, 0, 0, &pWS);
+  free_program_args(args);
   return pWS;
 
 error:
   status = werror_to_ntstatus(result);
   DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status)));
+  free_program_args(args);
   return NULL;
 }
 

@@ -37,6 +37,7 @@ set (SMB_INCLUDES
 include_directories(${SMB_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 set(WMI_SHARED_SRC
+   program_args_utils.c
    wmicore.c
    wbemdata.c
 )

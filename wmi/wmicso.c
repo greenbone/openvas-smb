@@ -79,6 +79,7 @@ struct WBEMOBJECT;
 
 #include "wmi/proto.h"
 #include "wmi/wmi.h"
+#include "wmi/program_args_utils.h"
 
 #include "openvas_wmi_interface.h"
 
@@ -91,14 +92,7 @@ struct WBEMOBJECT;
                             DEBUG(1, ("OK   : %s\n", msg)); \
                         }
 
-
-struct program_args {
-  char *hostname;       // Hostname
-  char *ns;             // WMI namspace, ex: root\cimv2
-};
-
-
-static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
+static int parse_args(int argc, char *argv[], progr_args_t **pmyargs)
 {
     poptContext pc;
     int opt, i;
@@ -137,9 +131,11 @@ static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
       poptFreeContext(pc);
           return 1;
     }
- 
-    pmyargs->hostname = argv_new[1] + 2;
-    pmyargs->ns = argv_new[2];
+
+    (*pmyargs)->hostname=calloc(strlen(argv_new[1] + 2), sizeof(char));
+    (*pmyargs)->ns = malloc(strlen(argv_new[2]) * sizeof(char));
+    memcpy ((*pmyargs)->hostname, argv_new[1] + 2, strlen(argv_new[1] + 2));
+    memcpy ((*pmyargs)->ns, argv_new[2], strlen(argv_new[2]));
     poptFreeContext(pc);
     return 0;
 }
@@ -212,7 +208,7 @@ wmi_connect (int argc, char **argv)
   struct IWbemServices *pWS = NULL;
   struct com_context *ctx;
   int ret;
-  struct program_args args = {};
+  progr_args_t *args = init_program_args();
 
   ret = parse_args(argc, argv, &args);
  
@@ -236,13 +232,15 @@ wmi_connect (int argc, char **argv)
   com_init_ctx(&ctx, NULL);
   dcom_client_init(ctx, cmdline_credentials);
 
-  result = WBEM_ConnectServer(ctx, args.hostname, args.ns, 0, 0, 0, 0, 0, 0, &pWS);
+  result = WBEM_ConnectServer(ctx, args->hostname, args->ns, 0, 0, 0, 0, 0, 0, &pWS);
   WERR_CHECK("Login to remote object.\n");
+  free_program_args(args);
   return pWS;
 
 error:
   status = werror_to_ntstatus(result);
   DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status)));
+  free_program_args(args);
   return NULL;
 }
 
