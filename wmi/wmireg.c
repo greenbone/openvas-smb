@@ -60,6 +60,7 @@ struct WBEMOBJECT;
 
 #include "wmi/proto.h"
 #include "wmi/wmi.h"
+#include "wmi/program_args_utils.h"
 #include "openvas_wmi_interface.h"
 
 
@@ -70,18 +71,14 @@ struct WBEMOBJECT;
                             DEBUG(1, ("OK   : %s\n", msg)); \
                         }
 
-struct program_args {
-  char *hostname;       // Hostname
-};
 
-
-static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
+static int parse_args(int argc, char *argv[], progr_args_t **pmyargs)
 {
     poptContext pc;
     int opt, i;
     int argc_new;
     char **argv_new;
- 
+
     struct poptOption long_options[] = {
         POPT_AUTOHELP
         POPT_COMMON_SAMBA
@@ -90,18 +87,17 @@ static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
         POPT_COMMON_VERSION
         POPT_TABLEEND
     };
- 
+
     pc = poptGetContext("wmic", argc, (const char **) argv,
                 long_options, POPT_CONTEXT_KEEP_FIRST);
- 
- 
+
     while ((opt = poptGetNextOpt(pc)) != -1) {
           poptFreeContext(pc);
           return 1;
     }
- 
+
     argv_new = discard_const_p(char *, poptGetArgs(pc));
- 
+
     argc_new = argc;
     for (i = 0; i < argc; i++) {
           if (argv_new[i] == NULL) {
@@ -114,8 +110,9 @@ static int parse_args(int argc, char *argv[], struct program_args *pmyargs)
       poptFreeContext(pc);
           return 1;
     }
- 
-    pmyargs->hostname = argv_new[1] + 2;
+
+    (*pmyargs)->hostname=calloc(strlen(argv_new[1] + 2), sizeof(char));
+    memcpy ((*pmyargs)->hostname, argv_new[1] + 2, strlen(argv_new[1] + 2));
     poptFreeContext(pc);
     return 0;
 }
@@ -137,10 +134,10 @@ wmi_connect_reg (int argc, char **argv)
   struct IWbemServices *pWS = NULL;
   struct com_context *ctx;
   int ret;
-  struct program_args args = {};
+  progr_args_t *args = init_program_args();
 
   ret = parse_args(argc, argv, &args);
- 
+
   if(ret == 1)
   {
     DEBUG(1, ("ERROR: %s\n", "Invalid input arguments"));
@@ -162,13 +159,15 @@ wmi_connect_reg (int argc, char **argv)
   com_init_ctx(&ctx, NULL);
   dcom_client_init(ctx, cmdline_credentials);
 
-  result = WBEM_ConnectServer(ctx, args.hostname, "root\\default", 0, 0, 0, 0, 0, 0, &pWS);
+  result = WBEM_ConnectServer(ctx, args->hostname, "root\\default", 0, 0, 0, 0, 0, 0, &pWS);
   WERR_CHECK("Login to remote object.\n");
+  free_program_args(args);
   return pWS;
 
 error:
   status = werror_to_ntstatus(result);
   DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status), get_friendly_nt_error_msg(status)));
+  free_program_args(args);
   return NULL;
 }
 
@@ -989,7 +988,7 @@ int wmi_reg_set_ex_string_val(WMI_HANDLE handle, const char *key, const char *va
 
   result = IWbemServices_ExecMethod(pWS, pWS->ctx, "StdRegProv",
                                     "SetExpandedStringValue", 0, NULL, in,
-                                                                          
+
                                     &out, NULL);
   WERR_CHECK("IWbemServices_ExecMethod.");
 
@@ -1063,7 +1062,7 @@ int wmi_reg_set_string_val(WMI_HANDLE handle, const char *key, const char *val_n
   WERR_CHECK("IWbemServices_ExecMethod.");
 
   return 0;
- 
+
 error:
   status = werror_to_ntstatus(result);
   DEBUG(3, ("NTSTATUS: %s - %s\n", nt_errstr(status),
