@@ -1,6 +1,6 @@
-ARG VERSION=latest-alpine
+ARG VERSION=latest-alpine3.18
 
-FROM alpine:latest AS build
+FROM alpine:3.18 AS build
 COPY . /source
 RUN sh /source/.github/install-openvas-smb-dependencies-alpine.sh
  
@@ -10,7 +10,7 @@ RUN cp .github/alpine-patches/*.patch . && git apply *.patch
 RUN cmake -DCMAKE_BUILD_TYPE=Release -B/build /source
 RUN DESTDIR=/install cmake --build /build -- install
 
-FROM alpine:latest
+FROM alpine:3.18
 
 RUN apk update && apk upgrade && \
   apk add --no-cache gnutls \
