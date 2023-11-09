@@ -11,10 +11,8 @@ apk update && apk upgrade && \
   gvm-libs-dev \
   heimdal-dev \
   libunistring-dev \
-  mingw-w64-binutils \
-  mingw-w64-crt \
-  mingw-w64-gcc \
-  mingw-w64-headers \
+  binutils \
+  gcc \
   perl-dev \
   popt-dev \
   samurai \
