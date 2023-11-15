@@ -19,3 +19,4 @@ RUN apk update && apk upgrade && \
 
 COPY --from=build /install/ /
 
+# RUN ldconfig
