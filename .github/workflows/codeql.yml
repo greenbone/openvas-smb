@@ -17,16 +17,15 @@ jobs:
       actions: read
       contents: read
       security-events: write
-    container: ${{ github.repository }}-build:latest
+    container: debian:stable-slim
 
     strategy:
       fail-fast: false
       matrix:
         language: [ 'c' ]
-      
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: .github/actions/build-openvas-smb-action
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -36,7 +35,7 @@ jobs:
         queries: security-and-quality
 
     # build between init and analyze ...
-    - name: Configure and Compile boreas
+    - name: Configure and Compile openvas-smb
       run: |
         mkdir build && cd build/ && cmake \
         -DCMAKE_BUILD_TYPE=Release .. && make install

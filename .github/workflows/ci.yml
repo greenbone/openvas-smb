@@ -9,11 +9,10 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    container: ${{ github.repository }}-build:latest
+    container: debian:stable-slim
+
     steps:
-      - name: Check out openvas-smb
-        uses: actions/checkout@v4
+      - uses: .github/actions/build-openvas-smb-action
       - name: Configure and build
         run: |
           mkdir build && cd build/ && cmake -DCMAKE_BUILD_TYPE=Release .. && make install
-
