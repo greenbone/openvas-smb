@@ -25,7 +25,7 @@ jobs:
         language: [ 'c' ]
 
     steps:
-    - uses: .github/actions/build-openvas-smb-action
+    - uses: .github/actions/install-dependencies-action
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL

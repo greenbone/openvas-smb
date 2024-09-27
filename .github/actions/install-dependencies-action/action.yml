@@ -1,5 +1,5 @@
-name: 'Build openvas-smb'
-description: 'builds openvas-smb from source'
+name: 'Install dependencies'
+description: 'Install dependencies for openvas-smb'
 runs:
   using: "composite"
   steps:
