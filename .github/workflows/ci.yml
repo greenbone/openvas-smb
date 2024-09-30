@@ -12,7 +12,7 @@ jobs:
     container: debian:stable-slim
 
     steps:
-      - uses: .github/actions/install-dependencies-action
+      - uses: .github/actions/install-dependencies-action@main
       - name: Configure and build
         run: |
           mkdir build && cd build/ && cmake -DCMAKE_BUILD_TYPE=Release .. && make install
