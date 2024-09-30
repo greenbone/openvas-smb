@@ -1,5 +1,5 @@
 name: 'Install dependencies'
-description: 'Install dependencies for openvas-smb'
+description: 'install dependencies for openvas-smb'
 runs:
   using: "composite"
   steps:
