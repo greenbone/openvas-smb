@@ -4,6 +4,7 @@ runs:
   using: "composite"
   steps:
     - name: Build openvas-smb
+      shell: bash
       run: |
         apt-get update && apt-get install --no-install-recommends --no-install-suggests -y \
         build-essential \
