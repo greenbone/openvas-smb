@@ -17,5 +17,4 @@ runs:
         libpopt-dev \
         libglib2.0-dev \
         libunistring-dev \
-        freebsd-glue \
         && rm -rf /var/lib/apt/lists/*
