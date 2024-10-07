@@ -1,5 +1,5 @@
 # default reviewers
 *                 @greenbone/scanner-maintainers
 
-.github           @greenbone/devops @greenbone/scanner-maintainers
-.docker           @greenbone/devops @greenbone/scanner-maintainers
+.github           @greenbone/scanner-maintainers
+.docker           @greenbone/scanner-maintainers
