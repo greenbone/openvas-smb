@@ -11,7 +11,7 @@ Prerequisites for openvas-smb
 * gcc-mingw32 | gcc-mingw-w64
 * libgnutls-dev >= 3.2.15
 * perl-base
-* heimdal-dev | heimdal-multidev >= 1.6.0
+* heimdal-multidev >= 1.6.0
 * libpopt-dev
 * libglib2.0-dev
 * libunistring-dev
