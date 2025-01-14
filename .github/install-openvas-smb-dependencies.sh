@@ -8,7 +8,7 @@ apt-get update && apt-get install --no-install-recommends --no-install-suggests 
     gcc-mingw-w64 \
     libgnutls28-dev \
     perl-base \
-    heimdal-dev \
+    heimdal-multidev \
     libpopt-dev \
     libglib2.0-dev \
     libunistring-dev \
