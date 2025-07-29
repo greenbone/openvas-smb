@@ -11,6 +11,7 @@ Prerequisites for openvas-smb
 * gcc-mingw32 | gcc-mingw-w64
 * libgnutls-dev >= 3.2.15
 * perl-base
+* perl-modules
 * heimdal-multidev >= 1.6.0
 * libpopt-dev
 * libglib2.0-dev
@@ -19,8 +20,8 @@ Prerequisites for openvas-smb
 Install prerequisites on Debian GNU/Linux 'Buster' 10:
 
     apt-get install gcc cmake pkg-config gcc-mingw-w64 libgnutls28-dev \
-                    perl-base heimdal-dev libpopt-dev libglib2.0-dev \
-                    libunistring-dev
+                    perl-base perl-modules heimdal-dev libpopt-dev \
+                    libglib2.0-dev libunistring-dev
 
 Compiling openvas-smb
 ---------------------
