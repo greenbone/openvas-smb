@@ -16,16 +16,24 @@ binary to execute queries remotely on that system.
 
 This module can be configured, built and installed with following commands:
 
-    cmake .
-    make install
+```sh
+cmake .
+make install
+```
 
-For detailed installation requirements and instructions, please see the file
-[INSTALL.md](INSTALL.md).
+For detailed installation requirements and instructions, please see [INSTALL.md](INSTALL.md).
 
 If you are not familiar or comfortable building from source code, we recommend
-that you use the Greenbone Enterprise TRIAL, a prepared virtual machine with a
+using the Greenbone Enterprise TRIAL, a prepared virtual machine with a
 readily available setup. Information regarding the virtual machine
 is available at <https://www.greenbone.net/en/testnow>.
+
+## Releases & Changelog
+
+All releases are published on [GitHub Releases](https://github.com/greenbone/openvas-smb/releases).  
+Changelogs are automatically generated using [git-cliff](https://github.com/orhun/git-cliff) and are included with each release for transparency and consistency.
+
+For details about our changelog style or to contribute meaningful commit messages, see the [cliff.toml](cliff.toml) configuration.
 
 ## Support
 
@@ -43,8 +51,10 @@ This project is maintained by [Greenbone AG](https://www.greenbone.net/).
 
 Your contributions are highly appreciated. Please [create a pull
 request](https://github.com/greenbone/openvas-smb/pulls) on GitHub. Bigger
-changes need to be discussed with the development team via the [issues section
-at github](https://github.com/greenbone/openvas-smb/issues) first.
+changes should be discussed with the development team via the [issues section
+at GitHub](https://github.com/greenbone/openvas-smb/issues) first.
+
+When contributing, please follow our commit message guidelines for changelog clarity (see [cliff.toml](cliff.toml)).
 
 ## License
 
