@@ -12,7 +12,7 @@ jobs:
     container: ${{ github.repository }}-build:latest
     steps:
       - name: Check out openvas-smb
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Configure and build
         run: |
           mkdir build && cd build/ && cmake -DCMAKE_BUILD_TYPE=Release .. && make install
